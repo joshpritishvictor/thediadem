@@ -1,53 +1,73 @@
-import {
-  ArrowRight,
-  Check,
-  Compass,
-  Landmark,
-  Layers,
-  ShieldCheck,
-  Sprout,
-  Users,
-  X,
-} from 'lucide-react'
-import { motion, useScroll } from 'motion/react'
+import { ArrowRight, ArrowUpRight, Check, X } from 'lucide-react'
+import { m, useScroll } from 'motion/react'
 import { useRef } from 'react'
 import { Link } from 'react-router-dom'
+import Counter from '../components/Counter'
+import CtaBanner from '../components/CtaBanner'
 import HeroVisual from '../components/HeroVisual'
+import PostCard from '../components/PostCard'
 import Reveal, { RevealItem } from '../components/Reveal'
+import SectionHeading from '../components/SectionHeading'
+import Seo from '../components/Seo'
 import SpotlightCard from '../components/SpotlightCard'
+import { posts } from '../content/blog'
+import {
+  approach,
+  comparison,
+  hero,
+  howWeHelp,
+  insights,
+  outcomes,
+  process,
+  stats,
+  whoWeAre,
+} from '../content/home'
+import { featuredServices, servicePath } from '../content/services'
+import { contactLink, site } from '../content/site'
 import { easeOutExpo } from '../lib/motion'
-import { contact, services } from '../lib/navigation'
-
-const benefits = [
-  { icon: Users, title: 'One Coordinated Team' },
-  { icon: Landmark, title: 'Proactive Tax Planning' },
-  { icon: Sprout, title: 'Long-Term Wealth Strategies' },
-  { icon: Layers, title: 'Business & Personal Integration' },
-  { icon: ShieldCheck, title: 'Estate & Legacy Protection' },
-]
-
-const steps = [
-  'Initial Consultation',
-  'Cross-Discipline Analysis',
-  'Strategy Development',
-  'Execution & Ongoing Oversight',
-]
 
 export default function Home() {
   return (
     <>
+      <Seo
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'ProfessionalService',
+          name: site.name,
+          legalName: site.legalName,
+          url: site.url,
+          email: site.contact.email,
+          telephone: site.contact.phone,
+          areaServed: 'Alberta, Canada',
+          address: {
+            '@type': 'PostalAddress',
+            addressLocality: 'Calgary',
+            addressRegion: 'AB',
+            addressCountry: 'CA',
+          },
+        }}
+      />
       <Hero />
       <Marquee />
+      <WhoWeAre />
+      <HowWeHelp />
+      <Comparison />
+      <Stats />
       <Approach />
-      <Benefits />
       <Process />
-      <CallToAction />
+      <Outcomes />
+      <Insights />
+      <CtaBanner />
     </>
   )
 }
 
 function Hero() {
-  const headline = ['One', 'Team.', 'One', 'Goal.']
+  const words = hero.headline.flatMap((line, li) =>
+    line
+      .split(' ')
+      .map((word, wi) => ({ word, accent: li > 0, br: wi === 0 && li > 0 })),
+  )
 
   return (
     <section className="relative overflow-hidden pt-36 pb-20 md:pt-44 md:pb-28">
@@ -58,74 +78,72 @@ function Hero() {
 
       <div className="relative container-page grid items-center gap-16 lg:grid-cols-2">
         <div>
-          <motion.p
+          <m.p
             className="eyebrow"
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Diadem &amp; Co.
-          </motion.p>
+            {hero.eyebrow}
+          </m.p>
 
           <h1 className="mt-5 text-5xl leading-[1.05] font-bold sm:text-6xl lg:text-7xl">
-            {headline.map((word, i) => (
-              <span
-                key={i}
-                className="inline-block overflow-hidden pb-2 align-bottom"
-              >
-                <motion.span
-                  className={`inline-block ${i >= 2 ? 'text-shimmer' : ''}`}
-                  initial={{ y: '110%' }}
-                  animate={{ y: 0 }}
-                  transition={{
-                    duration: 0.9,
-                    delay: 0.15 + i * 0.1,
-                    ease: easeOutExpo,
-                  }}
-                >
-                  {word}
-                </motion.span>
-                {i === 1 ? <br /> : ' '}
+            {words.map(({ word, accent, br }, i) => (
+              <span key={i}>
+                {br && <br />}
+                <span className="inline-block overflow-hidden pb-2 align-bottom">
+                  <m.span
+                    className={`inline-block ${accent ? 'text-shimmer' : ''}`}
+                    initial={{ y: '110%' }}
+                    animate={{ y: 0 }}
+                    transition={{
+                      duration: 0.9,
+                      delay: 0.15 + i * 0.1,
+                      ease: easeOutExpo,
+                    }}
+                  >
+                    {word}
+                  </m.span>
+                </span>{' '}
               </span>
             ))}
           </h1>
 
-          <motion.p
+          <m.p
             className="mt-6 max-w-lg text-lg text-ink/70"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6, ease: easeOutExpo }}
           >
-            Connect with trusted professionals across the services your business
-            needs.
-          </motion.p>
+            {hero.body}
+          </m.p>
 
-          <motion.div
+          <m.div
             className="mt-10 flex flex-wrap gap-4"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.75, ease: easeOutExpo }}
           >
-            <Link to="/contact-us" className="group btn-primary">
-              Book a Consultation
+            <Link to={contactLink.to} className="group btn-primary">
+              {hero.cta}
               <ArrowRight
                 size={16}
                 className="transition-transform group-hover:translate-x-1"
               />
             </Link>
-            <Link to="/our-services" className="btn-ghost">
+            <Link to="/our-services/" className="btn-ghost">
               Explore Services
             </Link>
-          </motion.div>
+          </m.div>
         </div>
 
-        <motion.div
+        <m.div
           initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, delay: 0.3, ease: easeOutExpo }}
         >
           <HeroVisual />
-        </motion.div>
+        </m.div>
       </div>
     </section>
   )
@@ -133,21 +151,21 @@ function Hero() {
 
 function Marquee() {
   const items = [
-    ...services,
-    'Build wisely',
-    'Sow strategically',
-    'Reap abundantly',
+    ...featuredServices.map((s) => s.title),
+    ...site.tagline.replace(/\.$/, '').split(', '),
   ]
 
   return (
-    <div className="overflow-hidden border-y border-ink/5 bg-white/60 py-5">
+    <div
+      className="overflow-hidden border-y border-ink/5 bg-white/60 py-5"
+      aria-hidden="true"
+    >
       <div className="flex w-max animate-marquee gap-12 hover:[animation-play-state:paused]">
         {/* Rendered twice so the loop is seamless */}
         {[...items, ...items].map((item, i) => (
           <span
             key={i}
-            className="flex items-center gap-12 font-display text-lg font-semibold whitespace-nowrap text-teal-900/70"
-            aria-hidden={i >= items.length}
+            className="flex items-center gap-12 font-display text-lg font-semibold whitespace-nowrap text-teal-900/70 capitalize"
           >
             {item}
             <span className="size-1.5 rounded-full bg-gold-500" />
@@ -158,59 +176,158 @@ function Marquee() {
   )
 }
 
-function Approach() {
+function WhoWeAre() {
   return (
     <section className="container-page py-24 md:py-32">
-      <Reveal className="mx-auto max-w-2xl text-center">
-        <p className="eyebrow">Why Diadem</p>
-        <h2 className="mt-4 text-4xl font-bold md:text-5xl">
-          Most people have advisors.{' '}
-          <span className="text-teal-800">
-            We make sure they work together.
-          </span>
-        </h2>
+      <SectionHeading eyebrow={whoWeAre.eyebrow} title={site.tagline} />
+      <Reveal
+        staggerChildren={0.08}
+        className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
+      >
+        {whoWeAre.items.map(({ icon: Icon, title, body }) => (
+          <RevealItem key={title}>
+            <SpotlightCard className="h-full">
+              <span className="grid size-12 place-items-center rounded-2xl bg-gold-500/15 text-gold-600">
+                <Icon size={22} />
+              </span>
+              <h3 className="mt-6 text-lg font-semibold">{title}</h3>
+              <p className="mt-2 text-sm text-ink/60">{body}</p>
+            </SpotlightCard>
+          </RevealItem>
+        ))}
       </Reveal>
+    </section>
+  )
+}
+
+function HowWeHelp() {
+  return (
+    <section className="bg-white/50 py-24 md:py-32">
+      <div className="container-page">
+        <SectionHeading
+          eyebrow={howWeHelp.eyebrow}
+          title={howWeHelp.heading}
+          align="center"
+        />
+        <Reveal
+          staggerChildren={0.08}
+          className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
+        >
+          {featuredServices.map(({ slug, icon: Icon, title, home }) => (
+            <RevealItem key={slug}>
+              <Link to={servicePath(slug)} className="group block h-full">
+                <SpotlightCard className="flex h-full flex-col">
+                  <span className="grid size-12 place-items-center rounded-2xl bg-teal-900 text-gold-400 transition-transform duration-500 group-hover:rotate-6">
+                    <Icon size={22} />
+                  </span>
+                  <h3 className="mt-6 text-xl font-semibold">
+                    {home?.label ?? title}
+                  </h3>
+                  <p className="mt-2 text-sm text-ink/60">{home?.blurb}</p>
+                  <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-teal-900">
+                    {home?.cta ?? 'Learn more'}
+                    <ArrowUpRight
+                      size={16}
+                      className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    />
+                  </span>
+                </SpotlightCard>
+              </Link>
+            </RevealItem>
+          ))}
+        </Reveal>
+
+        <Reveal className="mt-10 flex flex-col items-center justify-between gap-6 rounded-3xl border border-gold-500/30 bg-gold-500/10 p-8 text-center md:flex-row md:text-left">
+          <div>
+            <h3 className="text-2xl font-semibold">
+              {howWeHelp.notSure.heading}
+            </h3>
+            <p className="mt-2 text-ink/65">{howWeHelp.notSure.body}</p>
+          </div>
+          <Link to={contactLink.to} className="btn-primary shrink-0">
+            {howWeHelp.notSure.cta}
+          </Link>
+        </Reveal>
+      </div>
+    </section>
+  )
+}
+
+function Comparison() {
+  const { traditional, diadem } = comparison
+
+  return (
+    <section className="container-page py-24 md:py-32">
+      <SectionHeading
+        eyebrow={comparison.eyebrow}
+        title={comparison.heading}
+        description={comparison.body}
+        align="center"
+      />
 
       <Reveal
         staggerChildren={0.15}
-        className="mt-16 grid gap-6 md:grid-cols-2"
+        className="mt-16 grid items-stretch gap-6 lg:grid-cols-[1fr_auto_1fr]"
       >
         <RevealItem>
-          <div className="h-full rounded-3xl border border-ink/10 bg-white/50 p-10">
-            <p className="eyebrow text-ink/40">Traditional Approach</p>
-            <ul className="mt-6 space-y-4">
-              {['Fragmented.', 'Disconnected.', 'Reactive.'].map((item) => (
-                <li
-                  key={item}
-                  className="flex items-center gap-3 font-display text-2xl font-semibold text-ink/40"
-                >
-                  <X size={20} className="text-ink/30" /> {item}
+          <div className="h-full rounded-[2rem] border border-ink/10 bg-white/50 p-8 md:p-10">
+            <p className="eyebrow text-ink/40">{traditional.title}</p>
+            <p className="mt-3 font-display text-2xl font-semibold text-ink/50">
+              {traditional.tagline}
+            </p>
+            <ul className="mt-8 space-y-5">
+              {traditional.points.map(({ title, body }) => (
+                <li key={title} className="flex gap-4">
+                  <span className="grid size-7 shrink-0 place-items-center rounded-full bg-ink/8 text-ink/40">
+                    <X size={14} strokeWidth={3} />
+                  </span>
+                  <span>
+                    <span className="block font-semibold text-ink/70">
+                      {title}
+                    </span>
+                    <span className="text-sm text-ink/45">{body}</span>
+                  </span>
                 </li>
               ))}
             </ul>
+            <p className="mt-8 border-t border-ink/10 pt-6 text-sm font-semibold text-ink/50">
+              {traditional.outcome}
+            </p>
           </div>
         </RevealItem>
 
+        <RevealItem className="grid place-items-center">
+          <span className="grid size-16 place-items-center rounded-full border border-gold-500/40 bg-cream font-display text-lg font-bold text-gold-600">
+            VS
+          </span>
+        </RevealItem>
+
         <RevealItem>
-          <div className="relative h-full overflow-hidden rounded-3xl bg-teal-900 p-10 text-cream shadow-2xl shadow-teal-900/30">
+          <div className="relative h-full overflow-hidden rounded-[2rem] bg-teal-900 p-8 text-cream shadow-2xl shadow-teal-900/30 md:p-10">
             <div className="grain" />
             <div className="absolute -top-20 -right-20 size-64 animate-blob rounded-full bg-gold-500/25 blur-3xl" />
-            <p className="relative eyebrow text-gold-400">
-              The Diadem Approach
-            </p>
-            <ul className="relative mt-6 space-y-4">
-              {['Integrated.', 'Aligned.', 'Proactive.'].map((item) => (
-                <li
-                  key={item}
-                  className="flex items-center gap-3 font-display text-2xl font-semibold"
-                >
-                  <span className="grid size-7 place-items-center rounded-full bg-gold-500 text-teal-950">
-                    <Check size={16} strokeWidth={3} />
-                  </span>
-                  {item}
-                </li>
-              ))}
-            </ul>
+            <div className="relative">
+              <p className="eyebrow text-gold-400">{diadem.title}</p>
+              <p className="mt-3 font-display text-2xl font-semibold">
+                {diadem.tagline}
+              </p>
+              <ul className="mt-8 space-y-5">
+                {diadem.points.map(({ title, body }) => (
+                  <li key={title} className="flex gap-4">
+                    <span className="grid size-7 shrink-0 place-items-center rounded-full bg-gold-500 text-teal-950">
+                      <Check size={14} strokeWidth={3} />
+                    </span>
+                    <span>
+                      <span className="block font-semibold">{title}</span>
+                      <span className="text-sm text-cream/60">{body}</span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-8 border-t border-cream/15 pt-6 text-sm font-semibold text-gold-300">
+                {diadem.outcome}
+              </p>
+            </div>
           </div>
         </RevealItem>
       </Reveal>
@@ -218,44 +335,69 @@ function Approach() {
   )
 }
 
-function Benefits() {
+function Stats() {
   return (
-    <section className="bg-white/50 py-24 md:py-32">
-      <div className="container-page">
-        <Reveal className="max-w-2xl">
-          <p className="eyebrow">Four pillars, one strategy</p>
-          <h2 className="mt-4 text-4xl font-bold md:text-5xl">
-            Most financial professionals work independently.{' '}
-            <span className="text-shimmer">We don&apos;t.</span>
-          </h2>
-        </Reveal>
+    <section className="relative overflow-hidden bg-teal-950 py-16 text-cream">
+      <div className="grain" />
+      <Reveal
+        staggerChildren={0.1}
+        className="relative container-page grid gap-10 text-center sm:grid-cols-3"
+      >
+        {stats.map(({ value, suffix, label }) => (
+          <RevealItem key={label}>
+            <Counter
+              value={value}
+              suffix={suffix}
+              className="block text-shimmer font-display text-5xl font-bold md:text-6xl"
+            />
+            <p className="mt-2 text-sm tracking-[0.15em] text-cream/60 uppercase">
+              {label}
+            </p>
+          </RevealItem>
+        ))}
+      </Reveal>
+    </section>
+  )
+}
 
-        <Reveal
-          staggerChildren={0.08}
-          className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
-        >
-          {benefits.map(({ icon: Icon, title }) => (
-            <RevealItem key={title}>
+function Approach() {
+  return (
+    <section className="container-page py-24 md:py-32">
+      <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr]">
+        <div className="lg:sticky lg:top-32 lg:self-start">
+          <SectionHeading
+            eyebrow={approach.eyebrow}
+            title={
+              <>
+                One Strategy. <span className="text-shimmer">Zero Silos.</span>
+              </>
+            }
+            description={approach.body}
+          />
+          <Reveal className="mt-8">
+            <Link to={contactLink.to} className="btn-primary">
+              {approach.cta}
+            </Link>
+          </Reveal>
+        </div>
+
+        <Reveal staggerChildren={0.08} className="grid gap-5 sm:grid-cols-2">
+          {approach.benefits.map(({ icon: Icon, title, body }, i) => (
+            <RevealItem
+              key={title}
+              className={
+                i === approach.benefits.length - 1 ? 'sm:col-span-2' : ''
+              }
+            >
               <SpotlightCard className="h-full">
                 <span className="grid size-12 place-items-center rounded-2xl bg-teal-900 text-gold-400">
                   <Icon size={22} />
                 </span>
                 <h3 className="mt-6 text-xl font-semibold">{title}</h3>
+                <p className="mt-2 text-sm text-ink/60">{body}</p>
               </SpotlightCard>
             </RevealItem>
           ))}
-          <RevealItem>
-            <Link
-              to="/our-services"
-              className="group flex h-full min-h-48 flex-col justify-between rounded-3xl bg-gold-500 p-8 text-teal-950 transition duration-500 ease-out-expo hover:-translate-y-1 hover:shadow-xl hover:shadow-gold-500/30"
-            >
-              <Compass size={28} />
-              <span className="flex items-center justify-between font-display text-xl font-semibold">
-                See all services
-                <ArrowRight className="transition-transform group-hover:translate-x-1" />
-              </span>
-            </Link>
-          </RevealItem>
         </Reveal>
       </div>
     </section>
@@ -271,31 +413,35 @@ function Process() {
   })
 
   return (
-    <section className="container-page py-24 md:py-32">
-      <div className="grid gap-16 lg:grid-cols-[1fr_1.2fr]">
-        <Reveal className="lg:sticky lg:top-32 lg:self-start">
-          <p className="eyebrow">How it works</p>
-          <h2 className="mt-4 text-4xl font-bold md:text-5xl">
-            Build wisely, sow strategically, reap abundantly.
-          </h2>
-        </Reveal>
+    <section className="bg-white/50 py-24 md:py-32">
+      <div className="container-page grid gap-16 lg:grid-cols-[1fr_1.2fr]">
+        <div className="lg:sticky lg:top-32 lg:self-start">
+          <SectionHeading
+            eyebrow={process.eyebrow}
+            title={process.heading}
+            description={process.body}
+          />
+          <Reveal className="mt-8">
+            <Link to={contactLink.to} className="btn-primary">
+              {process.cta}
+            </Link>
+          </Reveal>
+        </div>
 
-        <ol ref={ref} className="relative space-y-12 pl-12">
-          <div className="absolute top-2 bottom-2 left-[15px] w-0.5 bg-ink/10" />
-          <motion.div
-            className="absolute top-2 bottom-2 left-[15px] w-0.5 origin-top bg-gold-500"
+        <ol ref={ref} className="relative space-y-12 pl-14">
+          <div className="absolute top-2 bottom-2 left-[19px] w-0.5 bg-ink/10" />
+          <m.div
+            className="absolute top-2 bottom-2 left-[19px] w-0.5 origin-top bg-gold-500"
             style={{ scaleY: scrollYProgress }}
           />
-          {steps.map((step, i) => (
-            <li key={step} className="relative">
-              <span className="absolute top-0 -left-12 grid size-8 place-items-center rounded-full border-2 border-gold-500 bg-cream text-sm font-bold text-teal-900">
-                {i + 1}
+          {process.steps.map(({ title, body }, i) => (
+            <li key={title} className="relative">
+              <span className="absolute top-0 -left-14 grid size-10 place-items-center rounded-full border-2 border-gold-500 bg-cream font-display text-sm font-bold text-teal-900">
+                {String(i + 1).padStart(2, '0')}
               </span>
               <Reveal>
-                <p className="eyebrow text-ink/40">Step {i + 1}</p>
-                <h3 className="mt-2 text-2xl font-semibold md:text-3xl">
-                  {step}
-                </h3>
+                <h3 className="pt-1.5 text-2xl font-semibold">{title}</h3>
+                <p className="mt-3 text-ink/65">{body}</p>
               </Reveal>
             </li>
           ))}
@@ -305,33 +451,54 @@ function Process() {
   )
 }
 
-function CallToAction() {
+function Outcomes() {
   return (
-    <section className="container-page pb-24 md:pb-32">
-      <Reveal>
-        <div className="relative overflow-hidden rounded-[2.5rem] bg-teal-900 px-8 py-16 text-center text-cream md:px-16 md:py-24">
-          <div className="grain" />
-          <div className="absolute -bottom-32 -left-20 size-96 animate-blob rounded-full bg-gold-500/20 blur-3xl" />
-          <div className="absolute -top-32 -right-20 size-96 animate-blob rounded-full bg-sage-500/30 blur-3xl [animation-delay:-8s]" />
-
-          <div className="relative mx-auto max-w-2xl">
-            <h2 className="text-3xl font-bold md:text-5xl">
-              Tell us what you&apos;re looking for.
-            </h2>
-            <p className="mt-6 text-lg text-cream/70">
-              We&apos;ll help connect you with the appropriate professional.
-            </p>
-            <div className="mt-10 flex flex-wrap justify-center gap-4">
-              <Link to="/contact-us" className="btn-primary">
-                Contact Us <ArrowRight size={16} />
-              </Link>
-              <a href={contact.phoneHref} className="btn-ghost text-cream">
-                {contact.phone}
-              </a>
-            </div>
-          </div>
-        </div>
+    <section className="container-page py-24 md:py-32">
+      <SectionHeading eyebrow={outcomes.eyebrow} title={outcomes.heading} />
+      <Reveal staggerChildren={0.1} className="mt-14 grid gap-6 lg:grid-cols-3">
+        {outcomes.items.map(({ value, suffix, title, body }) => (
+          <RevealItem key={title}>
+            <SpotlightCard className="h-full">
+              <Counter
+                value={value}
+                suffix={suffix}
+                className="font-display text-5xl font-bold text-teal-900"
+              />
+              <h3 className="mt-4 text-xl font-semibold">{title}</h3>
+              <p className="mt-2 text-sm text-ink/60">{body}</p>
+            </SpotlightCard>
+          </RevealItem>
+        ))}
       </Reveal>
+    </section>
+  )
+}
+
+function Insights() {
+  if (posts.length === 0) return null
+
+  return (
+    <section className="bg-white/50 py-24 md:py-32">
+      <div className="container-page">
+        <div className="flex flex-wrap items-end justify-between gap-6">
+          <SectionHeading eyebrow={insights.eyebrow} title={insights.heading} />
+          <Reveal>
+            <Link to="/blog/" className="btn-ghost">
+              View all articles
+            </Link>
+          </Reveal>
+        </div>
+        <Reveal
+          staggerChildren={0.1}
+          className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+        >
+          {posts.slice(0, 3).map((post) => (
+            <RevealItem key={post.slug}>
+              <PostCard post={post} />
+            </RevealItem>
+          ))}
+        </Reveal>
+      </div>
     </section>
   )
 }

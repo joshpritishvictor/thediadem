@@ -1,4 +1,4 @@
-import { motion } from 'motion/react'
+import { m } from 'motion/react'
 import type { ReactNode } from 'react'
 import { fadeUp, revealTransition, stagger } from '../lib/motion'
 
@@ -20,7 +20,7 @@ export default function Reveal({
   const isStagger = staggerChildren !== undefined
 
   return (
-    <motion.div
+    <m.div
       className={className}
       initial="hidden"
       whileInView="visible"
@@ -29,7 +29,7 @@ export default function Reveal({
       transition={isStagger ? undefined : { ...revealTransition, delay }}
     >
       {children}
-    </motion.div>
+    </m.div>
   )
 }
 
@@ -41,8 +41,8 @@ export function RevealItem({
   className?: string
 }) {
   return (
-    <motion.div className={className} variants={fadeUp}>
+    <m.div className={className} variants={fadeUp}>
       {children}
-    </motion.div>
+    </m.div>
   )
 }

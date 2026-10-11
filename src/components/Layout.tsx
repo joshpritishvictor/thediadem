@@ -1,36 +1,75 @@
-import { AnimatePresence, motion, useScroll, useSpring } from 'motion/react'
+import { AnimatePresence, m, useScroll, useSpring } from 'motion/react'
+import { Suspense, useEffect } from 'react'
 import { useLocation, useOutlet } from 'react-router-dom'
 import { easeOutExpo } from '../lib/motion'
+import { preloadRoute } from '../routes'
 import Footer from './Footer'
 import Header from './Header'
 
+/** Preload a page's code when the user hovers, focuses or touches a link to it */
+function usePreloadOnIntent() {
+  useEffect(() => {
+    const seen = new Set<string>()
+    const onIntent = (event: Event) => {
+      const link = (event.target as Element).closest?.('a[href^="/"]')
+      if (!(link instanceof HTMLAnchorElement)) return
+      const { pathname } = link
+      if (seen.has(pathname)) return
+      seen.add(pathname)
+      preloadRoute(pathname)
+    }
+    const events = ['pointerover', 'focusin', 'touchstart'] as const
+    events.forEach((e) =>
+      document.addEventListener(e, onIntent, { passive: true }),
+    )
+    return () =>
+      events.forEach((e) => document.removeEventListener(e, onIntent))
+  }, [])
+}
+
 export default function Layout() {
-  const location = useLocation()
+  const { pathname } = useLocation()
   // useOutlet (not <Outlet />) so the old page stays rendered while it animates out
   const outlet = useOutlet()
   const { scrollYProgress } = useScroll()
   const progress = useSpring(scrollYProgress, { stiffness: 200, damping: 30 })
+  usePreloadOnIntent()
 
   return (
     <div className="flex min-h-screen flex-col">
-      <motion.div
+      <a
+        href="#main"
+        className="sr-only z-[70] rounded-full bg-teal-900 px-4 py-2 text-cream focus:not-sr-only focus:fixed focus:top-4 focus:left-4"
+      >
+        Skip to content
+      </a>
+      <m.div
         className="fixed inset-x-0 top-0 z-[60] h-0.5 origin-left bg-gold-500"
         style={{ scaleX: progress }}
       />
       <Header />
 
-      <AnimatePresence mode="wait" onExitComplete={() => window.scrollTo(0, 0)}>
-        <motion.main
-          key={location.pathname}
-          className="flex-1"
-          initial={{ opacity: 0, y: 24, filter: 'blur(6px)' }}
-          animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-          exit={{ opacity: 0, y: -16, filter: 'blur(6px)' }}
-          transition={{ duration: 0.5, ease: easeOutExpo }}
+      {/* Outside AnimatePresence so navigation keeps the current page visible while the next one loads */}
+      <Suspense fallback={<div className="min-h-screen flex-1" />}>
+        {/* initial={false}: the first (pre-rendered) page is visible without waiting for JS */}
+        <AnimatePresence
+          mode="wait"
+          initial={false}
+          onExitComplete={() => window.scrollTo(0, 0)}
         >
-          {outlet}
-        </motion.main>
-      </AnimatePresence>
+          <m.main
+            id="main"
+            key={pathname}
+            className="flex-1"
+            initial={{ opacity: 0, y: 24, filter: 'blur(6px)' }}
+            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            exit={{ opacity: 0, y: -16, filter: 'blur(6px)' }}
+            transition={{ duration: 0.5, ease: easeOutExpo }}
+          >
+            {outlet}
+          </m.main>
+        </AnimatePresence>
+      </Suspense>
 
       <Footer />
     </div>

@@ -1,7 +1,7 @@
-import { Crown } from 'lucide-react'
 import { lazy, Suspense } from 'react'
+import logo from '../assets/images/logo.webp'
+import { featuredServices } from '../content/services'
 import { heroAnimation } from '../lib/animations'
-import { services } from '../lib/navigation'
 
 const LottiePlayer = lazy(() => import('./LottiePlayer'))
 
@@ -12,7 +12,7 @@ const positions = [
   'top-1/2 left-0 -translate-x-1/2 -translate-y-1/2',
 ]
 
-/** Hero illustration: a Lottie file if one is configured, otherwise "four pillars" orbiting the crown */
+/** Hero illustration: a Lottie file if one is configured, otherwise the service pillars orbiting the crown */
 export default function HeroVisual() {
   if (heroAnimation) {
     return (
@@ -33,11 +33,11 @@ export default function HeroVisual() {
 
       {/* Orbiting service labels; each label counter-rotates to stay upright */}
       <div className="absolute inset-[12%] animate-orbit">
-        {services.map((service, i) => (
-          <div key={service} className={`absolute ${positions[i]}`}>
+        {featuredServices.slice(0, positions.length).map((service, i) => (
+          <div key={service.slug} className={`absolute ${positions[i]}`}>
             <div className="animate-orbit-reverse">
               <span className="block rounded-full border border-ink/5 bg-white/90 px-3 py-1.5 text-[11px] font-semibold whitespace-nowrap text-teal-900 shadow-lg shadow-teal-900/10 backdrop-blur sm:px-4 sm:py-2 sm:text-xs">
-                {service}
+                {service.home?.label ?? service.title}
               </span>
             </div>
           </div>
@@ -46,10 +46,16 @@ export default function HeroVisual() {
 
       {/* Centre emblem */}
       <div className="absolute inset-0 grid place-items-center">
-        <div className="relative grid size-20 animate-float place-items-center rounded-full bg-teal-900 text-gold-400 shadow-2xl shadow-teal-900/40 sm:size-28">
+        <div className="relative grid size-24 animate-float place-items-center rounded-full bg-teal-900 shadow-2xl shadow-teal-900/40 sm:size-36">
           <span className="absolute inset-0 animate-pulse-ring rounded-full border-2 border-gold-500" />
           <span className="absolute inset-0 animate-pulse-ring rounded-full border-2 border-gold-500 [animation-delay:1.5s]" />
-          <Crown size={44} strokeWidth={1.5} />
+          <img
+            src={logo}
+            alt=""
+            width={105}
+            height={160}
+            className="h-16 w-auto sm:h-24"
+          />
         </div>
       </div>
     </div>
