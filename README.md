@@ -43,9 +43,24 @@ Post body in Markdown…
 
 ## Contact form
 
-Set `VITE_CONTACT_ENDPOINT` (see `.env.example`) to any service that accepts a JSON POST, such as Formspree. Without it, the form opens the visitor's email app instead.
+Submissions go to `api/contact.ts`, a Vercel serverless function that saves them to **GoHighLevel**:
+
+- creates the contact, or updates the existing one with the same email/phone
+- tags it `website-lead`, the service chosen, and `marketing-consent` if they ticked the box
+- adds a note with all their answers and message
+
+Set these in Vercel → Project → Settings → Environment Variables (see `.env.example`):
+
+| Variable          | Value                                                                                |
+| ----------------- | ------------------------------------------------------------------------------------ |
+| `GHL_API_TOKEN`   | GoHighLevel → Settings → Private Integrations token with View + Edit Contacts scopes |
+| `GHL_LOCATION_ID` | `8WJ6nyFWjFzTgnujES0n`                                                               |
+
+To follow up automatically, create a GoHighLevel workflow triggered by **Contact Tag Added → `website-lead`**.
+
+Run `npx vercel dev` (instead of `npm run dev`) to test the form locally with a `.env.local` file.
 
 ## Deploying
 
-- **Vercel / Netlify:** connect the GitHub repo; build command `npm run build`, output `dist`.
-- **Apache (current host):** upload the contents of `dist/`. The included `.htaccess` handles 404s, HTTPS and caching.
+- **Vercel (recommended):** import the GitHub repo; Vercel detects Vite (build `npm run build`, output `dist`) and deploys `api/` as serverless functions. Every push to `main` redeploys.
+- **Apache (current host):** upload the contents of `dist/`. The included `.htaccess` handles 404s, HTTPS and caching. The contact form needs the Vercel function, so it won't save leads on Apache.
