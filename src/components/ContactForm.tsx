@@ -3,11 +3,11 @@ import { AnimatePresence, m } from 'motion/react'
 import { useState, type FormEvent, type ReactElement } from 'react'
 import { contactForm } from '../content/contact'
 import { featuredServices } from '../content/services'
-import { site } from '../content/site'
 
 type Status = 'idle' | 'sending' | 'sent' | 'error'
 
-const endpoint = import.meta.env.VITE_CONTACT_ENDPOINT
+// Serverless function in api/contact.ts (saves the lead to GoHighLevel)
+const endpoint = import.meta.env.VITE_CONTACT_ENDPOINT || '/api/contact'
 
 const fieldClass =
   'w-full rounded-2xl border border-ink/12 bg-white px-4 py-3.5 text-ink transition placeholder:text-ink/40 focus:border-gold-500 focus:ring-4 focus:ring-gold-500/15 focus:outline-none'
@@ -17,30 +17,15 @@ const serviceOptions = [
   contactForm.serviceCatchAll,
 ]
 
-/** Opens the visitor's email app when no form backend is configured */
-function openMailto(data: Record<string, FormDataEntryValue>) {
-  const body = Object.entries(data)
-    .filter(([key, value]) => key !== 'company' && value)
-    .map(([key, value]) => `${key}: ${value}`)
-    .join('\n')
-  window.location.href = `mailto:${site.contact.email}?subject=${encodeURIComponent(
-    'Discovery call request',
-  )}&body=${encodeURIComponent(body)}`
-}
-
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>('idle')
+  const [error, setError] = useState(contactForm.error)
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     const form = event.currentTarget
     const data = Object.fromEntries(new FormData(form))
     if (data.company) return // honeypot: only bots fill the hidden field
-
-    if (!endpoint) {
-      openMailto(data)
-      return
-    }
 
     setStatus('sending')
     try {
@@ -52,10 +37,19 @@ export default function ContactForm() {
         },
         body: JSON.stringify(data),
       })
-      if (!response.ok) throw new Error(`HTTP ${response.status}`)
+      if (!response.ok) {
+        // Validation problems (400) have a message worth showing; anything else gets the generic one
+        const { error: message } = await response.json().catch(() => ({}))
+        setError(
+          response.status === 400 && message ? message : contactForm.error,
+        )
+        setStatus('error')
+        return
+      }
       form.reset()
       setStatus('sent')
     } catch {
+      setError(contactForm.error)
       setStatus('error')
     }
   }
@@ -158,7 +152,7 @@ export default function ContactForm() {
               role="alert"
               className="text-sm font-medium text-red-700 sm:col-span-2"
             >
-              {contactForm.error}
+              {error}
             </p>
           )}
 
