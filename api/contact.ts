@@ -122,7 +122,9 @@ export async function POST(request: Request) {
     .filter((tag) => SAFE_TAG.test(tag))
 
   try {
-    // Creates the contact, or updates the existing one with the same email/phone
+    // Creates the contact, or updates the existing one with the same email/phone.
+    // Tags are NOT sent here: upsert replaces the whole tag list, which would wipe
+    // a returning client's earlier tags (including marketing-consent).
     const { contact } = (await ghl('/contacts/upsert', token, {
       locationId,
       firstName: data.firstName,
@@ -130,16 +132,20 @@ export async function POST(request: Request) {
       email: data.email,
       ...(data.phone && { phone: data.phone }),
       source: 'Website contact form',
-      tags,
     })) as { contact?: { id?: string } }
 
     if (contact?.id) {
-      // The contact is already saved; a failed note shouldn't fail the submission
-      await ghl(`/contacts/${contact.id}/notes`, token, {
-        body: buildNote(data),
-      }).catch((error: unknown) =>
-        console.error('Contact form: note not saved', error),
-      )
+      // The contact is already saved, so these shouldn't fail the submission
+      const results = await Promise.allSettled([
+        // Adds to the existing tags; "website-lead" triggers the follow-up workflow
+        ghl(`/contacts/${contact.id}/tags`, token, { tags }),
+        ghl(`/contacts/${contact.id}/notes`, token, { body: buildNote(data) }),
+      ])
+      for (const result of results) {
+        if (result.status === 'rejected') {
+          console.error('Contact form: follow-up request failed', result.reason)
+        }
+      }
     }
 
     return json({ ok: true })
