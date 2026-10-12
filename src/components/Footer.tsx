@@ -2,7 +2,7 @@ import { Mail, MapPin, Phone } from 'lucide-react'
 import type { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import { featuredServices, servicePath } from '../content/services'
-import { contactLink, legalLinks, navLinks, site } from '../content/site'
+import { legalLinks, navLinks, site } from '../content/site'
 import Logo from './Logo'
 
 const linkClass = 'text-cream/70 transition-colors hover:text-gold-300'
@@ -18,7 +18,7 @@ export default function Footer() {
         </div>
 
         <FooterColumn title="Quick Links">
-          {[...navLinks, contactLink].map(({ to, label }) => (
+          {navLinks.map(({ to, label }) => (
             <li key={to}>
               <Link to={to} className={linkClass}>
                 {label}

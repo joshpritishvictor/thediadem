@@ -19,7 +19,7 @@ export default function Faq() {
       />
       <PageHero eyebrow={faqPage.eyebrow} title={faqPage.heading} />
 
-      <section className="container-page pb-24 md:pb-32">
+      <section className="container-page section-b">
         <div className="grid gap-10 lg:grid-cols-[1.6fr_1fr]">
           <Reveal>
             <Accordion items={faqs} />

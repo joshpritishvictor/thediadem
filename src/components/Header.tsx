@@ -8,7 +8,7 @@ import {
 import { useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { getPost } from '../content/blog'
-import { contactLink, navLinks } from '../content/site'
+import { bookingCta, contactLink, navLinks } from '../content/site'
 import { easeOutExpo } from '../lib/motion'
 import Logo from './Logo'
 
@@ -86,7 +86,7 @@ export default function Header() {
         </nav>
 
         <Link to={contactLink.to} className="btn-primary hidden lg:inline-flex">
-          Book Consultation
+          {bookingCta}
         </Link>
 
         <button

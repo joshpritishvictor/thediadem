@@ -16,8 +16,8 @@ export default function About() {
       />
       <PageHero eyebrow={about.eyebrow} title="About Us" />
 
-      <section className="container-page pb-24 md:pb-32">
-        <div className="grid items-center gap-14 lg:grid-cols-2">
+      <section className="container-page section-b">
+        <div className="grid items-center gap-10 lg:grid-cols-2">
           <Reveal className="relative">
             <img
               src={about.images.primary}
@@ -48,7 +48,7 @@ export default function About() {
         </div>
       </section>
 
-      <section className="bg-white/50 py-24 md:py-32">
+      <section className="bg-white/50 section-y">
         <div className="container-page">
           <SectionHeading
             eyebrow="Why Diadem"
@@ -57,7 +57,7 @@ export default function About() {
           />
           <Reveal
             staggerChildren={0.08}
-            className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
+            className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
           >
             {about.pillars.map(({ icon: Icon, title, body }) => (
               <RevealItem key={title}>

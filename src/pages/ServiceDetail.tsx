@@ -42,7 +42,7 @@ export default function ServiceDetail() {
         </Link>
       </PageHero>
 
-      <section className="container-page pb-24 md:pb-32">
+      <section className="container-page section-b">
         <div className="grid gap-12 lg:grid-cols-[1fr_18rem]">
           <div>
             <SectionHeading title={intro.heading} description={intro.body} />
@@ -99,7 +99,7 @@ export default function ServiceDetail() {
       </section>
 
       {faqs.length > 0 && (
-        <section className="bg-white/50 py-24 md:py-32">
+        <section className="bg-white/50 section-y">
           <div className="container-page grid gap-12 lg:grid-cols-[1fr_1.5fr]">
             <SectionHeading
               eyebrow="FAQs"

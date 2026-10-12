@@ -1,11 +1,10 @@
-import { CalendarDays, Phone } from 'lucide-react'
+import { CalendarDays } from 'lucide-react'
 import { useState } from 'react'
 import ContactForm from '../components/ContactForm'
 import PageHero from '../components/PageHero'
 import Reveal, { RevealItem } from '../components/Reveal'
 import Seo from '../components/Seo'
 import { contactForm, contactPage } from '../content/contact'
-import { site } from '../content/site'
 
 export default function Contact() {
   return (
@@ -17,7 +16,7 @@ export default function Contact() {
         description={contactPage.body}
       />
 
-      <section className="container-page pb-24 md:pb-32">
+      <section className="container-page section-b">
         <div className="grid gap-10 lg:grid-cols-[1fr_1.6fr]">
           <Reveal staggerChildren={0.08} className="space-y-4">
             {contactPage.details.map(({ icon: Icon, title, body, href }) => (
@@ -39,14 +38,6 @@ export default function Contact() {
                 </div>
               </RevealItem>
             ))}
-            <RevealItem>
-              <a
-                href={site.contact.phoneHref}
-                className="flex items-center gap-4 rounded-3xl bg-gold-500 p-6 font-semibold text-teal-950 transition hover:bg-gold-400"
-              >
-                <Phone size={22} /> {site.contact.phone}
-              </a>
-            </RevealItem>
             <RevealItem>
               <p className="px-2 text-xs text-ink/50">
                 {contactPage.privacyNote}
@@ -76,7 +67,7 @@ function BookingCalendar() {
   const { booking } = contactPage
 
   return (
-    <Reveal className="mt-16 overflow-hidden rounded-[2rem] border border-ink/8 bg-white">
+    <Reveal className="mt-12 overflow-hidden rounded-[2rem] border border-ink/8 bg-white">
       <div className="flex flex-col items-start justify-between gap-6 p-8 sm:flex-row sm:items-center sm:p-10">
         <div>
           <h2 className="text-2xl font-semibold">{booking.heading}</h2>

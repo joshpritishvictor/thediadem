@@ -1,6 +1,6 @@
 import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { contactLink, site } from '../content/site'
+import { bookingCta, contactLink, site } from '../content/site'
 import Reveal from './Reveal'
 
 type CtaBannerProps = {
@@ -12,12 +12,12 @@ type CtaBannerProps = {
 export default function CtaBanner({
   heading = 'Not sure where to start?',
   body = 'Tell us what you’re looking for and we’ll help connect you with the appropriate professional.',
-  cta = 'Book a Complimentary Consultation',
+  cta = bookingCta,
 }: CtaBannerProps) {
   return (
-    <section className="container-page py-24 md:py-32">
+    <section className="container-page section-y">
       <Reveal>
-        <div className="relative overflow-hidden rounded-[2.5rem] bg-teal-900 px-8 py-16 text-center text-cream md:px-16 md:py-24">
+        <div className="relative overflow-hidden rounded-[2.5rem] bg-teal-900 px-8 py-12 text-center text-cream md:px-16 md:py-16">
           <div className="grain" />
           <div className="absolute -bottom-32 -left-20 size-96 animate-blob rounded-full bg-gold-500/20 blur-3xl" />
           <div className="absolute -top-32 -right-20 size-96 animate-blob rounded-full bg-sage-500/30 blur-3xl [animation-delay:-8s]" />

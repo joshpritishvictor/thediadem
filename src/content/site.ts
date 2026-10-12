@@ -1,7 +1,7 @@
 export const site = {
   name: 'Diadem & Co.',
   legalName: 'Diadem Strategies Incorporated',
-  tagline: 'Build wisely, sow strategically, reap abundantly.',
+  tagline: 'Plan wisely, sow strategically, reap abundantly.',
   description:
     'Alberta’s integrated professional network. Financial planners, tax strategists, accountants, insurance advisors and lawyers — coordinated through Diadem, working as one for you.',
   url: 'https://diademand.co',
@@ -23,6 +23,9 @@ export const navLinks = [
 ]
 
 export const contactLink = { to: '/contact-us/', label: 'Contact Us' }
+
+/** The one label used for every "book a consultation" button on the site */
+export const bookingCta = 'Book a Free Consultation'
 
 export const legalLinks = [
   { to: '/privacy-policy/', label: 'Privacy Policy' },
