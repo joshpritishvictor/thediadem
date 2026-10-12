@@ -24,7 +24,7 @@ export default function HeroVisual() {
 
   return (
     <div
-      className="relative mx-auto aspect-square w-full max-w-60 sm:max-w-md"
+      className="relative mx-auto aspect-square w-full max-w-60 sm:max-w-sm"
       aria-hidden="true"
     >
       {/* Dashed orbit path */}

@@ -70,13 +70,13 @@ function Hero() {
   )
 
   return (
-    <section className="relative overflow-hidden pt-36 pb-20 md:pt-44 md:pb-28">
+    <section className="relative overflow-hidden pt-28 pb-12 md:pt-32 md:pb-16">
       {/* Drifting brand-colour blobs */}
       <div className="absolute -top-32 -left-24 size-[28rem] animate-blob rounded-full bg-gold-300/40 blur-3xl" />
       <div className="absolute top-20 -right-32 size-[32rem] animate-blob rounded-full bg-sage-300/50 blur-3xl [animation-delay:-6s]" />
       <div className="absolute bottom-0 left-1/3 size-80 animate-blob rounded-full bg-gold-400/20 blur-3xl [animation-delay:-12s]" />
 
-      <div className="relative container-page grid items-center gap-16 lg:grid-cols-2">
+      <div className="relative container-page grid items-center gap-10 lg:grid-cols-2">
         <div>
           <m.p
             className="eyebrow"
@@ -119,7 +119,7 @@ function Hero() {
           </m.p>
 
           <m.div
-            className="mt-10 flex flex-wrap gap-4"
+            className="mt-8 flex flex-wrap gap-4"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.75, ease: easeOutExpo }}
@@ -178,11 +178,11 @@ function Marquee() {
 
 function WhoWeAre() {
   return (
-    <section className="container-page py-24 md:py-32">
+    <section className="container-page section-y">
       <SectionHeading eyebrow={whoWeAre.eyebrow} title={site.tagline} />
       <Reveal
         staggerChildren={0.08}
-        className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
+        className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
       >
         {whoWeAre.items.map(({ icon: Icon, title, body }) => (
           <RevealItem key={title}>
@@ -202,7 +202,7 @@ function WhoWeAre() {
 
 function HowWeHelp() {
   return (
-    <section className="bg-white/50 py-24 md:py-32">
+    <section className="bg-white/50 section-y">
       <div className="container-page">
         <SectionHeading
           eyebrow={howWeHelp.eyebrow}
@@ -211,7 +211,7 @@ function HowWeHelp() {
         />
         <Reveal
           staggerChildren={0.08}
-          className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
+          className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
         >
           {featuredServices.map(({ slug, icon: Icon, title, home }) => (
             <RevealItem key={slug}>
@@ -257,7 +257,7 @@ function Comparison() {
   const { traditional, diadem } = comparison
 
   return (
-    <section className="container-page py-24 md:py-32">
+    <section className="container-page section-y">
       <SectionHeading
         eyebrow={comparison.eyebrow}
         title={comparison.heading}
@@ -267,7 +267,7 @@ function Comparison() {
 
       <Reveal
         staggerChildren={0.15}
-        className="mt-16 grid items-stretch gap-6 lg:grid-cols-[1fr_auto_1fr]"
+        className="mt-12 grid items-stretch gap-6 lg:grid-cols-[1fr_auto_1fr]"
       >
         <RevealItem>
           <div className="h-full rounded-[2rem] border border-ink/10 bg-white/50 p-8 md:p-10">
@@ -362,7 +362,7 @@ function Stats() {
 
 function Approach() {
   return (
-    <section className="container-page py-24 md:py-32">
+    <section className="container-page section-y">
       <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr]">
         <div className="lg:sticky lg:top-32 lg:self-start">
           <SectionHeading
@@ -413,8 +413,8 @@ function Process() {
   })
 
   return (
-    <section className="bg-white/50 py-24 md:py-32">
-      <div className="container-page grid gap-16 lg:grid-cols-[1fr_1.2fr]">
+    <section className="bg-white/50 section-y">
+      <div className="container-page grid gap-12 lg:grid-cols-[1fr_1.2fr]">
         <div className="lg:sticky lg:top-32 lg:self-start">
           <SectionHeading
             eyebrow={process.eyebrow}
@@ -453,9 +453,9 @@ function Process() {
 
 function Outcomes() {
   return (
-    <section className="container-page py-24 md:py-32">
+    <section className="container-page section-y">
       <SectionHeading eyebrow={outcomes.eyebrow} title={outcomes.heading} />
-      <Reveal staggerChildren={0.1} className="mt-14 grid gap-6 lg:grid-cols-3">
+      <Reveal staggerChildren={0.1} className="mt-10 grid gap-6 lg:grid-cols-3">
         {outcomes.items.map(({ value, suffix, title, body }) => (
           <RevealItem key={title}>
             <SpotlightCard className="h-full">
@@ -478,7 +478,7 @@ function Insights() {
   if (posts.length === 0) return null
 
   return (
-    <section className="bg-white/50 py-24 md:py-32">
+    <section className="bg-white/50 section-y">
       <div className="container-page">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <SectionHeading eyebrow={insights.eyebrow} title={insights.heading} />
@@ -490,7 +490,7 @@ function Insights() {
         </div>
         <Reveal
           staggerChildren={0.1}
-          className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+          className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3"
         >
           {posts.slice(0, 3).map((post) => (
             <RevealItem key={post.slug}>

@@ -17,7 +17,7 @@ export default function Contact() {
         description={contactPage.body}
       />
 
-      <section className="container-page pb-24 md:pb-32">
+      <section className="container-page section-b">
         <div className="grid gap-10 lg:grid-cols-[1fr_1.6fr]">
           <Reveal staggerChildren={0.08} className="space-y-4">
             {contactPage.details.map(({ icon: Icon, title, body, href }) => (
@@ -76,7 +76,7 @@ function BookingCalendar() {
   const { booking } = contactPage
 
   return (
-    <Reveal className="mt-16 overflow-hidden rounded-[2rem] border border-ink/8 bg-white">
+    <Reveal className="mt-12 overflow-hidden rounded-[2rem] border border-ink/8 bg-white">
       <div className="flex flex-col items-start justify-between gap-6 p-8 sm:flex-row sm:items-center sm:p-10">
         <div>
           <h2 className="text-2xl font-semibold">{booking.heading}</h2>

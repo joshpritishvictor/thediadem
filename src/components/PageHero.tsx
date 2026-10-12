@@ -26,7 +26,7 @@ export default function PageHero({
   children,
 }: PageHeroProps) {
   return (
-    <section className="relative overflow-hidden pt-36 pb-16 md:pt-44 md:pb-24">
+    <section className="relative overflow-hidden pt-28 pb-10 md:pt-32 md:pb-14">
       <div className="absolute -top-32 -right-24 size-[28rem] animate-blob rounded-full bg-gold-300/30 blur-3xl" />
       <div className="absolute top-40 -left-32 size-96 animate-blob rounded-full bg-sage-300/40 blur-3xl [animation-delay:-8s]" />
 

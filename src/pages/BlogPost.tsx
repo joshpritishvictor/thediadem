@@ -51,7 +51,7 @@ export default function BlogPost() {
       />
 
       <article>
-        <header className="relative overflow-hidden pt-36 pb-12 md:pt-44">
+        <header className="relative overflow-hidden pt-28 pb-10 md:pt-32">
           <div className="absolute -top-32 -right-24 size-[28rem] animate-blob rounded-full bg-gold-300/30 blur-3xl" />
           <Reveal className="relative mx-auto max-w-3xl px-4 sm:px-6">
             <Link
@@ -94,7 +94,7 @@ export default function BlogPost() {
           </Reveal>
         )}
 
-        <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
+        <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6">
           <Suspense fallback={<div className="min-h-96" />}>
             <Prose html={loadPostHtml(slug)} />
           </Suspense>
@@ -102,7 +102,7 @@ export default function BlogPost() {
       </article>
 
       {related.length > 0 && (
-        <section className="bg-white/50 py-24">
+        <section className="bg-white/50 section-y">
           <div className="container-page">
             <h2 className="text-3xl font-bold">Keep reading</h2>
             <Reveal

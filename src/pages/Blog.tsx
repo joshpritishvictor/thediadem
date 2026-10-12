@@ -32,7 +32,7 @@ export default function Blog() {
         crumbs={category ? [{ to: '/blog/', label: 'Blog' }] : []}
       />
 
-      <section className="container-page pb-24 md:pb-32">
+      <section className="container-page section-b">
         <Reveal>
           <nav
             aria-label="Categories"

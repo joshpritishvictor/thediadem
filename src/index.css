@@ -93,6 +93,14 @@
   }
 }
 
+/* Vertical rhythm for page sections: change here to adjust the whole site */
+@utility section-y {
+  @apply py-16 md:py-20;
+}
+@utility section-b {
+  @apply pb-16 md:pb-20;
+}
+
 @utility container-page {
   @apply mx-auto w-full max-w-6xl px-4 sm:px-6;
 }
@@ -160,7 +168,7 @@
       @apply mt-5;
     }
     & h2 {
-      @apply mt-14 text-2xl leading-snug font-bold text-ink md:text-3xl;
+      @apply mt-10 text-2xl leading-snug font-bold text-ink md:text-3xl;
     }
     & h3 {
       @apply mt-10 text-xl font-semibold text-ink;
