@@ -341,7 +341,7 @@ export const services: Service[] = [
     summary:
       'Proactive, forward-looking tax plans integrated with your investment strategy, corporate structure, and personal financial goals.',
     features: [],
-    cta: 'Book Integrated Consultation',
+    cta: 'Book a Free Consultation',
     intro: {
       heading: 'Pay Less Tax. Keep More of What You Earn.',
       body: 'Tax strategy at Diadem & Co. goes far beyond filing a return. We build proactive, forward-looking tax plans that are fully integrated with your investment strategy, corporate structure, and personal financial goals. Whether you are an incorporated professional, a business owner, or a high-net-worth individual, we identify every legal opportunity to reduce your tax burden — ensuring you never pay more than you are required to and always keep more of what you work so hard to earn.',
@@ -366,7 +366,7 @@ export const services: Service[] = [
     closing: {
       heading: 'Stop working in silos.',
       body: 'When your financial advisor, accountant, and lawyer don’t communicate, you leave money on the table.',
-      cta: 'Book Integrated Consultation',
+      cta: 'Book a Free Consultation',
     },
     faqs: [
       {
@@ -412,7 +412,7 @@ export const services: Service[] = [
     summary:
       'A comprehensive legacy plan that integrates your corporate structure, investments, insurance, and family goals into one strategy.',
     features: [],
-    cta: 'Book Integrated Consultation',
+    cta: 'Book a Free Consultation',
     intro: {
       heading: 'Your Legacy Deserves to Be Protected and Preserved.',
       body: 'Estate and legacy planning at Diadem & Co. ensures that everything you have built during your lifetime is transferred to the people and causes you care about — efficiently, privately, and with the least possible tax burden. We go beyond simply drafting a will. We build a comprehensive legacy plan that integrates your corporate structure, investment portfolio, insurance coverage, and family goals into a single, cohesive strategy — ensuring your wealth survives and thrives long after you are gone.',
@@ -437,7 +437,7 @@ export const services: Service[] = [
     closing: {
       heading: 'Stop working in silos.',
       body: 'When your financial advisor, accountant, and lawyer don’t communicate, you leave money on the table.',
-      cta: 'Book Integrated Consultation',
+      cta: 'Book a Free Consultation',
     },
     faqs: [
       {

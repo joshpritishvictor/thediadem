@@ -1,11 +1,10 @@
-import { CalendarDays, Phone } from 'lucide-react'
+import { CalendarDays } from 'lucide-react'
 import { useState } from 'react'
 import ContactForm from '../components/ContactForm'
 import PageHero from '../components/PageHero'
 import Reveal, { RevealItem } from '../components/Reveal'
 import Seo from '../components/Seo'
 import { contactForm, contactPage } from '../content/contact'
-import { site } from '../content/site'
 
 export default function Contact() {
   return (
@@ -39,14 +38,6 @@ export default function Contact() {
                 </div>
               </RevealItem>
             ))}
-            <RevealItem>
-              <a
-                href={site.contact.phoneHref}
-                className="flex items-center gap-4 rounded-3xl bg-gold-500 p-6 font-semibold text-teal-950 transition hover:bg-gold-400"
-              >
-                <Phone size={22} /> {site.contact.phone}
-              </a>
-            </RevealItem>
             <RevealItem>
               <p className="px-2 text-xs text-ink/50">
                 {contactPage.privacyNote}

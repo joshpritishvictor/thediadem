@@ -1,44 +1,40 @@
 import {
   BadgeCheck,
   Briefcase,
-  CalendarCheck,
   MapPin,
   Network,
   ShieldCheck,
   Sprout,
   Target,
-  Users,
 } from 'lucide-react'
 
 export const hero = {
   eyebrow: 'Alberta’s Integrated Professional Network',
   headline: ['One Team.', 'One Goal.'],
   body: 'A team of Financial Planners, Tax Strategists, Insurance Advisors, and Lawyers — coordinated through Diadem, working as one for you.',
-  cta: 'Book Your Complimentary Consultation',
 }
 
+// Told as a three-chapter story on a timeline (see WhoWeAre in pages/Home.tsx)
 export const whoWeAre = {
   eyebrow: 'Who We Are',
-  items: [
+  chapters: [
     {
       icon: BadgeCheck,
+      chapter: 'The Foundation',
       title: 'Licensed Professionals',
       body: 'Our team includes licensed experts across financial planning, tax, accounting, insurance, and legal.',
     },
     {
       icon: Network,
+      chapter: 'The Connection',
       title: 'Our Network',
       body: 'Multiple experts, one shared approach. We collaborate to deliver integrated advice tailored to your goals.',
     },
     {
       icon: MapPin,
+      chapter: 'The Roots',
       title: 'Proudly Alberta Based',
       body: 'We understand the local landscape and are committed to serving individuals, families, and businesses across Alberta.',
-    },
-    {
-      icon: CalendarCheck,
-      title: 'Complimentary Consultation',
-      body: 'Let’s start with a conversation. Book a free consultation and discover how we can help you move forward with clarity.',
     },
   ],
 }
@@ -47,11 +43,6 @@ export const howWeHelp = {
   eyebrow: 'How We Help You',
   heading:
     'Connect with trusted professionals across the services your business needs.',
-  notSure: {
-    heading: 'Not sure where to start?',
-    body: 'Tell us what you’re looking for and we’ll help connect you with the appropriate professional.',
-    cta: 'Book a Complimentary Consultation',
-  },
 }
 
 export const comparison = {
@@ -87,23 +78,43 @@ export const comparison = {
   },
 }
 
+// Merges the former stats band and "Strategies Built for Real Outcomes" cards
 export const stats = [
-  { value: 100, suffix: '%', label: 'Licensed Professionals' },
-  { value: 15, suffix: '+', label: 'Years of Collective Experience' },
-  { value: 200, suffix: '+', label: 'Trusted Clients' },
+  {
+    value: 100,
+    suffix: '%',
+    label: 'Licensed Alberta Network',
+    detail:
+      'Every partner across accounting, advisory, insurance, and legal holds active provincial credentials.',
+  },
+  {
+    value: 15,
+    suffix: '+',
+    label: 'Years of Collective Experience',
+    detail:
+      'Helping individuals, families and business owners build wisely and protect what they’ve earned.',
+  },
+  {
+    value: 200,
+    suffix: '+',
+    label: 'Trusted Clients',
+    detail: 'Individuals, families and businesses across Alberta.',
+  },
+  {
+    value: 4,
+    suffix: '',
+    label: 'Pillars, One Strategy',
+    detail:
+      'Accounting, advisory, insurance, and legal — one point of contact keeps everything aligned.',
+  },
 ]
 
 export const approach = {
   eyebrow: 'Our Approach',
-  heading: 'One Strategy. Zero Silos.',
+  heading: 'Your Advisors,',
+  headingAccent: 'Finally in Sync.',
   body: 'Most financial professionals work independently. We don’t. At Diadem, your Financial Planner, Tax Strategist, Accountant, and Lawyer work together under one coordinated strategy—so every decision supports your long-term success.',
-  cta: 'Book Your Complimentary Consultation',
   benefits: [
-    {
-      icon: Users,
-      title: 'One Coordinated Team',
-      body: 'Financial Planners, Tax Strategists, Accountants, and Lawyers working together for you.',
-    },
     {
       icon: Target,
       title: 'Proactive Tax Planning',
@@ -130,8 +141,6 @@ export const approach = {
 export const process = {
   eyebrow: 'Our Process',
   heading: 'Your Path From First Call to Coordinated Plan',
-  body: 'Build wisely, sow strategically, reap abundantly.',
-  cta: 'Book a Complimentary Consultation',
   steps: [
     {
       title: 'Initial Consultation',
@@ -148,31 +157,6 @@ export const process = {
     {
       title: 'Execution & Ongoing Oversight',
       body: 'We coordinate execution across your team of professionals and stay engaged — reviewing progress and adjusting the plan as your life, business and goals evolve.',
-    },
-  ],
-}
-
-export const outcomes = {
-  eyebrow: 'Our Approach in Action',
-  heading: 'Strategies Built for Real Outcomes',
-  items: [
-    {
-      value: 15,
-      suffix: '+',
-      title: 'Years of Collective Experience',
-      body: 'Our network consists of professionals with over 15 years of collective experience helping individuals, families and business owners build wisely and protect what they’ve earned.',
-    },
-    {
-      value: 100,
-      suffix: '%',
-      title: 'Licensed Alberta Network',
-      body: 'Every partner across accounting, advisory, insurance, and legal holds active provincial credentials.',
-    },
-    {
-      value: 4,
-      suffix: '',
-      title: 'Four pillars, one strategy',
-      body: 'Accounting, advisory, insurance, and legal — coordinated under one unified strategy. Skip the back-and-forth between separate firms. One point of contact keeps everything aligned.',
     },
   ],
 }

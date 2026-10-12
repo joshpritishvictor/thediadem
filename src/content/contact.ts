@@ -1,4 +1,4 @@
-import { Clock, Mail, Video } from 'lucide-react'
+import { Clock, Mail, Phone, Video } from 'lucide-react'
 import { site } from './site'
 
 export const contactPage = {
@@ -15,6 +15,12 @@ export const contactPage = {
       icon: Clock,
       title: 'Response time',
       body: 'Reviewed within 1 business day.',
+    },
+    {
+      icon: Phone,
+      title: 'Call us',
+      body: site.contact.phone,
+      href: site.contact.phoneHref,
     },
     {
       icon: Mail,

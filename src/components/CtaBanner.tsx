@@ -1,6 +1,6 @@
 import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { contactLink, site } from '../content/site'
+import { bookingCta, contactLink, site } from '../content/site'
 import Reveal from './Reveal'
 
 type CtaBannerProps = {
@@ -12,7 +12,7 @@ type CtaBannerProps = {
 export default function CtaBanner({
   heading = 'Not sure where to start?',
   body = 'Tell us what you’re looking for and we’ll help connect you with the appropriate professional.',
-  cta = 'Book a Complimentary Consultation',
+  cta = bookingCta,
 }: CtaBannerProps) {
   return (
     <section className="container-page section-y">

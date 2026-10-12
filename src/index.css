@@ -5,6 +5,8 @@
   --font-sans: 'DM Sans Variable', system-ui, 'Segoe UI', sans-serif;
   --font-display:
     'Wix Madefor Display Variable', 'DM Sans Variable', system-ui, sans-serif;
+  /* Engraved serif capitals matching the DIADEM wordmark; loaded only where used */
+  --font-regal: 'Cinzel Variable', 'Times New Roman', serif;
 
   --color-gold-300: #e3cf8f;
   --color-gold-400: #d6bb6a;
@@ -17,6 +19,7 @@
   --color-teal-950: #0d2424;
   --color-ink: #28241f;
   --color-cream: #faf8f3;
+  --color-beige: #f6eedb;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 
@@ -65,7 +68,7 @@
       opacity: 0.6;
     }
     100% {
-      transform: scale(1.5);
+      transform: scale(1.35);
       opacity: 0;
     }
   }
@@ -102,7 +105,7 @@
 }
 
 @utility container-page {
-  @apply mx-auto w-full max-w-6xl px-4 sm:px-6;
+  @apply mx-auto w-full max-w-[1216px] px-4 sm:px-6;
 }
 
 @utility eyebrow {

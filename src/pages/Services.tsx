@@ -26,7 +26,7 @@ export default function Services() {
         </Reveal>
       </section>
 
-      <CtaBanner {...howWeHelp.notSure} />
+      <CtaBanner />
     </>
   )
 }
