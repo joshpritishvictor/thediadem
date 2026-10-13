@@ -7,15 +7,18 @@ type CtaBannerProps = {
   heading?: string
   body?: string
   cta?: string
+  /** Vertical spacing; the home page makes it fill a screen */
+  className?: string
 }
 
 export default function CtaBanner({
   heading = 'Not sure where to start?',
   body = 'Tell us what you’re looking for and we’ll help connect you with the appropriate professional.',
   cta = bookingCta,
+  className = 'section-y',
 }: CtaBannerProps) {
   return (
-    <section className="container-page section-y">
+    <section className={`container-page ${className}`}>
       <Reveal>
         <div className="relative overflow-hidden rounded-[2.5rem] bg-teal-900 px-8 py-12 text-center text-cream md:px-16 md:py-16">
           <div className="grain" />

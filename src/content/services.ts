@@ -20,12 +20,12 @@ export type Service = {
   title: string
   icon: LucideIcon
   image: string
-  /** Listed on /our-services/, the home page and the contact form */
+  /** Listed on /our-services/, the home page hero and the contact form */
   featured: boolean
   /** One-line summary for cards */
   summary: string
-  /** Label and blurb for the home page "How We Help You" grid */
-  home?: { label: string; blurb: string; cta: string }
+  /** Shorter name for the home page hero orbit */
+  shortLabel?: string
   features: string[]
   cta: string
   intro: { heading: string; body: string }
@@ -44,12 +44,7 @@ export const services: Service[] = [
     featured: true,
     summary:
       'Connect with experienced Alberta CPAs and tax specialists for proactive corporate tax planning, bookkeeping, financial reporting, and payroll management.',
-    home: {
-      label: 'Accounting',
-      blurb:
-        'Connect with accounting professionals for bookkeeping, corporate tax compliance, payroll.',
-      cta: 'Explore accounting',
-    },
+    shortLabel: 'Accounting',
     features: [
       'Corporate Tax Returns',
       'Bookkeeping & Payroll',
@@ -58,7 +53,7 @@ export const services: Service[] = [
     cta: 'Connect with an Accounting Professional',
     intro: {
       heading: 'Confidence in Your Books and Taxes',
-      body: 'Accurate accounting and proactive tax planning are the foundation of every healthy business. At Diadem & Co., we connect you with experienced Alberta CPAs and tax specialists who handle your bookkeeping, corporate tax filings, and financial reporting—giving you a clear, current view of exactly where your business stands.',
+      body: 'Accurate accounting and proactive tax planning are the foundation of every healthy business—giving you a clear, current view of exactly where your business stands.',
     },
     offerings: [
       {
@@ -79,43 +74,10 @@ export const services: Service[] = [
     ],
     closing: {
       heading: 'Simplify Your Personal Taxes',
-      body: 'Skip the stress of navigating tax deadlines on your own. Connect with a licensed tax professional through Diadem today.',
+      body: 'Skip the stress of navigating tax deadlines on your own.',
       cta: 'Book Appointment With Accountant',
     },
-    faqs: [
-      {
-        question:
-          'How does financial planning help my business and personal finances?',
-        answer:
-          'Integrated financial planning aligns your business cash flow with your personal wealth goals — reducing tax drag, improving investment efficiency, and ensuring your corporate and personal finances work together rather than against each other. When your financial plan is built holistically, every dollar you earn is directed with purpose — minimizing what you lose to tax and maximizing what you keep and grow.',
-      },
-      {
-        question: 'What qualifications do your financial advisors hold?',
-        answer:
-          'Our advisors are licensed professionals with deep expertise across financial planning, investment management, and tax strategy. Every professional within the Diadem & Co. network holds the credentials required in their specific discipline — ensuring you receive advice that is not only strategic but fully compliant with Canadian regulatory standards. We believe your wealth deserves qualified, accountable professionals at every step.',
-      },
-      {
-        question: 'What is the process for working with Diadem & Co.?',
-        answer:
-          'We begin with a complimentary consultation where we listen to your goals, review your current financial situation, and identify key gaps and opportunities. From there, we conduct a thorough needs analysis and develop a customized financial plan tailored specifically to your life stage, income structure, and long-term objectives. Once your plan is in place, we provide ongoing reviews and proactive adjustments as your circumstances evolve.',
-      },
-      {
-        question: 'How do you charge for your services?',
-        answer:
-          'Our fee structure is fully transparent and discussed in detail before any engagement begins. Fees are structured to reflect the scope and complexity of your situation — and are always proportional to the value delivered. A well-executed integrated financial plan consistently generates tax savings and wealth growth that far outweigh the cost of our services. There are no hidden fees and no surprises.',
-      },
-      {
-        question: 'Can you provide examples of successful client outcomes?',
-        answer:
-          'Our clients include incorporated professionals who have significantly reduced their annual tax burden through retained earnings strategies, business owners who have successfully transitioned their companies while preserving generational wealth, and families who have built structured investment portfolios that continue to grow tax-efficiently. While we protect client confidentiality, we are happy to walk you through real-world scenarios during your consultation.',
-      },
-      {
-        question:
-          'What is your approach to retirement and investment planning?',
-        answer:
-          'We take a comprehensive, tax-first approach to retirement and investment planning. Rather than simply selecting investment products, we build a strategy that considers your corporate structure, personal income needs, tax brackets, and long-term legacy goals simultaneously. This includes retirement income modeling, tax-efficient withdrawal sequencing, and corporate investment account structuring — ensuring you retire with confidence and keep more of what you’ve built.',
-      },
-    ],
+    faqs: [],
   },
   {
     slug: 'corporate-financial-advisory',
@@ -125,12 +87,7 @@ export const services: Service[] = [
     featured: true,
     summary:
       'Gain access to licensed financial planners to align your business cash flow, tax-efficient capital strategies, and long-term wealth preservation.',
-    home: {
-      label: 'Financial Planning',
-      blurb:
-        'Connect with financial professionals for corporate planning, cash-flow strategies and long-term financial planning.',
-      cta: 'Explore financial planning',
-    },
+    shortLabel: 'Financial Planning',
     features: [
       'Business Advisory',
       'Cash Flow Optimization',
@@ -140,7 +97,7 @@ export const services: Service[] = [
     cta: 'Explore Advisory Access',
     intro: {
       heading: 'Clarity for Every Stage of Growth',
-      body: 'Navigating corporate growth, capital allocation, and business transitions requires a clear financial perspective. At Diadem & Co., we connect you with experienced corporate advisors and financial strategists who help align your operational cash flow, growth targets, and corporate succession—so you can plan with a clearer roadmap toward long-term stability.',
+      body: 'Navigating corporate growth, capital allocation, and business transitions requires a clear financial perspective and a roadmap toward long-term stability.',
     },
     offerings: [
       {
@@ -161,7 +118,7 @@ export const services: Service[] = [
     ],
     closing: {
       heading: 'Align Your Corporate Strategy',
-      body: 'Skip the friction of fragmented business decision-making. Connect with a licensed corporate advisor through Diadem today.',
+      body: 'Skip the friction of fragmented business decision-making.',
       cta: 'Connect With a Corporate Advisor',
     },
     faqs: [
@@ -185,6 +142,23 @@ export const services: Service[] = [
         answer:
           'We conduct formal portfolio reviews at least annually and proactively reach out whenever there are significant changes in market conditions, tax legislation, or your personal circumstances. Major life events — such as a business sale, inheritance, retirement transition, or significant income change — trigger an immediate review to ensure your investment strategy remains perfectly aligned with your current situation and future goals.',
       },
+      {
+        question:
+          'How does financial planning help my business and personal finances?',
+        answer:
+          'Integrated financial planning aligns your business cash flow with your personal wealth goals — reducing tax drag, improving investment efficiency, and ensuring your corporate and personal finances work together rather than against each other. When your financial plan is built holistically, every dollar you earn is directed with purpose — minimizing what you lose to tax and maximizing what you keep and grow.',
+      },
+      {
+        question: 'What qualifications do your financial advisors hold?',
+        answer:
+          'Our advisors are licensed professionals with deep expertise across financial planning, investment management, and tax strategy. Every professional within the Diadem & Co. network holds the credentials required in their specific discipline — ensuring you receive advice that is not only strategic but fully compliant with Canadian regulatory standards. We believe your wealth deserves qualified, accountable professionals at every step.',
+      },
+      {
+        question:
+          'What is your approach to retirement and investment planning?',
+        answer:
+          'We take a comprehensive, tax-first approach to retirement and investment planning. Rather than simply selecting investment products, we build a strategy that considers your corporate structure, personal income needs, tax brackets, and long-term legacy goals simultaneously. This includes retirement income modeling, tax-efficient withdrawal sequencing, and corporate investment account structuring — ensuring you retire with confidence and keep more of what you’ve built.',
+      },
     ],
   },
   {
@@ -195,12 +169,7 @@ export const services: Service[] = [
     featured: true,
     summary:
       'Protect your business, assets, and executive team through direct access to licensed insurance brokers who understand corporate risk in Alberta.',
-    home: {
-      label: 'Corporate Insurance',
-      blurb:
-        'Connect with licensed insurance professionals for business insurance, asset protection and employee benefit solutions.',
-      cta: 'Explore insurance',
-    },
+    shortLabel: 'Corporate Insurance',
     features: [
       'Commercial Liability',
       'Property & Asset Coverage',
@@ -210,7 +179,7 @@ export const services: Service[] = [
     cta: 'Connect with an Insurance Broker',
     intro: {
       heading: 'Protect What You’ve Built',
-      body: 'Insurance and risk management is about identifying real vulnerabilities and closing the gaps that matter. At Diadem & Co., we connect you with licensed insurance brokers who assess your financial picture and recommend coverage suited to your income, business, family, and long-term goals.',
+      body: 'Insurance and risk management is about identifying real vulnerabilities and closing the gaps that matter.',
     },
     offerings: [
       {
@@ -231,7 +200,7 @@ export const services: Service[] = [
     ],
     closing: {
       heading: 'Don’t Let Gaps Cost You',
-      body: 'When your advisor, accountant, and broker aren’t connected, small gaps can turn into real exposure. Connect with a licensed insurance broker through Diadem today.',
+      body: 'When your advisor, accountant, and broker aren’t connected, small gaps can turn into real exposure.',
       cta: 'Connect With An Insurance Broker',
     },
     faqs: [
@@ -252,12 +221,6 @@ export const services: Service[] = [
         answer:
           'Corporate-owned life insurance is a policy held and paid for by your corporation — making the premiums significantly more affordable on an after-tax basis than personally owned coverage. Upon death, the insurance proceeds are received by the corporation tax-free and can be distributed to your estate through the capital dividend account — one of the most tax-efficient wealth transfer mechanisms available to Canadian business owners. When integrated properly into your estate plan, corporate-owned life insurance can cover your entire tax liability at death while simultaneously delivering a significant, tax-free legacy to your family.',
       },
-      {
-        question:
-          'How do you assess how much insurance coverage I actually need?',
-        answer:
-          'We conduct a comprehensive needs analysis that considers your current income, outstanding liabilities, corporate and personal assets, family obligations, estate tax exposure, and long-term financial goals. Rather than using generic formulas, we calculate your precise coverage requirements based on your actual financial situation — ensuring you are never underinsured against a real risk or overinsured and paying for coverage that delivers no meaningful benefit to your plan.',
-      },
     ],
   },
   {
@@ -268,12 +231,7 @@ export const services: Service[] = [
     featured: true,
     summary:
       'Fast-track your access to independent corporate lawyers for business formation, contract drafting, ongoing compliance, and dispute resolution.',
-    home: {
-      label: 'Legal Services',
-      blurb:
-        'Connect with legal professionals for corporate formation, contracts, compliance, dispute resolution and employment matters.',
-      cta: 'Explore legal services',
-    },
+    shortLabel: 'Legal Services',
     features: [
       'Corporate Formation & Structuring',
       'Commercial Contracts',
@@ -283,7 +241,7 @@ export const services: Service[] = [
     cta: 'Connect with Legal Counsel',
     intro: {
       heading: 'Get the Right Legal Foundation for Your Business',
-      body: 'From incorporation to ongoing compliance, the right legal foundation protects your business at every stage. At Diadem & Co., we connect you with independent corporate lawyers who handle business formation, contracts, and corporate structuring — so your legal groundwork keeps pace with your business.',
+      body: 'From incorporation to ongoing compliance, your legal groundwork should keep pace with your business at every stage.',
     },
     offerings: [
       {
@@ -304,7 +262,7 @@ export const services: Service[] = [
     ],
     closing: {
       heading: 'Connect Your Legal & Financial Decisions',
-      body: 'Skip the friction of managing legal and financial decisions in isolation. Connect with an independent corporate lawyer through Diadem today.',
+      body: 'Skip the friction of managing legal and financial decisions in isolation.',
       cta: 'Connect With Legal Counsel',
     },
     faqs: [
@@ -465,6 +423,11 @@ export const services: Service[] = [
     ],
   },
 ]
+
+export const servicesPage = {
+  intro:
+    'Connect with trusted professionals across the services your business needs.',
+}
 
 export const featuredServices = services.filter((s) => s.featured)
 

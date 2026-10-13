@@ -5,8 +5,6 @@
   --font-sans: 'DM Sans Variable', system-ui, 'Segoe UI', sans-serif;
   --font-display:
     'Wix Madefor Display Variable', 'DM Sans Variable', system-ui, sans-serif;
-  /* Engraved serif capitals matching the DIADEM wordmark; loaded only where used */
-  --font-regal: 'Cinzel Variable', 'Times New Roman', serif;
 
   --color-gold-300: #e3cf8f;
   --color-gold-400: #d6bb6a;
@@ -30,6 +28,10 @@
   --animate-orbit-reverse: spin 40s linear infinite reverse;
   --animate-marquee: marquee 35s linear infinite;
   --animate-pulse-ring: pulse-ring 3s ease-out infinite;
+  /* Moves evenly above and below its resting place, so it stays centred */
+  --animate-nudge: nudge 1.6s ease-in-out infinite;
+  /* Timer bar for FocusAreas; keep the duration in step with CYCLE_MS there */
+  --animate-progress: grow-x 7s linear forwards;
 
   @keyframes blob {
     0%,
@@ -62,6 +64,23 @@
       transform: translateX(-50%);
     }
   }
+  @keyframes grow-x {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+  @keyframes nudge {
+    0%,
+    100% {
+      transform: translateY(-3px);
+    }
+    50% {
+      transform: translateY(3px);
+    }
+  }
   @keyframes pulse-ring {
     0% {
       transform: scale(0.9);
@@ -88,6 +107,29 @@
   h4 {
     @apply font-display tracking-tight text-balance;
   }
+  /*
+   * Section-by-section scrolling. Every block of a page is a snap point, so
+   * there are no gaps to skip over; a block taller than the screen still
+   * scrolls freely inside. Mandatory on desktop, gentler on touch screens.
+   * Layout adds .snap once a page has rendered: snapping while the page is
+   * still building can lock the scroll onto the footer.
+   */
+  html {
+    /* Snap sections just below the fixed header instead of under it */
+    scroll-padding-top: 4.5rem; /* the scrolled header's height */
+  }
+  html.snap {
+    scroll-snap-type: y proximity;
+    @media (width >= 64rem) {
+      scroll-snap-type: y mandatory;
+    }
+  }
+  #main > * {
+    scroll-snap-align: start;
+  }
+  body footer {
+    scroll-snap-align: end;
+  }
   ::selection {
     @apply bg-gold-300 text-teal-950;
   }
@@ -99,6 +141,20 @@
 /* Vertical rhythm for page sections: change here to adjust the whole site */
 @utility section-y {
   @apply py-16 md:py-20;
+}
+/*
+ * A home page section that fills exactly one screen below the fixed header on
+ * desktop, with its content centred so the space above and below is equal
+ */
+@utility section-screen {
+  @apply py-16 md:py-20;
+  @media (width >= 64rem) {
+    min-height: calc(100svh - 4.5rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-block: 2.5rem;
+  }
 }
 @utility section-b {
   @apply pb-16 md:pb-20;

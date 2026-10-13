@@ -3,17 +3,16 @@ import PageHero from '../components/PageHero'
 import Reveal, { RevealItem } from '../components/Reveal'
 import Seo from '../components/Seo'
 import ServiceCard from '../components/ServiceCard'
-import { howWeHelp } from '../content/home'
-import { featuredServices } from '../content/services'
+import { featuredServices, servicesPage } from '../content/services'
 
 export default function Services() {
   return (
     <>
-      <Seo title="Our Services" description={howWeHelp.heading} />
+      <Seo title="Our Services" description={servicesPage.intro} />
       <PageHero
         eyebrow="Our Services"
         title="Services"
-        description={howWeHelp.heading}
+        description={servicesPage.intro}
       />
 
       <section className="container-page pb-8">

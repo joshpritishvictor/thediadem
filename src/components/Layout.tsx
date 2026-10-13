@@ -27,6 +27,31 @@ function usePreloadOnIntent() {
   }, [])
 }
 
+/** Turn on section snapping (see index.css) only after the page has rendered and settled */
+function useSnapWhenSettled(pathname: string) {
+  useEffect(() => {
+    const root = document.documentElement
+    root.classList.remove('snap')
+    let timer = 0
+    // Retry until the new page's content is in place (it may still be loading)
+    const enable = () => {
+      timer = window.setTimeout(() => {
+        const main = document.getElementById('main')
+        if (main && main.offsetHeight > window.innerHeight / 2)
+          root.classList.add('snap')
+        else enable()
+      }, 600)
+    }
+    if (document.readyState === 'complete') enable()
+    else window.addEventListener('load', enable, { once: true })
+    return () => {
+      window.clearTimeout(timer)
+      window.removeEventListener('load', enable)
+      root.classList.remove('snap')
+    }
+  }, [pathname])
+}
+
 export default function Layout() {
   const { pathname } = useLocation()
   // useOutlet (not <Outlet />) so the old page stays rendered while it animates out
@@ -34,6 +59,7 @@ export default function Layout() {
   const { scrollYProgress } = useScroll()
   const progress = useSpring(scrollYProgress, { stiffness: 200, damping: 30 })
   usePreloadOnIntent()
+  useSnapWhenSettled(pathname)
 
   return (
     <div className="flex min-h-screen flex-col">
