@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react'
+import { Link } from 'react-router-dom'
 import logo from '../assets/images/logo-mark.svg'
-import { featuredServices } from '../content/services'
+import { featuredServices, servicePath } from '../content/services'
 import { heroAnimation } from '../lib/animations'
 
 const LottiePlayer = lazy(() => import('./LottiePlayer'))
@@ -23,30 +24,43 @@ export default function HeroVisual() {
   }
 
   return (
-    <div
-      className="relative mx-auto aspect-square w-full max-w-80 sm:max-w-md lg:max-w-[31rem]"
-      aria-hidden="true"
+    <nav
+      aria-label="Our services"
+      className="group/orbit @container relative mx-auto aspect-square w-full max-w-80 sm:max-w-md lg:max-w-[min(31rem,calc(100svh-14rem))]"
     >
       {/* Dashed orbit path */}
-      <div className="absolute inset-[9%] rounded-full border border-dashed border-teal-900/20" />
-      <div className="absolute inset-[32%] rounded-full border border-gold-500/30" />
+      <div
+        aria-hidden="true"
+        className="absolute inset-[9%] rounded-full border border-dashed border-teal-900/20"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute inset-[32%] rounded-full border border-gold-500/30"
+      />
 
-      {/* Orbiting service labels; each label counter-rotates to stay upright */}
-      <div className="absolute inset-[9%] animate-orbit">
+      {/* Orbiting service links; each counter-rotates to stay upright, and the orbit pauses on hover or focus so they're easy to click */}
+      <div className="absolute inset-[9%] animate-orbit group-focus-within/orbit:[animation-play-state:paused] group-hover/orbit:[animation-play-state:paused]">
         {featuredServices.slice(0, positions.length).map((service, i) => (
           <div key={service.slug} className={`absolute ${positions[i]}`}>
-            <div className="animate-orbit-reverse">
-              <span className="block rounded-full border border-ink/5 bg-white/90 px-3 py-1.5 text-xs font-semibold whitespace-nowrap text-teal-900 shadow-lg shadow-teal-900/10 backdrop-blur sm:px-5 sm:py-2.5 sm:text-sm">
-                {service.home?.label ?? service.title}
-              </span>
+            <div className="animate-orbit-reverse group-focus-within/orbit:[animation-play-state:paused] group-hover/orbit:[animation-play-state:paused]">
+              <Link
+                to={servicePath(service.slug)}
+                className="block rounded-full border border-gold-500/30 bg-cream px-[3.5cqw] py-[1.8cqw] text-[clamp(0.7rem,2.9cqw,0.875rem)] font-semibold whitespace-nowrap text-teal-900 shadow-lg shadow-teal-900/10 transition duration-300 hover:-translate-y-0.5 hover:border-gold-500 hover:shadow-xl"
+              >
+                {service.shortLabel ?? service.title}
+              </Link>
             </div>
           </div>
         ))}
       </div>
 
-      {/* Centre emblem */}
-      <div className="absolute inset-0 grid place-items-center">
-        <div className="relative grid size-24 animate-float place-items-center rounded-full bg-teal-900 shadow-2xl shadow-teal-900/40 sm:size-40">
+      {/* Centre emblem. It and the badges are sized in container units (cqw) so they
+          scale with the orbit and the side badges never reach the emblem */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 grid place-items-center"
+      >
+        <div className="relative grid size-[28cqw] animate-float place-items-center rounded-full bg-teal-900 shadow-2xl shadow-teal-900/40">
           <span className="absolute inset-0 animate-pulse-ring rounded-full border-2 border-gold-500" />
           <span className="absolute inset-0 animate-pulse-ring rounded-full border-2 border-gold-500 [animation-delay:1.5s]" />
           <img
@@ -54,10 +68,10 @@ export default function HeroVisual() {
             alt=""
             width={44}
             height={64}
-            className="h-16 w-auto sm:h-24"
+            className="h-[15cqw] w-auto"
           />
         </div>
       </div>
-    </div>
+    </nav>
   )
 }

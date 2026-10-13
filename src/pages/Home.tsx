@@ -1,28 +1,28 @@
-import { ArrowRight, ArrowUpRight, Check, X } from 'lucide-react'
-import { m, useScroll } from 'motion/react'
-import { useRef } from 'react'
+import { ArrowRight, ChevronDown } from 'lucide-react'
+import { m } from 'motion/react'
 import { Link } from 'react-router-dom'
-import { RegalTagline, StoryTimeline } from '../components/BrandStory'
+import { MottoTicker, StoryTimeline } from '../components/BrandStory'
+import CompareToggle from '../components/CompareToggle'
 import Counter from '../components/Counter'
 import CtaBanner from '../components/CtaBanner'
+import FocusAreas from '../components/FocusAreas'
+import HeroCarousel from '../components/HeroCarousel'
 import HeroVisual from '../components/HeroVisual'
 import PostCard from '../components/PostCard'
 import Reveal, { RevealItem } from '../components/Reveal'
 import SectionHeading from '../components/SectionHeading'
 import Seo from '../components/Seo'
-import SpotlightCard from '../components/SpotlightCard'
 import { posts } from '../content/blog'
 import {
   approach,
   comparison,
   hero,
-  howWeHelp,
+  heroSlides,
   insights,
   process,
   stats,
   whoWeAre,
 } from '../content/home'
-import { featuredServices, servicePath } from '../content/services'
 import { bookingCta, contactLink, site } from '../content/site'
 import { easeOutExpo } from '../lib/motion'
 
@@ -49,13 +49,11 @@ export default function Home() {
       />
       <Hero />
       <WhoWeAre />
-      <HowWeHelp />
       <Comparison />
-      <Stats />
-      <Approach />
+      <StatsAndApproach />
       <Process />
       <Insights />
-      <CtaBanner />
+      <CtaBanner className="section-screen" />
     </>
   )
 }
@@ -68,11 +66,26 @@ function Hero() {
   )
 
   return (
-    <section className="relative overflow-hidden bg-beige pt-28 pb-12 md:pt-32 md:pb-16 lg:flex lg:min-h-svh lg:items-center">
-      <div className="relative container-page grid items-center gap-10 lg:grid-cols-2">
+    <section className="relative overflow-hidden bg-beige pt-28 pb-12 md:pt-32 md:pb-16 lg:flex lg:min-h-svh lg:items-center lg:pt-20 lg:pb-16">
+      <video
+        className="absolute inset-0 h-full w-full object-cover"
+        src="/videos/hero.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        aria-hidden="true"
+      />
+
+      {/* Brand-colour gradient over the video, solid on the left behind the text and fading out to the right (same idea as enerva.ca) */}
+      <div className="absolute inset-0 bg-gradient-to-r from-beige via-beige/80 to-transparent" aria-hidden="true" />
+      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-beige/70 to-transparent" aria-hidden="true" />
+
+      <div className="relative container-page grid items-center gap-10 lg:grid-cols-2 lg:items-end">
         <div>
           <m.p
-            className="eyebrow"
+            className="eyebrow text-ink"
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -80,7 +93,7 @@ function Hero() {
             {hero.eyebrow}
           </m.p>
 
-          <h1 className="mt-5 text-5xl leading-[1.05] font-bold sm:text-6xl lg:text-7xl">
+          <h1 className="mt-3 text-5xl leading-[1.05] font-bold sm:text-6xl lg:text-6xl xl:text-7xl">
             {words.map(({ word, accent, br }, i) => (
               <span key={i}>
                 {br && <br />}
@@ -103,7 +116,7 @@ function Hero() {
           </h1>
 
           <m.p
-            className="mt-6 max-w-lg text-lg text-ink/70"
+            className="mt-4 max-w-xl text-lg font-semibold text-balance text-ink [text-shadow:0_0_14px_rgb(246_238_219/0.9)]"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6, ease: easeOutExpo }}
@@ -112,7 +125,7 @@ function Hero() {
           </m.p>
 
           <m.div
-            className="mt-8 flex flex-wrap gap-4"
+            className="mt-6 flex flex-wrap gap-4"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.75, ease: easeOutExpo }}
@@ -124,194 +137,110 @@ function Hero() {
                 className="transition-transform group-hover:translate-x-1"
               />
             </Link>
-            <Link to="/our-services/" className="btn-ghost">
+            <Link
+              to="/our-services/"
+              className="btn-ghost bg-beige/80 font-bold text-ink backdrop-blur-sm"
+            >
               Explore Services
             </Link>
           </m.div>
         </div>
 
         <m.div
+          className="w-full max-w-[26rem] lg:justify-self-end"
           initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, delay: 0.3, ease: easeOutExpo }}
         >
-          <HeroVisual />
+          <HeroCarousel slides={heroSlides} />
         </m.div>
       </div>
+
+      {/* Scroll cue: only on desktop, where the hero fills the screen (lg:pb-24 keeps room for it) */}
+      <m.button
+        type="button"
+        onClick={(e) =>
+          e.currentTarget
+            .closest('section')
+            ?.nextElementSibling?.scrollIntoView({ behavior: 'smooth' })
+        }
+        aria-label="Scroll to the next section"
+        className="group absolute bottom-4 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-1 text-xs font-semibold tracking-[0.2em] text-ink/80 uppercase transition-colors hover:text-ink lg:flex"
+        initial={{ opacity: 0, y: -8 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 1.4, ease: easeOutExpo }}
+      >
+        Scroll
+        <ChevronDown size={22} strokeWidth={2.5} className="animate-nudge" />
+      </m.button>
     </section>
   )
 }
 
+/** The running motto band, then who we are: one section, one scroll stop */
 function WhoWeAre() {
   return (
-    <section className="container-page section-y">
-      <Reveal>
-        <p className="text-center eyebrow">{whoWeAre.eyebrow}</p>
-      </Reveal>
-      <div className="mt-6">
-        <RegalTagline text={site.tagline} />
+    <section className="flex flex-col lg:min-h-[calc(100svh-4.5rem)]">
+      <div className="border-b border-gold-500/15 bg-beige/50 py-5 md:py-6">
+        <MottoTicker text={site.tagline} />
       </div>
-      <StoryTimeline chapters={whoWeAre.chapters} />
-    </section>
-  )
-}
-
-function HowWeHelp() {
-  return (
-    <section className="bg-white/50 section-y">
-      <div className="container-page">
-        <SectionHeading
-          eyebrow={howWeHelp.eyebrow}
-          title={howWeHelp.heading}
-          align="center"
-        />
-        <Reveal
-          staggerChildren={0.08}
-          className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
-        >
-          {featuredServices.map(({ slug, icon: Icon, title, home }) => (
-            <RevealItem key={slug}>
-              <Link to={servicePath(slug)} className="group block h-full">
-                <SpotlightCard className="flex h-full flex-col">
-                  <span className="grid size-12 place-items-center rounded-2xl bg-teal-900 text-gold-400 transition-transform duration-500 group-hover:rotate-6">
-                    <Icon size={22} />
-                  </span>
-                  <h3 className="mt-6 text-xl font-semibold">
-                    {home?.label ?? title}
-                  </h3>
-                  <p className="mt-2 text-sm text-ink/60">{home?.blurb}</p>
-                  <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-teal-900">
-                    {home?.cta ?? 'Learn more'}
-                    <ArrowUpRight
-                      size={16}
-                      className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                    />
-                  </span>
-                </SpotlightCard>
-              </Link>
-            </RevealItem>
-          ))}
+      {/* Centred in the space left under the band, with equal room above and below */}
+      <div className="container-page flex flex-1 flex-col justify-center py-16 md:py-20 lg:py-10">
+        <Reveal>
+          <p className="text-center eyebrow">{whoWeAre.eyebrow}</p>
         </Reveal>
+        <StoryTimeline chapters={whoWeAre.chapters} />
       </div>
     </section>
   )
 }
 
 function Comparison() {
-  const { traditional, diadem } = comparison
-
   return (
-    <section className="container-page section-y">
-      <SectionHeading
-        eyebrow={comparison.eyebrow}
-        title={comparison.heading}
-        description={comparison.body}
-        align="center"
-      />
-
-      <Reveal
-        staggerChildren={0.15}
-        className="mt-12 grid items-stretch gap-6 lg:grid-cols-[1fr_auto_1fr]"
-      >
-        <RevealItem>
-          <div className="h-full rounded-[2rem] border border-ink/10 bg-white/50 p-8 md:p-10">
-            <p className="eyebrow text-ink/40">{traditional.title}</p>
-            <p className="mt-3 font-display text-2xl font-semibold text-ink/50">
-              {traditional.tagline}
-            </p>
-            <ul className="mt-8 space-y-5">
-              {traditional.points.map(({ title, body }) => (
-                <li key={title} className="flex gap-4">
-                  <span className="grid size-7 shrink-0 place-items-center rounded-full bg-ink/8 text-ink/40">
-                    <X size={14} strokeWidth={3} />
-                  </span>
-                  <span>
-                    <span className="block font-semibold text-ink/70">
-                      {title}
-                    </span>
-                    <span className="text-sm text-ink/45">{body}</span>
-                  </span>
-                </li>
-              ))}
-            </ul>
-            <p className="mt-8 border-t border-ink/10 pt-6 text-sm font-semibold text-ink/50">
-              {traditional.outcome}
-            </p>
-          </div>
-        </RevealItem>
-
-        <RevealItem className="grid place-items-center">
-          <span className="grid size-16 place-items-center rounded-full border border-gold-500/40 bg-cream font-display text-lg font-bold text-gold-600">
-            VS
-          </span>
-        </RevealItem>
-
-        <RevealItem>
-          <div className="relative h-full overflow-hidden rounded-[2rem] bg-teal-900 p-8 text-cream shadow-2xl shadow-teal-900/30 md:p-10">
-            <div className="grain" />
-            <div className="absolute -top-20 -right-20 size-64 animate-blob rounded-full bg-gold-500/25 blur-3xl" />
-            <div className="relative">
-              <p className="eyebrow text-gold-400">{diadem.title}</p>
-              <p className="mt-3 font-display text-2xl font-semibold">
-                {diadem.tagline}
-              </p>
-              <ul className="mt-8 space-y-5">
-                {diadem.points.map(({ title, body }) => (
-                  <li key={title} className="flex gap-4">
-                    <span className="grid size-7 shrink-0 place-items-center rounded-full bg-gold-500 text-teal-950">
-                      <Check size={14} strokeWidth={3} />
-                    </span>
-                    <span>
-                      <span className="block font-semibold">{title}</span>
-                      <span className="text-sm text-cream/60">{body}</span>
-                    </span>
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-8 border-t border-cream/15 pt-6 text-sm font-semibold text-gold-300">
-                {diadem.outcome}
-              </p>
-            </div>
-          </div>
-        </RevealItem>
-      </Reveal>
+    <section className="section-screen bg-sage-300/20">
+      <div className="container-page">
+        <Reveal>
+          <h2 className="text-center font-sans eyebrow">
+            {comparison.heading}
+          </h2>
+        </Reveal>
+        <Reveal className="mt-6">
+          <CompareToggle columns={comparison.columns} rows={comparison.rows} />
+        </Reveal>
+      </div>
     </section>
   )
 }
 
-function Stats() {
+/** The stats as a slim band across the top, then our approach: one section, one scroll stop */
+function StatsAndApproach() {
   return (
-    <section className="relative overflow-hidden bg-teal-950 py-16 text-cream">
-      <div className="grain" />
-      <Reveal
-        staggerChildren={0.1}
-        className="relative container-page grid gap-10 text-center sm:grid-cols-2 lg:grid-cols-4"
-      >
-        {stats.map(({ value, suffix, label, detail }) => (
-          <RevealItem key={label}>
-            <Counter
-              value={value}
-              suffix={suffix}
-              className="block text-shimmer font-display text-5xl font-bold md:text-6xl"
-            />
-            <p className="mt-2 text-sm tracking-[0.15em] text-cream uppercase">
-              {label}
-            </p>
-            <p className="mx-auto mt-2 max-w-60 text-sm text-cream/55">
-              {detail}
-            </p>
-          </RevealItem>
-        ))}
-      </Reveal>
-    </section>
-  )
-}
+    <section className="flex flex-col lg:min-h-[calc(100svh-4.5rem)]">
+      <div className="relative overflow-hidden bg-teal-900 py-10 text-cream lg:py-5">
+        <div className="grain" />
+        <Reveal
+          staggerChildren={0.1}
+          className="relative container-page grid gap-8 text-center sm:grid-cols-2 lg:grid-cols-4"
+        >
+          {stats.map(({ value, suffix, label }) => (
+            <RevealItem key={label}>
+              <Counter
+                value={value}
+                suffix={suffix}
+                className="block text-shimmer font-display text-5xl font-bold lg:text-4xl"
+              />
+              <p className="mt-1 text-xs tracking-[0.15em] text-cream uppercase">
+                {label}
+              </p>
+            </RevealItem>
+          ))}
+        </Reveal>
+      </div>
 
-function Approach() {
-  return (
-    <section className="container-page section-y">
-      <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr]">
-        <div className="lg:sticky lg:top-32 lg:self-start">
+      {/* Centred in the space left under the band, with equal room above and below */}
+      <div className="container-page flex flex-1 flex-col justify-center py-16 md:py-20 lg:py-8">
+        {/* Heading, then the four disciplines orbiting Diadem, then the focus areas */}
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)_minmax(0,1.3fr)] lg:items-center lg:gap-8">
           <SectionHeading
             eyebrow={approach.eyebrow}
             title={
@@ -322,46 +251,37 @@ function Approach() {
             }
             description={approach.body}
           />
-        </div>
 
-        <Reveal staggerChildren={0.08} className="grid gap-5 sm:grid-cols-2">
-          {approach.benefits.map(({ icon: Icon, title, body }) => (
-            <RevealItem key={title}>
-              <SpotlightCard className="h-full">
-                <span className="grid size-12 place-items-center rounded-2xl bg-teal-900 text-gold-400">
-                  <Icon size={22} />
-                </span>
-                <h3 className="mt-6 text-xl font-semibold">{title}</h3>
-                <p className="mt-2 text-sm text-ink/60">{body}</p>
-              </SpotlightCard>
-            </RevealItem>
-          ))}
-        </Reveal>
+          <Reveal>
+            <HeroVisual />
+          </Reveal>
+
+          <Reveal>
+            <FocusAreas areas={approach.focusAreas} />
+          </Reveal>
+        </div>
       </div>
     </section>
   )
 }
 
 function Process() {
-  const ref = useRef<HTMLOListElement>(null)
-  // Draws the gold line as the steps scroll past
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start 75%', 'end 50%'],
-  })
-
   return (
-    <section className="bg-white/50 section-y">
-      <div className="container-page grid gap-12 lg:grid-cols-[1fr_1.2fr]">
-        <div className="lg:sticky lg:top-32 lg:self-start">
+    <section className="section-screen bg-white/50">
+      <div className="container-page grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:items-center">
+        <div>
           <SectionHeading eyebrow={process.eyebrow} title={process.heading} />
         </div>
 
-        <ol ref={ref} className="relative space-y-12 pl-14">
+        <ol className="relative space-y-12 pl-14 lg:space-y-6">
           <div className="absolute top-2 bottom-2 left-[19px] w-0.5 bg-ink/10" />
+          {/* The gold line draws down through the steps once they're in view */}
           <m.div
             className="absolute top-2 bottom-2 left-[19px] w-0.5 origin-top bg-gold-500"
-            style={{ scaleY: scrollYProgress }}
+            initial={{ scaleY: 0 }}
+            whileInView={{ scaleY: 1 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 1.6, ease: easeOutExpo }}
           />
           {process.steps.map(({ title, body }, i) => (
             <li key={title} className="relative">
@@ -369,8 +289,10 @@ function Process() {
                 {String(i + 1).padStart(2, '0')}
               </span>
               <Reveal>
-                <h3 className="pt-1.5 text-2xl font-semibold">{title}</h3>
-                <p className="mt-3 text-ink/65">{body}</p>
+                <h3 className="pt-1.5 text-2xl font-semibold lg:text-xl">
+                  {title}
+                </h3>
+                <p className="mt-3 text-ink/65 lg:mt-1.5 lg:text-sm">{body}</p>
               </Reveal>
             </li>
           ))}
@@ -384,10 +306,14 @@ function Insights() {
   if (posts.length === 0) return null
 
   return (
-    <section className="bg-white/50 section-y">
+    <section className="section-screen bg-beige/40">
       <div className="container-page">
         <div className="flex flex-wrap items-end justify-between gap-6">
-          <SectionHeading eyebrow={insights.eyebrow} title={insights.heading} />
+          <SectionHeading
+            eyebrow={insights.eyebrow}
+            title={insights.heading}
+            className="lg:max-w-4xl"
+          />
           <Reveal>
             <Link to="/blog/" className="btn-ghost">
               View all articles
@@ -396,11 +322,11 @@ function Insights() {
         </div>
         <Reveal
           staggerChildren={0.1}
-          className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+          className="mt-10 grid gap-6 md:grid-cols-2 lg:mt-8 lg:grid-cols-3"
         >
           {posts.slice(0, 3).map((post) => (
             <RevealItem key={post.slug}>
-              <PostCard post={post} />
+              <PostCard post={post} compact />
             </RevealItem>
           ))}
         </Reveal>

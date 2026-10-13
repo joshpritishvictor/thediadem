@@ -51,15 +51,15 @@ export default function About() {
       <section className="bg-white/50 section-y">
         <div className="container-page">
           <SectionHeading
-            eyebrow="Why Diadem"
-            title="A simpler path to the right expertise"
+            eyebrow={about.pillars.eyebrow}
+            title={about.pillars.heading}
             align="center"
           />
           <Reveal
             staggerChildren={0.08}
-            className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
+            className="mt-10 grid gap-6 md:grid-cols-3"
           >
-            {about.pillars.map(({ icon: Icon, title, body }) => (
+            {about.pillars.items.map(({ icon: Icon, title, body }) => (
               <RevealItem key={title}>
                 <SpotlightCard className="h-full">
                   <span className="grid size-12 place-items-center rounded-2xl bg-teal-900 text-gold-400">

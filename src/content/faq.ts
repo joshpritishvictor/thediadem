@@ -48,4 +48,9 @@ export const faqs: Faq[] = [
     answer:
       'Meeting cadence depends on the complexity of your needs. Most clients engage in structured quarterly or bi-annual reviews, with additional touchpoints scheduled around key tax deadlines, corporate filings, or major financial transitions.',
   },
+  {
+    question: 'Can you provide examples of successful client outcomes?',
+    answer:
+      'Our clients include incorporated professionals who have significantly reduced their annual tax burden through retained earnings strategies, business owners who have successfully transitioned their companies while preserving generational wealth, and families who have built structured investment portfolios that continue to grow tax-efficiently. While we protect client confidentiality, we are happy to walk you through real-world scenarios during your consultation.',
+  },
 ]

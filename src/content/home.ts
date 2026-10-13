@@ -1,11 +1,11 @@
 import {
   BadgeCheck,
-  Briefcase,
+  BadgePercent,
   MapPin,
   Network,
+  PiggyBank,
   ShieldCheck,
   Sprout,
-  Target,
 } from 'lucide-react'
 
 export const hero = {
@@ -13,6 +13,53 @@ export const hero = {
   headline: ['One Team.', 'One Goal.'],
   body: 'A team of Financial Planners, Tax Strategists, Insurance Advisors, and Lawyers — coordinated through Diadem, working as one for you.',
 }
+
+// The hero carousel (see HeroCarousel)
+export const heroSlides = [
+  {
+    audience: 'Business Owners & Investors',
+    headline: 'Are you aware of all your options?',
+    body: 'Did you know insurance and investments can work together? It builds cash value you and your family can use in your lifetime, while keeping your tax bill low.',
+    quote: 'Why hasn’t anyone shown me this before?',
+    attribution: 'The question we hear most',
+    closer: 'Most people are never shown this.\nWe make sure you are.',
+  },
+  {
+    audience: 'New Professionals',
+    headline: 'Paying off student loans is only half the plan.',
+    body: 'Small payments and no strategy won’t build or protect anything.',
+    quote: 'I’ll think about investing once the debt is gone.',
+    attribution: 'The habit that costs a decade',
+    closer:
+      'A coordinated plan clears the debt and builds your future at the same time.',
+  },
+  {
+    audience: 'The Surprise Bill',
+    headline: '$30K bill. Credit card at 20–30% interest?',
+    body: 'With the right policy, you may be able to borrow against it at a much lower interest rate without putting growth on hold, or simply use the cash value directly.',
+    quote: 'I just put it on the card. What else was I supposed to do?',
+    attribution: 'The cost of advisors who never talk',
+    closer:
+      'Your accountant, advisor, and lawyer talking to each other changes the answer.',
+  },
+  {
+    audience: 'Estate & Succession',
+    headline: 'What happens to everything you’ve built?',
+    body: 'Without a plan, your family pays more tax, waits longer for the estate to settle, and your business may be worth far less without you.',
+    quote: 'We’ll sort that out eventually.',
+    attribution: 'But eventually is too late',
+    closer:
+      'Wills, insurance, structure, and tax, lined up.\nLet’s plan it now.',
+  },
+  {
+    audience: 'How We Work',
+    headline: 'Plain language. Best outcome.',
+    body: 'Our professionals explain every option simply, then agree on one strategy built for you.',
+    quote: 'For the first time, everything actually made sense.',
+    attribution: 'What coordinated advice feels like',
+    closer: 'No jargon, no handoffs, just clarity.',
+  },
+]
 
 // Told as a three-chapter story on a timeline (see WhoWeAre in pages/Home.tsx)
 export const whoWeAre = {
@@ -22,13 +69,13 @@ export const whoWeAre = {
       icon: BadgeCheck,
       chapter: 'The Foundation',
       title: 'Licensed Professionals',
-      body: 'Our team includes licensed experts across financial planning, tax, accounting, insurance, and legal.',
+      body: 'Every professional in our network holds the credentials their discipline requires.',
     },
     {
       icon: Network,
       chapter: 'The Connection',
       title: 'Our Network',
-      body: 'Multiple experts, one shared approach. We collaborate to deliver integrated advice tailored to your goals.',
+      body: 'Independent professionals who collaborate to deliver advice tailored to your goals.',
     },
     {
       icon: MapPin,
@@ -39,101 +86,72 @@ export const whoWeAre = {
   ],
 }
 
-export const howWeHelp = {
-  eyebrow: 'How We Help You',
-  heading:
-    'Connect with trusted professionals across the services your business needs.',
-}
-
+// Each row is one topic: the frustration of the usual way, and how Diadem handles it (see CompareToggle)
 export const comparison = {
-  eyebrow: 'The Diadem Difference',
-  heading: 'One Strategy. Every Expert. Better Outcomes.',
-  body: 'Most people have advisors. We make sure they work together.',
-  traditional: {
-    title: 'Traditional Approach',
-    tagline: 'Fragmented. Disconnected. Reactive.',
-    points: [
-      { title: 'Separate Advisors', body: 'Work independently' },
-      { title: 'Multiple Appointments', body: 'Repeat your story' },
-      { title: 'Different Recommendations', body: 'Not aligned' },
-      { title: 'You Coordinate', body: 'You’re in the middle' },
-      {
-        title: 'Missed Opportunities',
-        body: 'Reactive advice. Gaps in the plan.',
-      },
-    ],
-    outcome: 'Missed opportunities. More stress.',
-  },
-  diadem: {
-    title: 'The Diadem Approach',
-    tagline: 'Integrated. Aligned. Proactive.',
-    points: [
-      { title: 'One Coordinated Team', body: 'Working together' },
-      { title: 'One Strategy', body: 'Unified and aligned' },
-      { title: 'Aligned Recommendations', body: 'Every decision connected' },
-      { title: 'We Lead the Process', body: 'One point of accountability' },
-      { title: 'Built for Growth', body: 'Proactive advice. One clear plan.' },
-    ],
-    outcome: 'Integrated advice. One team. Greater confidence.',
-  },
+  heading: 'Expert Advice, Without the Runaround.',
+  columns: { traditional: 'The traditional way', diadem: 'The Diadem way' },
+  rows: [
+    {
+      topic: 'Your contact',
+      traditional: 'A different firm for every need',
+      diadem: 'One Diadem contact for all of it',
+    },
+    {
+      topic: 'Your story',
+      traditional: 'Retold at every appointment',
+      diadem: 'Shared once, known by every professional',
+    },
+    {
+      topic: 'The advice',
+      traditional: 'Each expert plans in isolation',
+      diadem: 'Every recommendation built to fit together',
+    },
+    {
+      topic: 'The legwork',
+      traditional: 'You chase, relay and reconcile',
+      diadem: 'We handle the hand-offs between professionals',
+    },
+    {
+      topic: 'The timing',
+      traditional: 'Problems surface after deadlines pass',
+      diadem: 'Opportunities flagged while there’s still time to act',
+    },
+  ],
 }
 
-// Merges the former stats band and "Strategies Built for Real Outcomes" cards
 export const stats = [
-  {
-    value: 100,
-    suffix: '%',
-    label: 'Licensed Alberta Network',
-    detail:
-      'Every partner across accounting, advisory, insurance, and legal holds active provincial credentials.',
-  },
-  {
-    value: 15,
-    suffix: '+',
-    label: 'Years of Collective Experience',
-    detail:
-      'Helping individuals, families and business owners build wisely and protect what they’ve earned.',
-  },
-  {
-    value: 200,
-    suffix: '+',
-    label: 'Trusted Clients',
-    detail: 'Individuals, families and businesses across Alberta.',
-  },
-  {
-    value: 4,
-    suffix: '',
-    label: 'Pillars, One Strategy',
-    detail:
-      'Accounting, advisory, insurance, and legal — one point of contact keeps everything aligned.',
-  },
+  { value: 100, suffix: '%', label: 'Licensed Alberta Network' },
+  { value: 15, suffix: '+', label: 'Years of Collective Experience' },
+  { value: 200, suffix: '+', label: 'Trusted Clients' },
+  { value: 4, suffix: '', label: 'Professional Disciplines' },
 ]
 
 export const approach = {
   eyebrow: 'Our Approach',
   heading: 'Your Advisors,',
   headingAccent: 'Finally in Sync.',
-  body: 'Most financial professionals work independently. We don’t. At Diadem, your Financial Planner, Tax Strategist, Accountant, and Lawyer work together under one coordinated strategy—so every decision supports your long-term success.',
-  benefits: [
+  body: 'So every decision supports your long-term success.',
+  // Shown one at a time in FocusAreas, which cycles through them
+  focusAreas: [
     {
-      icon: Target,
-      title: 'Proactive Tax Planning',
-      body: 'We plan ahead to reduce tax exposures and maximize opportunities.',
+      icon: BadgePercent,
+      title: 'Corporate Tax Efficiency',
+      body: 'Explore legitimate strategies to optimize corporate financial structures, identify tax-planning opportunities, and minimize unnecessary tax exposure.',
     },
     {
-      icon: Sprout,
-      title: 'Long-Term Wealth Strategies',
-      body: 'Strategies designed to build, protect, and grow your wealth for generations.',
-    },
-    {
-      icon: Briefcase,
-      title: 'Business & Personal Integration',
-      body: 'Aligning your business and personal finances for greater efficiency and growth.',
+      icon: PiggyBank,
+      title: 'Retained Earnings & Corporate Wealth',
+      body: 'Understand how accumulated corporate profits can be strategically allocated, invested, or preserved to support long-term business and personal financial objectives.',
     },
     {
       icon: ShieldCheck,
-      title: 'Estate & Legacy Protection',
-      body: 'Comprehensive planning to protect your assets and provide for the people you care about.',
+      title: 'Insurance-Based Financial Strategies',
+      body: 'Discover how appropriately structured corporate-owned permanent life insurance may provide financial protection, tax-advantaged policy growth, and estate-planning opportunities.',
+    },
+    {
+      icon: Sprout,
+      title: 'Wealth Extraction, Succession & Legacy',
+      body: 'Explore strategies for accessing corporate wealth, planning business transitions, and transferring assets to future generations while managing potential tax consequences.',
     },
   ],
 }

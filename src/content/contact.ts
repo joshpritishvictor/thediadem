@@ -9,7 +9,7 @@ export const contactPage = {
     {
       icon: Video,
       title: 'Virtual consultations',
-      body: 'Video or phone, anywhere in Alberta.',
+      body: 'By video or phone.',
     },
     {
       icon: Clock,
@@ -40,7 +40,7 @@ export const contactPage = {
 
 export const contactForm = {
   heading: 'Request a Discovery Call',
-  submit: 'Request a Discovery Call',
+  submit: 'Send Request',
   success: {
     heading: 'Thank you — we’ve received your request.',
     body: 'A member of our team will review it and reach out within 1 business day.',
