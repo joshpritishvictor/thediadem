@@ -50,16 +50,16 @@ export const services: Service[] = [
       'Bookkeeping & Payroll',
       'GST Compliance',
     ],
-    cta: 'Connect with an Accounting Professional',
+    cta: 'Explore Accounting Professionals',
     intro: {
       heading: 'Confidence in Your Books and Taxes',
       body: 'Accurate accounting and proactive tax planning are the foundation of every healthy business—giving you a clear, current view of exactly where your business stands.',
     },
     offerings: [
       {
-        title: 'Personal Tax Returns (T1)',
+        title: 'Personal Tax Returns',
         description:
-          'Connect with licensed tax specialists to manage and file your annual T1 personal tax returns accurately and on time.',
+          'Connect with licensed tax specialists to manage and file your annual T1, T2, T3, T4, and NOA personal tax returns accurately and on time.',
       },
       {
         title: 'Family Tax Coordination',
@@ -176,7 +176,7 @@ export const services: Service[] = [
       'Key Person Insurance',
       'Employee Benefits',
     ],
-    cta: 'Connect with an Insurance Broker',
+    cta: 'Explore Insurance Brokers',
     intro: {
       heading: 'Protect What You’ve Built',
       body: 'Insurance and risk management is about identifying real vulnerabilities and closing the gaps that matter.',
@@ -238,7 +238,7 @@ export const services: Service[] = [
       'Employment Law',
       'Governance & Compliance',
     ],
-    cta: 'Connect with Legal Counsel',
+    cta: 'Explore Legal Counsel',
     intro: {
       heading: 'Get the Right Legal Foundation for Your Business',
       body: 'From incorporation to ongoing compliance, your legal groundwork should keep pace with your business at every stage.',

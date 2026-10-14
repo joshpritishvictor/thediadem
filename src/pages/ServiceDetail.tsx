@@ -1,23 +1,23 @@
-import { ArrowRight } from 'lucide-react'
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import Accordion from '../components/Accordion'
 import CtaBanner from '../components/CtaBanner'
 import PageHero from '../components/PageHero'
-import Reveal, { RevealItem } from '../components/Reveal'
+import Reveal from '../components/Reveal'
 import SectionHeading from '../components/SectionHeading'
 import Seo from '../components/Seo'
 import { faqJsonLd } from '../lib/schema'
-import SpotlightCard from '../components/SpotlightCard'
-import { featuredServices, getService, servicePath } from '../content/services'
-import { contactLink } from '../content/site'
+import { advancedFor } from '../content/serviceAdvanced'
+import { getService } from '../content/services'
 import NotFound from './NotFound'
 
 export default function ServiceDetail() {
   const service = getService(useParams().slug)
   if (!service) return <NotFound />
 
-  const { slug, title, image, summary, intro, offerings, closing, faqs, cta } =
+  const { slug, title, image, summary, intro, offerings, closing, faqs } =
     service
+  // As many advanced items as basic ones, so the two columns match
+  const advanced = advancedFor(slug).slice(0, offerings.length)
 
   return (
     <>
@@ -30,71 +30,43 @@ export default function ServiceDetail() {
       <PageHero
         title={title}
         crumbs={[{ to: '/our-services/', label: 'Services' }]}
-        description={summary}
-        image={image}
-      >
-        <Link to={contactLink.to} className="group btn-primary mt-8">
-          {cta}
-          <ArrowRight
-            size={16}
-            className="transition-transform group-hover:translate-x-1"
-          />
-        </Link>
-      </PageHero>
+        compact
+      />
 
-      <section className="container-page section-b">
-        <div className="grid gap-12 lg:grid-cols-[1fr_18rem]">
-          <div>
-            <SectionHeading title={intro.heading} description={intro.body} />
+      <section className="container-page pt-8 section-b">
+        {/* Same style as the home page headings: gold, capitals, 20px, one line, centred */}
+        <Reveal className="text-center">
+          <h2 className="font-sans eyebrow text-base! font-bold md:text-xl! md:whitespace-nowrap">
+            {intro.heading}
+          </h2>
+          <p className="mx-auto mt-5 max-w-3xl text-lg text-ink/65">
+            {intro.body}
+          </p>
+        </Reveal>
 
-            <Reveal
-              staggerChildren={0.1}
-              className="mt-12 grid gap-6 md:grid-cols-3"
-            >
-              {offerings.map(({ title: heading, description }, i) => (
-                <RevealItem key={heading}>
-                  <SpotlightCard className="h-full">
-                    <span className="font-display text-sm font-bold text-gold-600">
-                      {String(i + 1).padStart(2, '0')}
-                    </span>
-                    <h3 className="mt-4 text-xl font-semibold">{heading}</h3>
-                    <p className="mt-3 text-sm text-ink/60">{description}</p>
-                  </SpotlightCard>
-                </RevealItem>
-              ))}
-            </Reveal>
-          </div>
-
-          {/* Other services */}
-          <Reveal className="lg:sticky lg:top-28 lg:self-start">
-            <nav
-              aria-label="Our services"
-              className="rounded-3xl border border-ink/8 bg-white p-6"
-            >
-              <p className="eyebrow">Our Services</p>
-              <ul className="mt-4 space-y-1">
-                {featuredServices.map((s) => {
-                  const active = s.slug === slug
-                  return (
-                    <li key={s.slug}>
-                      <Link
-                        to={servicePath(s.slug)}
-                        aria-current={active ? 'page' : undefined}
-                        className={`flex items-center justify-between rounded-xl px-4 py-3 text-sm font-medium transition-colors ${
-                          active
-                            ? 'bg-teal-900 text-cream'
-                            : 'text-ink/70 hover:bg-teal-900/5 hover:text-ink'
-                        }`}
-                      >
-                        {s.title}
-                        <ArrowRight size={14} />
-                      </Link>
-                    </li>
-                  )
-                })}
-              </ul>
-            </nav>
+        <div className="mt-12 grid items-start gap-8 lg:grid-cols-2">
+          <Reveal>
+            <h3 className="mb-4 text-center text-sm font-bold tracking-[0.2em] text-gold-600 uppercase">
+              Basic
+            </h3>
+            <Accordion
+              surface="beige"
+              defaultOpen={-1}
+              items={offerings.map(({ title: question, description }) => ({
+                question,
+                answer: description,
+              }))}
+            />
           </Reveal>
+
+          {advanced.length > 0 && (
+            <Reveal delay={0.15}>
+              <h3 className="mb-4 text-center text-sm font-bold tracking-[0.2em] text-gold-600 uppercase">
+                Advanced
+              </h3>
+              <Accordion surface="beige" items={advanced} defaultOpen={-1} />
+            </Reveal>
+          )}
         </div>
       </section>
 
@@ -107,7 +79,7 @@ export default function ServiceDetail() {
               className="lg:sticky lg:top-32 lg:self-start"
             />
             <Reveal>
-              <Accordion items={faqs} />
+              <Accordion surface="beige" items={faqs} />
             </Reveal>
           </div>
         </section>

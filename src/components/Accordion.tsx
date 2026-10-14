@@ -9,12 +9,15 @@ type AccordionProps = {
   /** Index open on first render; -1 for none */
   defaultOpen?: number
   light?: boolean
+  /** Background of the box; beige sits on the page background used by the service pages */
+  surface?: 'white' | 'beige'
 }
 
 export default function Accordion({
   items,
   defaultOpen = 0,
   light = false,
+  surface = 'white',
 }: AccordionProps) {
   const [open, setOpen] = useState(defaultOpen)
   const id = useId()
@@ -24,7 +27,7 @@ export default function Accordion({
       className={`divide-y rounded-3xl border ${
         light
           ? 'divide-cream/10 border-cream/10 bg-cream/5'
-          : 'divide-ink/8 border-ink/8 bg-white'
+          : `divide-ink/8 border-ink/8 ${surface === 'beige' ? 'bg-beige' : 'bg-white'}`
       }`}
     >
       {items.map(({ question, answer }, i) => {

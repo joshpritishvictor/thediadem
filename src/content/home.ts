@@ -23,6 +23,7 @@ export const heroSlides = [
     quote: 'Why hasn’t anyone shown me this before?',
     attribution: 'The question we hear most',
     closer: 'Most people are never shown this.\nWe make sure you are.',
+    emphasis: 'We make sure you are.',
   },
   {
     audience: 'New Professionals',
@@ -32,6 +33,7 @@ export const heroSlides = [
     attribution: 'The habit that costs a decade',
     closer:
       'A coordinated plan clears the debt and builds your future at the same time.',
+    emphasis: 'builds your future at the same time.',
   },
   {
     audience: 'The Surprise Bill',
@@ -41,6 +43,7 @@ export const heroSlides = [
     attribution: 'The cost of advisors who never talk',
     closer:
       'Your accountant, advisor, and lawyer talking to each other changes the answer.',
+    emphasis: 'changes the answer.',
   },
   {
     audience: 'Estate & Succession',
@@ -50,6 +53,7 @@ export const heroSlides = [
     attribution: 'But eventually is too late',
     closer:
       'Wills, insurance, structure, and tax, lined up.\nLet’s plan it now.',
+    emphasis: 'Let’s plan it now.',
   },
   {
     audience: 'How We Work',
@@ -58,6 +62,7 @@ export const heroSlides = [
     quote: 'For the first time, everything actually made sense.',
     attribution: 'What coordinated advice feels like',
     closer: 'No jargon, no handoffs, just clarity.',
+    emphasis: 'just clarity.',
   },
 ]
 
@@ -158,23 +163,23 @@ export const approach = {
 
 export const process = {
   eyebrow: 'Our Process',
-  heading: 'Your Path From First Call to Coordinated Plan',
+  heading: 'Your First Call to a Coordinated Plan',
   steps: [
     {
       title: 'Initial Consultation',
-      body: 'A complimentary 30-minute consultation to understand your financial situation, goals, challenges, and expectations — and review the data from your Financial Needs Analysis.',
+      body: 'A complimentary 30-minute call to review your goals and intake information.',
     },
     {
       title: 'Cross-Discipline Analysis',
-      body: 'We analyze your accounting, legal structure, tax liabilities, and insurance coverage to uncover risks and missed opportunities.',
+      body: 'Review your accounting, legal, tax, and insurance to uncover risks and missed opportunities.',
     },
     {
       title: 'Strategy Development',
-      body: 'We build a coordinated plan — covering financial planning, tax optimization, and legal considerations through our legal partners.',
+      body: 'Our professionals build one coordinated plan, each part led by the right expert.',
     },
     {
       title: 'Execution & Ongoing Oversight',
-      body: 'We coordinate execution across your team of professionals and stay engaged — reviewing progress and adjusting the plan as your life, business and goals evolve.',
+      body: 'We coordinate your team to carry out the plan and adjust as your life evolves.',
     },
   ],
 }

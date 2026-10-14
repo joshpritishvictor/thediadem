@@ -76,13 +76,13 @@ export default function CompareToggle({ columns, rows }: Props) {
             className={`relative flex min-h-44 flex-col overflow-hidden rounded-3xl border p-6 transition-colors duration-500 ${
               isDiadem
                 ? 'border-teal-900 bg-teal-900 text-cream shadow-xl shadow-teal-900/20'
-                : 'border-dashed border-ink/15 bg-white/40 text-ink/55'
+                : 'border-ink/10 bg-white text-ink/75 shadow-lg shadow-ink/5'
             }`}
           >
-            <div className="flex items-center gap-3">
+            <div className="flex items-center justify-between gap-3">
               <p
                 className={`eyebrow transition-colors duration-500 ${
-                  isDiadem ? 'text-gold-400' : 'text-ink/40'
+                  isDiadem ? 'text-gold-400' : 'text-ink/55'
                 }`}
               >
                 {row.topic}
@@ -99,7 +99,7 @@ export default function CompareToggle({ columns, rows }: Props) {
                   <ThumbsUp size={15} strokeWidth={2.25} />
                 </m.span>
               ) : (
-                <span className="grid size-8 shrink-0 place-items-center rounded-full bg-ink/8 text-ink/40">
+                <span className="grid size-8 shrink-0 place-items-center rounded-full bg-ink/8 text-ink/60">
                   <ThumbsDown size={15} strokeWidth={2.25} />
                 </span>
               )}

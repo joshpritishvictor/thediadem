@@ -14,7 +14,7 @@ export default function About() {
         description={about.story[0]}
         image={about.images.secondary}
       />
-      <PageHero eyebrow={about.eyebrow} title="About Us" />
+      <PageHero title="About Us" compact />
 
       <section className="container-page section-b">
         <div className="grid items-center gap-10 lg:grid-cols-2">

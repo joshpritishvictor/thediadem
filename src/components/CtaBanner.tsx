@@ -1,4 +1,5 @@
 import { ArrowRight } from 'lucide-react'
+import { m } from 'motion/react'
 import { Link } from 'react-router-dom'
 import { bookingCta, contactLink, site } from '../content/site'
 import Reveal from './Reveal'
@@ -20,15 +21,16 @@ export default function CtaBanner({
   return (
     <section className={`container-page ${className}`}>
       <Reveal>
-        <div className="relative overflow-hidden rounded-[2.5rem] bg-teal-900 px-8 py-12 text-center text-cream md:px-16 md:py-16">
-          <div className="grain" />
-          <div className="absolute -bottom-32 -left-20 size-96 animate-blob rounded-full bg-gold-500/20 blur-3xl" />
-          <div className="absolute -top-32 -right-20 size-96 animate-blob rounded-full bg-sage-500/30 blur-3xl [animation-delay:-8s]" />
-
-          <div className="relative mx-auto max-w-2xl">
-            <h2 className="text-3xl font-bold md:text-5xl">{heading}</h2>
-            <p className="mt-6 text-lg text-cream/70">{body}</p>
-            <div className="mt-10 flex flex-wrap justify-center gap-4">
+        {/* Slim and centred: the heading, one line of body text, and the buttons. It gently expands and contracts */}
+        <div className="relative mx-auto max-w-4xl">
+          <m.div
+            className="relative overflow-hidden rounded-3xl bg-teal-900 px-6 py-5 text-center text-cream md:px-12 md:py-6"
+            animate={{ scale: [1, 1.03, 1] }}
+            transition={{ duration: 1.6, repeat: Infinity, ease: 'easeInOut' }}
+          >
+            <h2 className="text-xl font-bold md:text-2xl">{heading}</h2>
+            <p className="mt-2 text-sm text-cream/70 md:text-pretty">{body}</p>
+            <div className="mt-4 flex flex-wrap justify-center gap-3">
               <Link to={contactLink.to} className="group btn-primary">
                 {cta}
                 <ArrowRight
@@ -40,7 +42,7 @@ export default function CtaBanner({
                 {site.contact.phone}
               </a>
             </div>
-          </div>
+          </m.div>
         </div>
       </Reveal>
     </section>

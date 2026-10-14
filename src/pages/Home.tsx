@@ -5,20 +5,14 @@ import { MottoTicker, StoryTimeline } from '../components/BrandStory'
 import CompareToggle from '../components/CompareToggle'
 import Counter from '../components/Counter'
 import CtaBanner from '../components/CtaBanner'
-import FocusAreas from '../components/FocusAreas'
 import HeroCarousel from '../components/HeroCarousel'
-import HeroVisual from '../components/HeroVisual'
-import PostCard from '../components/PostCard'
+import ProcessPath from '../components/ProcessPath'
 import Reveal, { RevealItem } from '../components/Reveal'
-import SectionHeading from '../components/SectionHeading'
 import Seo from '../components/Seo'
-import { posts } from '../content/blog'
 import {
-  approach,
   comparison,
   hero,
   heroSlides,
-  insights,
   process,
   stats,
   whoWeAre,
@@ -51,9 +45,8 @@ export default function Home() {
       <WhoWeAre />
       <Comparison />
       <StatsAndApproach />
-      <Process />
-      <Insights />
-      <CtaBanner className="section-screen" />
+      {/* Short enough that the banner and the footer share the last screen; no snap stop of its own, so the page settles on the footer */}
+      <CtaBanner className="section-y lg:snap-align-none lg:pt-10 lg:pb-6" />
     </>
   )
 }
@@ -79,8 +72,14 @@ function Hero() {
       />
 
       {/* Brand-colour gradient over the video, solid on the left behind the text and fading out to the right (same idea as enerva.ca) */}
-      <div className="absolute inset-0 bg-gradient-to-r from-beige via-beige/80 to-transparent" aria-hidden="true" />
-      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-beige/70 to-transparent" aria-hidden="true" />
+      <div
+        className="absolute inset-0 bg-gradient-to-r from-beige via-beige/80 to-transparent"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-beige/70 to-transparent"
+        aria-hidden="true"
+      />
 
       <div className="relative container-page grid items-center gap-10 lg:grid-cols-2 lg:items-end">
         <div>
@@ -187,7 +186,9 @@ function WhoWeAre() {
       {/* Centred in the space left under the band, with equal room above and below */}
       <div className="container-page flex flex-1 flex-col justify-center py-16 md:py-20 lg:py-10">
         <Reveal>
-          <p className="text-center eyebrow">{whoWeAre.eyebrow}</p>
+          <p className="text-center eyebrow text-base! font-bold md:text-xl!">
+            {whoWeAre.eyebrow}
+          </p>
         </Reveal>
         <StoryTimeline chapters={whoWeAre.chapters} />
       </div>
@@ -197,10 +198,10 @@ function WhoWeAre() {
 
 function Comparison() {
   return (
-    <section className="section-screen bg-sage-300/20">
+    <section className="section-screen bg-beige">
       <div className="container-page">
         <Reveal>
-          <h2 className="text-center font-sans eyebrow">
+          <h2 className="text-center font-sans eyebrow text-base! font-bold md:text-xl!">
             {comparison.heading}
           </h2>
         </Reveal>
@@ -212,12 +213,11 @@ function Comparison() {
   )
 }
 
-/** The stats as a slim band across the top, then our approach: one section, one scroll stop */
+/** The stats as a slim band across the top, then our process: one section, one scroll stop */
 function StatsAndApproach() {
   return (
     <section className="flex flex-col lg:min-h-[calc(100svh-4.5rem)]">
       <div className="relative overflow-hidden bg-teal-900 py-10 text-cream lg:py-5">
-        <div className="grain" />
         <Reveal
           staggerChildren={0.1}
           className="relative container-page grid gap-8 text-center sm:grid-cols-2 lg:grid-cols-4"
@@ -237,99 +237,16 @@ function StatsAndApproach() {
         </Reveal>
       </div>
 
-      {/* Centred in the space left under the band, with equal room above and below */}
+      {/* Centred in the space left under the band */}
       <div className="container-page flex flex-1 flex-col justify-center py-16 md:py-20 lg:py-8">
-        {/* Heading, then the four disciplines orbiting Diadem, then the focus areas */}
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1fr)_minmax(0,1.3fr)] lg:items-center lg:gap-8">
-          <SectionHeading
-            eyebrow={approach.eyebrow}
-            title={
-              <>
-                {approach.heading}{' '}
-                <span className="text-shimmer">{approach.headingAccent}</span>
-              </>
-            }
-            description={approach.body}
-          />
-
-          <Reveal>
-            <HeroVisual />
-          </Reveal>
-
-          <Reveal>
-            <FocusAreas areas={approach.focusAreas} />
-          </Reveal>
-        </div>
-      </div>
-    </section>
-  )
-}
-
-function Process() {
-  return (
-    <section className="section-screen bg-white/50">
-      <div className="container-page grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:items-center">
         <div>
-          <SectionHeading eyebrow={process.eyebrow} title={process.heading} />
-        </div>
-
-        <ol className="relative space-y-12 pl-14 lg:space-y-6">
-          <div className="absolute top-2 bottom-2 left-[19px] w-0.5 bg-ink/10" />
-          {/* The gold line draws down through the steps once they're in view */}
-          <m.div
-            className="absolute top-2 bottom-2 left-[19px] w-0.5 origin-top bg-gold-500"
-            initial={{ scaleY: 0 }}
-            whileInView={{ scaleY: 1 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 1.6, ease: easeOutExpo }}
-          />
-          {process.steps.map(({ title, body }, i) => (
-            <li key={title} className="relative">
-              <span className="absolute top-0 -left-14 grid size-10 place-items-center rounded-full border-2 border-gold-500 bg-cream font-display text-sm font-bold text-teal-900">
-                {String(i + 1).padStart(2, '0')}
-              </span>
-              <Reveal>
-                <h3 className="pt-1.5 text-2xl font-semibold lg:text-xl">
-                  {title}
-                </h3>
-                <p className="mt-3 text-ink/65 lg:mt-1.5 lg:text-sm">{body}</p>
-              </Reveal>
-            </li>
-          ))}
-        </ol>
-      </div>
-    </section>
-  )
-}
-
-function Insights() {
-  if (posts.length === 0) return null
-
-  return (
-    <section className="section-screen bg-beige/40">
-      <div className="container-page">
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <SectionHeading
-            eyebrow={insights.eyebrow}
-            title={insights.heading}
-            className="lg:max-w-4xl"
-          />
           <Reveal>
-            <Link to="/blog/" className="btn-ghost">
-              View all articles
-            </Link>
+            <h2 className="text-center font-sans eyebrow text-base! font-bold md:text-xl! lg:whitespace-nowrap">
+              {process.heading}
+            </h2>
           </Reveal>
+          <ProcessPath steps={process.steps} />
         </div>
-        <Reveal
-          staggerChildren={0.1}
-          className="mt-10 grid gap-6 md:grid-cols-2 lg:mt-8 lg:grid-cols-3"
-        >
-          {posts.slice(0, 3).map((post) => (
-            <RevealItem key={post.slug}>
-              <PostCard post={post} compact />
-            </RevealItem>
-          ))}
-        </Reveal>
       </div>
     </section>
   )
