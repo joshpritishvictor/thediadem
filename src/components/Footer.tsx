@@ -9,9 +9,8 @@ const linkClass = 'text-cream/70 transition-colors hover:text-gold-300'
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-teal-950 text-cream">
-      <div className="grain" />
-      <div className="relative container-page grid gap-12 py-16 sm:grid-cols-2 lg:grid-cols-4">
+    <footer className="relative overflow-hidden bg-teal-900 text-cream">
+      <div className="relative container-page grid gap-10 py-10 sm:grid-cols-2 lg:grid-cols-4">
         <div>
           <Logo light />
           <p className="mt-4 max-w-xs text-sm text-cream/60">{site.tagline}</p>
@@ -61,7 +60,7 @@ export default function Footer() {
       </div>
 
       <div className="relative border-t border-cream/10">
-        <div className="container-page flex flex-wrap justify-between gap-4 py-6 text-xs text-cream/50">
+        <div className="container-page flex flex-wrap justify-between gap-4 py-4 text-xs text-cream/50">
           <p>
             &copy; {new Date().getFullYear()} {site.legalName}, operating as{' '}
             {site.name}

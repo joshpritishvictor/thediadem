@@ -130,6 +130,11 @@
   body footer {
     scroll-snap-align: end;
   }
+  /* Tailwind v4 gives buttons the arrow cursor; show the hand like links do */
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
   ::selection {
     @apply bg-gold-300 text-teal-950;
   }

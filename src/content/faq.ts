@@ -3,11 +3,6 @@ import type { Faq } from './services'
 export const faqPage = {
   eyebrow: 'FAQs',
   heading: 'Frequently Asked Questions',
-  contactPrompt: {
-    heading: 'Have a specific question not answered here?',
-    body: 'Reach out and we’ll point you to the right answer — or the right professional.',
-    cta: 'Contact Us',
-  },
 }
 
 export const faqs: Faq[] = [
