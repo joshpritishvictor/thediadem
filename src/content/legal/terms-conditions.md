@@ -6,7 +6,7 @@ Please read these Terms and Conditions carefully before using our website or eng
 
 ## 1\. About Us
 
-These Terms and Conditions govern your use of the Diadem website (www.diademand.co) and the platform services facilitated by Diadem Strategies Incorporated, operating as Diadem, a corporation incorporated under the laws of Alberta, Canada.
+These Terms and Conditions govern your use of the Diadem website (www.thediadem.ca) and the platform services facilitated by Diadem Strategies Incorporated, operating as Diadem, a corporation incorporated under the laws of Alberta, Canada.
 
 Diadem operates as a client access, coordination, and administrative platform. Diadem Strategies Incorporated does not itself hold licences to practice law, public accounting, financial planning, or insurance brokering as a corporate entity. All regulated professional services made accessible through our platform are provided exclusively by independent, appropriately licensed third-party professionals who maintain their own professional obligations, regulatory compliance, and liability.
 
@@ -129,4 +129,4 @@ Calgary, Alberta, Canada
 
 📧 [contactus@diadem.co](mailto:contactus@diadem.co)  
 📞 [+1 587-316-1691](tel:+15873161691)  
-🌐 [www.diademand.co](https://www.diademand.co)
+🌐 [www.thediadem.ca](https://www.thediadem.ca)

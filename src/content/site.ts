@@ -4,7 +4,7 @@ export const site = {
   tagline: 'Plan wisely, sow strategically, reap abundantly.',
   description:
     'Alberta’s integrated professional network. Financial planners, tax strategists, accountants, insurance advisors and lawyers, coordinated through Diadem, working as one for you.',
-  url: 'https://diademand.co',
+  url: 'https://thediadem.ca',
   location: 'Calgary, Alberta, Canada',
   contact: {
     phone: '1-587-316-1691',

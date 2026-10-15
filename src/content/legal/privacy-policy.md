@@ -13,7 +13,7 @@ All financial planning, tax strategy, accounting, corporate insurance, and legal
 **Registered Name:** Diadem Strategies Incorporated  
 **Operating As:** Diadem  
 **Location:** Calgary, Alberta, Canada  
-**Website:** www.diademand.co  
+**Website:** www.thediadem.ca  
 **Email:** contactus@diadem.co  
 **Phone:** +1 587-316-1691
 
@@ -141,4 +141,4 @@ Calgary, Alberta, Canada
 
 📧 [contactus@diadem.co](mailto:contactus@diadem.co)  
 📞 [+1 587-316-1691](tel:+15873161691)  
-🌐 [www.diademand.co](https://www.diademand.co)
+🌐 [www.thediadem.ca](https://www.thediadem.ca)
