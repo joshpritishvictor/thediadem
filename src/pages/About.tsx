@@ -151,15 +151,27 @@ function Portrait({
   )
 }
 
+/** Professional designations, set smaller and quieter than the name */
+function Credentials({ text }: { text: string }) {
+  return (
+    <span className="ml-2 text-sm font-medium whitespace-nowrap text-ink/50">
+      {text}
+    </span>
+  )
+}
+
 function FounderCard({ person }: { person: Person }) {
-  const { name, role, body } = person
+  const { name, credentials, role, body } = person
 
   // Photo on the left; name, role and description stacked on the right
   return (
     <article className="group relative grid overflow-hidden rounded-3xl border border-ink/8 bg-card transition duration-500 ease-out-expo hover:border-gold-500/50 hover:shadow-2xl hover:shadow-teal-900/10 md:h-[clamp(13rem,30svh,18rem)] md:grid-cols-[14rem_1fr] lg:grid-cols-[16rem_1fr]">
       <Portrait person={person} className="h-56 md:h-full" />
       <div className="flex flex-col justify-center px-6 py-5 md:px-8 md:py-6">
-        <h3 className="text-2xl font-semibold">{name}</h3>
+        <h3 className="text-2xl font-semibold">
+          {name}
+          {credentials && <Credentials text={credentials} />}
+        </h3>
         <p className="mt-1 text-sm font-semibold text-gold-600">{role}</p>
         <p className="mt-3 text-[0.95rem] leading-relaxed text-ink/70">
           {body}
@@ -175,14 +187,17 @@ function FounderCard({ person }: { person: Person }) {
 }
 
 function TeamCard({ person }: { person: Person }) {
-  const { name, role, body } = person
+  const { name, credentials, role, body } = person
 
   // Same layout as a founder, smaller: photo left, name, role and description right
   return (
     <article className="group relative grid h-full grid-cols-[6.5rem_1fr] overflow-hidden rounded-3xl border border-ink/8 bg-card transition duration-500 ease-out-expo hover:border-gold-500/50 hover:shadow-xl hover:shadow-teal-900/10 sm:grid-cols-[9rem_1fr] lg:grid-cols-[10rem_1fr]">
       <Portrait person={person} className="h-full min-h-[10rem]" />
       <div className="flex flex-col justify-center px-4 py-4 sm:px-5">
-        <h3 className="text-lg font-semibold">{name}</h3>
+        <h3 className="text-lg font-semibold">
+          {name}
+          {credentials && <Credentials text={credentials} />}
+        </h3>
         <p className="mt-1 text-sm font-semibold text-gold-600">{role}</p>
         <p className="mt-2 text-sm leading-relaxed text-ink/65">{body}</p>
       </div>

@@ -16,6 +16,8 @@ import wankelImg from '../assets/images/team/wankel.webp'
 
 export type Person = {
   name: string
+  /** Designations shown after the name, e.g. "CPA, CFP" */
+  credentials?: string
   initials: string
   /** Portrait; people without one get their initials on a green block */
   photo?: string
@@ -52,6 +54,7 @@ export const about = {
     people: [
       {
         name: 'Josh Victor',
+        credentials: 'MPH, PG Dip (Fin Serv), HLLQP, CSC',
         photo: joshImg,
         initials: 'JV',
         role: 'Chief Executive Officer & Founder',
@@ -71,7 +74,8 @@ export const about = {
     eyebrow: 'Our Team',
     people: [
       {
-        name: 'Wankel Garingalao, CPA',
+        name: 'Wankel Garingalao',
+        credentials: 'CPA, CFP, HLLQP',
         photo: wankelImg,
         initials: 'WG',
         role: 'Head of Accounting & Business Strategy',
