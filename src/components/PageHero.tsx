@@ -63,6 +63,7 @@ export default function PageHero({
       <video
         className="absolute inset-0 h-full w-full object-cover"
         src="/videos/hero.mp4"
+        poster="/videos/hero-poster.jpg"
         autoPlay
         muted
         loop
