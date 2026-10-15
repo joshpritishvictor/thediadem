@@ -2,6 +2,7 @@ import { ChevronRight } from 'lucide-react'
 import { m } from 'motion/react'
 import type { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
+import HeroVideo from './HeroVideo'
 import { fadeUp, stagger } from '../lib/motion'
 
 type Crumb = { to: string; label: string }
@@ -60,17 +61,7 @@ export default function PageHero({
   return (
     <section className="relative overflow-hidden bg-beige pt-28 pb-10 md:pt-32 md:pb-14">
       {/* Same background as the home hero: the video under a beige gradient that is solid behind the text and fades out to the right */}
-      <video
-        className="absolute inset-0 h-full w-full object-cover"
-        src="/videos/hero.mp4"
-        poster="/videos/hero-poster.jpg"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        aria-hidden="true"
-      />
+      <HeroVideo />
       <div
         className="absolute inset-0 bg-gradient-to-r from-beige via-beige/80 to-transparent"
         aria-hidden="true"

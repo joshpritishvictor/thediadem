@@ -280,6 +280,15 @@
 
 /* Long-form content compiled from Markdown (blog posts, legal pages) */
 @layer components {
+  /* Background hero video: when iOS blocks autoplay (Low Power Mode) it would
+     draw a big play button over the poster; hide it, the video is decorative */
+  .hero-video::-webkit-media-controls,
+  .hero-video::-webkit-media-controls-start-playback-button,
+  .hero-video::-webkit-media-controls-panel {
+    display: none !important;
+    -webkit-appearance: none;
+  }
+
   .prose {
     @apply text-[1.0625rem] leading-[1.8] text-ink/75;
 

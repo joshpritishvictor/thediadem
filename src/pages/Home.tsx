@@ -6,6 +6,7 @@ import CompareToggle from '../components/CompareToggle'
 import Counter from '../components/Counter'
 import CtaBanner from '../components/CtaBanner'
 import HeroCarousel from '../components/HeroCarousel'
+import HeroVideo from '../components/HeroVideo'
 import ProcessPath from '../components/ProcessPath'
 import Reveal, { RevealItem } from '../components/Reveal'
 import Seo from '../components/Seo'
@@ -60,17 +61,7 @@ function Hero() {
 
   return (
     <section className="relative overflow-hidden bg-beige pt-28 pb-12 md:pt-32 md:pb-16 lg:flex lg:min-h-svh lg:items-center lg:pt-20 lg:pb-16">
-      <video
-        className="absolute inset-0 h-full w-full object-cover"
-        src="/videos/hero.mp4"
-        poster="/videos/hero-poster.jpg"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        aria-hidden="true"
-      />
+      <HeroVideo />
 
       {/* Brand-colour gradient over the video, solid on the left behind the text and fading out to the right (same idea as enerva.ca) */}
       <div
