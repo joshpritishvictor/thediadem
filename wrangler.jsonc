@@ -1,0 +1,7 @@
+{
+  // Cloudflare Pages project settings. The dashboard build uses `npm run build`
+  // and publishes dist/; functions/ is picked up automatically as Pages Functions.
+  "name": "thediadem",
+  "compatibility_date": "2026-10-01",
+  "pages_build_output_dir": "dist",
+}

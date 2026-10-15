@@ -1,7 +1,8 @@
-// Vercel serverless function: POST /api/contact
+// Cloudflare Pages Function: POST /api/contact
 // Saves contact form submissions to GoHighLevel (HighLevel API v2, Private Integration token).
 //
-// Required environment variables (Vercel → Project → Settings → Environment Variables):
+// Required environment variables (Cloudflare → Workers & Pages → project → Settings →
+// Variables and Secrets, stored as encrypted secrets):
 //   GHL_API_TOKEN    Private Integration token with "View Contacts" + "Edit Contacts" scopes
 //   GHL_LOCATION_ID  Sub-account (location) ID
 // Optional:
@@ -24,6 +25,13 @@ const LIMITS = {
 
 type Field = keyof typeof LIMITS
 type Submission = Record<Field, string> & { consent: boolean }
+
+/** Variables Cloudflare passes to the function (see .env.example) */
+export type Env = {
+  GHL_API_TOKEN?: string
+  GHL_LOCATION_ID?: string
+  GHL_TAGS?: string
+}
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const PHONE = /^[+()\-.\s\d]{7,30}$/
@@ -86,9 +94,9 @@ function buildNote(data: Submission) {
   return lines.join('\n')
 }
 
-export async function POST(request: Request) {
-  const token = process.env.GHL_API_TOKEN
-  const locationId = process.env.GHL_LOCATION_ID
+export async function POST(request: Request, env: Env) {
+  const token = env.GHL_API_TOKEN
+  const locationId = env.GHL_LOCATION_ID
   if (!token || !locationId) {
     console.error('Contact form: GHL_API_TOKEN or GHL_LOCATION_ID is not set')
     return json({ error: 'The form is not configured yet.' }, 500)
@@ -114,7 +122,7 @@ export async function POST(request: Request) {
   if (typeof data === 'string') return json({ error: data }, 400)
 
   const tags = [
-    ...(process.env.GHL_TAGS ?? 'website-lead').split(','),
+    ...(env.GHL_TAGS ?? 'website-lead').split(','),
     data.service,
     data.consent ? 'marketing-consent' : '',
   ]
@@ -154,3 +162,7 @@ export async function POST(request: Request) {
     return json({ error: 'Could not send your request.' }, 502)
   }
 }
+
+// Cloudflare Pages routes POST /api/contact to this export; the dev plugin calls it the same way
+export const onRequestPost = (context: { request: Request; env: Env }) =>
+  POST(context.request, context.env)
