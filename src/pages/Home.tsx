@@ -212,7 +212,7 @@ function StatsAndApproach() {
       <div className="relative overflow-hidden bg-teal-900 py-10 text-cream lg:py-5">
         <Reveal
           staggerChildren={0.1}
-          className="relative container-page grid gap-8 text-center sm:grid-cols-2 lg:grid-cols-4"
+          className="relative container-page grid gap-8 text-center sm:grid-cols-3"
         >
           {stats.map(({ value, suffix, label }) => (
             <RevealItem key={label}>

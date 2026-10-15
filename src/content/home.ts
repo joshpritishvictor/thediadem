@@ -127,7 +127,6 @@ export const comparison = {
 export const stats = [
   { value: 100, suffix: '%', label: 'Licensed Alberta Network' },
   { value: 15, suffix: '+', label: 'Years of Collective Experience' },
-  { value: 200, suffix: '+', label: 'Trusted Clients' },
   { value: 4, suffix: '', label: 'Professional Disciplines' },
 ]
 
