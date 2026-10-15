@@ -9,14 +9,27 @@ type Chapter = (typeof whoWeAre.chapters)[number]
 const LINE_START = 0.2
 const STEP = 0.7 // seconds for the line to travel from one chapter to the next
 
-/** `steps` is the track length measured in chapter-to-chapter spacings */
-const track = (axis: 'x' | 'y', steps: number): Variants => ({
-  hidden: axis === 'x' ? { scaleX: 0 } : { scaleY: 0 },
+/** Desktop track; `steps` is its length measured in chapter-to-chapter spacings */
+const track = (steps: number): Variants => ({
+  hidden: { scaleX: 0 },
   visible: {
-    ...(axis === 'x' ? { scaleX: 1 } : { scaleY: 1 }),
+    scaleX: 1,
     transition: { delay: LINE_START, duration: STEP * steps, ease: 'linear' },
   },
 })
+
+/** Phone track: one segment from each marker down to the next, drawn in turn */
+const segment: Variants = {
+  hidden: { scaleY: 0 },
+  visible: (i: number) => ({
+    scaleY: 1,
+    transition: {
+      delay: LINE_START + i * STEP,
+      duration: STEP,
+      ease: 'linear',
+    },
+  }),
+}
 
 // On desktop the chapters mirror the motto line above: the first starts on the
 // left margin, the middle is centred and the last ends on the right margin
@@ -103,26 +116,28 @@ export function StoryTimeline({ chapters }: { chapters: readonly Chapter[] }) {
         className="absolute top-6 right-[2.125rem] left-[2.125rem] hidden h-px bg-ink/10 lg:block"
       >
         <m.div
-          variants={track('x', chapters.length - 1)}
+          variants={track(chapters.length - 1)}
           className="h-full origin-left bg-gold-500"
         />
       </div>
-      {/* Phone track */}
-      <div
-        aria-hidden="true"
-        className="absolute top-6 bottom-6 left-6 w-px bg-ink/10 lg:hidden"
-      >
-        <m.div
-          variants={track('y', chapters.length - 1)}
-          className="h-full w-full origin-top bg-gold-500"
-        />
-      </div>
-
       {chapters.map(({ icon: Icon, chapter, title, body }, i) => (
         <li
           key={title}
           className={`relative pl-20 lg:flex lg:flex-col lg:pl-0 ${desktopAlign(i, chapters.length)}`}
         >
+          {/* Phone line down to the next marker; the last chapter has none */}
+          {i < chapters.length - 1 && (
+            <div
+              aria-hidden="true"
+              className="absolute top-6 left-6 h-[calc(100%+3rem)] w-px bg-ink/10 lg:hidden"
+            >
+              <m.div
+                custom={i}
+                variants={segment}
+                className="size-full origin-top bg-gold-500"
+              />
+            </div>
+          )}
           <m.span
             custom={i}
             variants={marker}

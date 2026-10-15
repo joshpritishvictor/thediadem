@@ -53,7 +53,9 @@ export default function CompareToggle({ columns, rows }: Props) {
                 <m.span
                   layoutId="compare-pill"
                   className={`absolute inset-0 rounded-full ${
-                    option === 'diadem' ? 'bg-teal-900' : 'bg-ink/10'
+                    option === 'diadem'
+                      ? 'bg-teal-900'
+                      : 'bg-card ring-1 ring-gold-500/40'
                   }`}
                   transition={{ type: 'spring', bounce: 0.2, duration: 0.5 }}
                 />
@@ -67,16 +69,16 @@ export default function CompareToggle({ columns, rows }: Props) {
       {/* Cards */}
       <ul
         aria-live="polite"
-        className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5"
+        className="mt-8 grid gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-5"
       >
         {rows.map((row, i) => (
           <li
             key={row.topic}
             style={{ transitionDelay: `${i * 60}ms` }}
-            className={`relative flex min-h-44 flex-col overflow-hidden rounded-3xl border p-6 transition-colors duration-500 ${
+            className={`relative flex flex-col overflow-hidden rounded-3xl border p-5 transition-colors duration-500 sm:min-h-44 sm:p-6 ${
               isDiadem
                 ? 'border-teal-900 bg-teal-900 text-cream shadow-xl shadow-teal-900/20'
-                : 'border-ink/10 bg-white text-ink/75 shadow-lg shadow-ink/5'
+                : 'border-ink/8 bg-card text-ink/75 shadow-sm'
             }`}
           >
             <div className="flex items-center justify-between gap-3">
@@ -108,7 +110,7 @@ export default function CompareToggle({ columns, rows }: Props) {
             <AnimatePresence mode="wait" initial={false}>
               <m.p
                 key={side}
-                className={`mt-4 leading-snug text-pretty ${isDiadem ? 'font-medium' : ''}`}
+                className={`mt-3 leading-snug text-pretty sm:mt-4 ${isDiadem ? 'font-medium' : ''}`}
                 initial={{ opacity: 0, y: 14 }}
                 animate={{
                   opacity: 1,

@@ -54,7 +54,7 @@ export default function ServicesExplorer({
                       ?.scrollIntoView({ behavior: 'smooth', block: 'center' })
                   }}
                   aria-current={current ? 'true' : undefined}
-                  className={`group relative block py-5 transition-all duration-500 ease-out-expo ${
+                  className={`group relative block py-3 transition-all duration-500 ease-out-expo ${
                     current
                       ? 'translate-x-1 opacity-100'
                       : 'opacity-35 hover:translate-x-1 hover:opacity-70'
@@ -62,14 +62,14 @@ export default function ServicesExplorer({
                 >
                   {shortLabel && (
                     <span
-                      className={`block text-xs font-bold tracking-[0.2em] uppercase transition-colors duration-500 ${
+                      className={`block text-[0.65rem] font-bold tracking-[0.18em] uppercase transition-colors duration-500 ${
                         current ? 'text-gold-600' : 'text-ink'
                       }`}
                     >
                       {shortLabel}
                     </span>
                   )}
-                  <span className="mt-1 block text-xl font-medium text-teal-900">
+                  <span className="mt-0.5 block text-[18px] font-medium text-teal-900">
                     {title}
                   </span>
                   {/* Underline that draws in under the active service */}

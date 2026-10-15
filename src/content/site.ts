@@ -1,15 +1,15 @@
 export const site = {
-  name: 'Diadem & Co.',
+  name: 'Diadem',
   legalName: 'Diadem Strategies Incorporated',
   tagline: 'Plan wisely, sow strategically, reap abundantly.',
   description:
-    'Alberta’s integrated professional network. Financial planners, tax strategists, accountants, insurance advisors and lawyers — coordinated through Diadem, working as one for you.',
+    'Alberta’s integrated professional network. Financial planners, tax strategists, accountants, insurance advisors and lawyers, coordinated through Diadem, working as one for you.',
   url: 'https://diademand.co',
   location: 'Calgary, Alberta, Canada',
   contact: {
     phone: '1-587-316-1691',
     phoneHref: 'tel:+15873161691',
-    email: 'contactus@diademand.co',
+    email: 'contactus@diadem.co',
   },
 }
 

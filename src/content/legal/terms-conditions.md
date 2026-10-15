@@ -2,60 +2,60 @@
 title: 'Terms & Conditions'
 ---
 
-Please read these Terms and Conditions carefully before using our website or engaging our services. By accessing our website or booking a consultation, you agree to be bound by these terms. Diadem & Co operates as a client access, coordination, and referral platform. We do not directly provide financial planning, accounting, insurance, or legal services. All such services are delivered by independent, appropriately licensed third-party professionals accessible through our platform.
+Please read these Terms and Conditions carefully before using our website or engaging our services. By accessing our website or booking a consultation, you agree to be bound by these terms. Diadem operates as a client access, coordination, and referral platform. We do not directly provide financial planning, accounting, insurance, or legal services. All such services are delivered by independent, appropriately licensed third-party professionals accessible through our platform.
 
 ## 1\. About Us
 
-These Terms and Conditions govern your use of the Diadem & Co website (www.diademand.co) and the platform services facilitated by Diadem Strategies Incorporated, operating as Diadem & Co, a corporation incorporated under the laws of Alberta, Canada.
+These Terms and Conditions govern your use of the Diadem website (www.diademand.co) and the platform services facilitated by Diadem Strategies Incorporated, operating as Diadem, a corporation incorporated under the laws of Alberta, Canada.
 
-Diadem & Co operates as a client access, coordination, and administrative platform. Diadem Strategies Incorporated does not itself hold licences to practice law, public accounting, financial planning, or insurance brokering as a corporate entity. All regulated professional services made accessible through our platform are provided exclusively by independent, appropriately licensed third-party professionals who maintain their own professional obligations, regulatory compliance, and liability.
+Diadem operates as a client access, coordination, and administrative platform. Diadem Strategies Incorporated does not itself hold licences to practice law, public accounting, financial planning, or insurance brokering as a corporate entity. All regulated professional services made accessible through our platform are provided exclusively by independent, appropriately licensed third-party professionals who maintain their own professional obligations, regulatory compliance, and liability.
 
 **Registered Name:** Diadem Strategies Incorporated  
-**Operating As:** Diadem & Co  
+**Operating As:** Diadem  
 **Location:** Calgary, Alberta, Canada  
-**Email:** contactus@diademand.co  
+**Email:** contactus@diadem.co  
 **Phone:** +1 587-316-1691
 
 ## 2\. Platform Services
 
-Diadem & Co provides a coordinated access platform through which clients may be connected with independent licensed professionals across the following disciplines:
+Diadem provides a coordinated access platform through which clients may be connected with independent licensed professionals across the following disciplines:
 
 - Financial Planning and Advisory
 - Tax Strategy and Accounting
 - Corporate Insurance
 - Legal Services
 
-Diadem Strategies Incorporated’s role is limited to client intake, compatibility assessment, coordination, administration, and facilitation of introductions to independent professionals. Diadem & Co does not directly employ, supervise, or control the professional judgement of any independent licensed professional accessible through its platform.
+Diadem Strategies Incorporated’s role is limited to client intake, compatibility assessment, coordination, administration, and facilitation of introductions to independent professionals. Diadem does not directly employ, supervise, or control the professional judgement of any independent licensed professional accessible through its platform.
 
 The specific terms of any professional engagement, including scope of work, fees, and duties of care, will be set out in a separate client agreement or letter of engagement executed directly between you and the relevant independent licensed professional.
 
 ## 3\. Complimentary Discovery Call
 
-Diadem & Co offers a complimentary 30-minute discovery call to prospective clients. This call is provided at no charge and serves solely as an intake and compatibility assessment — it is designed to help us understand your general needs and determine which independent licensed professional(s) within our network may be suitable to assist you.
+Diadem offers a complimentary 30-minute discovery call to prospective clients. This call is provided at no charge and serves solely as an intake and compatibility assessment; it is designed to help us understand your general needs and determine which independent licensed professional(s) within our network may be suitable to assist you.
 
 The complimentary discovery call does not constitute a formal professional engagement, does not create a client-advisor, client-accountant, client-lawyer, or client-insurer relationship, and does not give rise to any professional duty of care on the part of Diadem Strategies Incorporated or any independent professional. A formal professional relationship is only established upon execution of a separate engagement agreement directly between you and the relevant licensed professional.
 
 No information shared during the discovery call should be relied upon as financial, legal, tax, or insurance advice.
 
-## 4\. No Direct Advisory Relationship with Diadem & Co
+## 4\. No Direct Advisory Relationship with Diadem
 
 Diadem Strategies Incorporated is a coordination and referral platform and does not itself provide financial, legal, tax, or insurance advice. The information on our website, including blog posts, articles, and general content, is provided for general informational and educational purposes only. It does not constitute financial, legal, tax, or insurance advice and should not be relied upon as such.
 
-Any professional advice you receive through introductions facilitated by our platform is provided solely by the independent licensed professional you engage — not by Diadem Strategies Incorporated. Diadem & Co accepts no liability for the professional advice, acts, omissions, or errors of any independent professional accessible through its platform.
+Any professional advice you receive through introductions facilitated by our platform is provided solely by the independent licensed professional you engage, not by Diadem Strategies Incorporated. Diadem accepts no liability for the professional advice, acts, omissions, or errors of any independent professional accessible through its platform.
 
 Always seek the advice of a qualified and licensed professional regarding your specific situation before making any financial, legal, or business decisions.
 
 ## 5\. Client Engagement
 
-Diadem & Co’s role is limited to platform coordination and facilitation. A formal professional engagement for regulated services (financial planning, accounting, insurance, or legal) is only established when:
+Diadem’s role is limited to platform coordination and facilitation. A formal professional engagement for regulated services (financial planning, accounting, insurance, or legal) is only established when:
 
 - A written engagement letter or service agreement has been signed between you and the relevant independent licensed professional
 - The agreed fees or retainer have been received by that independent professional
 - The independent professional has confirmed acceptance of the engagement in writing
 
-Until these conditions are met, no professional duty of care, advisory relationship, solicitor-client relationship, or fiduciary relationship exists — whether with Diadem Strategies Incorporated or with any independent professional introduced through our platform.
+Until these conditions are met, no professional duty of care, advisory relationship, solicitor-client relationship, or fiduciary relationship exists, whether with Diadem Strategies Incorporated or with any independent professional introduced through our platform.
 
-Diadem & Co may execute a separate platform services agreement with you covering coordination, administration, and access fees. Such an agreement governs only the administrative services provided by Diadem Strategies Incorporated and does not create a regulated professional relationship.
+Diadem may execute a separate platform services agreement with you covering coordination, administration, and access fees. Such an agreement governs only the administrative services provided by Diadem Strategies Incorporated and does not create a regulated professional relationship.
 
 ## 6\. Fees and Payment
 
@@ -76,7 +76,7 @@ We use AI-assisted tools including a virtual assistant (Diana) to handle initial
 
 ## 9\. Call Recording
 
-Calls to and from Diadem & Co may be recorded for quality assurance, training, and compliance purposes. You will be notified at the start of any recorded call. By continuing the call after notification, you consent to being recorded.
+Calls to and from Diadem may be recorded for quality assurance, training, and compliance purposes. You will be notified at the start of any recorded call. By continuing the call after notification, you consent to being recorded.
 
 ## 10\. Intellectual Property
 
@@ -119,14 +119,14 @@ If any provision of these Terms is found to be unenforceable or invalid, that pr
 
 ## 18\. Contact Us
 
-### Diadem & Co — Legal
+### Diadem Legal
 
 If you have any questions about these Terms and Conditions, please contact us:
 
 **Diadem Strategies Incorporated**  
-Operating as Diadem & Co  
+Operating as Diadem  
 Calgary, Alberta, Canada
 
-📧 [contactus@diademand.co](mailto:contactus@diademand.co)  
+📧 [contactus@diadem.co](mailto:contactus@diadem.co)  
 📞 [+1 587-316-1691](tel:+15873161691)  
 🌐 [www.diademand.co](https://www.diademand.co)

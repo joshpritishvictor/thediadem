@@ -2,13 +2,6 @@ import { ArrowUpRight, Check } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { servicePath, type Service } from '../content/services'
 
-// Three ticks sit in one row; other counts wrap in two columns
-const columns: Record<number, string> = {
-  1: 'sm:grid-cols-1',
-  2: 'sm:grid-cols-2',
-  3: 'sm:grid-cols-3',
-}
-
 /** Detail panel for one service on /our-services/ */
 export default function ServiceCard({ service }: { service: Service }) {
   const {
@@ -22,7 +15,7 @@ export default function ServiceCard({ service }: { service: Service }) {
   } = service
 
   return (
-    <article className="relative overflow-hidden rounded-3xl border border-ink/8 bg-white p-6 shadow-sm md:p-7">
+    <article className="relative overflow-hidden rounded-3xl border border-ink/8 bg-card p-6 shadow-sm md:p-7">
       {/* Icon, title and badge share one row */}
       <div className="flex items-center gap-4">
         <span className="grid size-12 shrink-0 place-items-center rounded-xl bg-teal-900 text-gold-400">
@@ -30,20 +23,21 @@ export default function ServiceCard({ service }: { service: Service }) {
         </span>
         <h3 className="min-w-0 flex-1 text-2xl font-semibold">{title}</h3>
         {shortLabel && (
-          <span className="hidden shrink-0 rounded-full bg-gold-500/15 px-2.5 py-0.5 text-[0.65rem] leading-tight font-bold tracking-[0.15em] text-gold-600 uppercase sm:block">
+          <span className="hidden shrink-0 rounded-full bg-gold-500/15 px-3 py-0.5 text-xs font-semibold text-gold-600 sm:block">
             {shortLabel}
           </span>
         )}
       </div>
 
-      <p className="mt-4 max-w-2xl leading-relaxed text-ink/65">{summary}</p>
+      <p className="mt-4 leading-relaxed text-ink/65">{summary}</p>
 
       {features.length > 0 && (
-        <ul
-          className={`mt-4 grid gap-x-6 gap-y-2 text-sm ${columns[features.length] ?? 'sm:grid-cols-2'}`}
-        >
+        <ul className="mt-4 flex flex-wrap gap-x-3.5 gap-y-2 text-[12.5px]">
           {features.map((feature) => (
-            <li key={feature} className="flex items-start gap-2">
+            <li
+              key={feature}
+              className="flex items-start gap-1 whitespace-nowrap"
+            >
               <Check size={16} className="mt-0.5 shrink-0 text-gold-600" />
               {feature}
             </li>

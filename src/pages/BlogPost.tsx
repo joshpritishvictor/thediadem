@@ -77,15 +77,15 @@ export default function BlogPost() {
         </nav>
 
         {/* The whole article in one beige card, like the FAQ questions */}
-        <Reveal className="mx-auto mt-6 max-w-4xl">
-          <div className="rounded-3xl border border-ink/8 bg-beige px-6 py-8 md:px-12 md:py-12">
+        <Reveal className="mt-8">
+          <div className="rounded-3xl border border-ink/8 bg-card px-6 py-7 md:px-10 md:py-9">
             <header>
               <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-ink/55">
                 {categories.map((c) => (
                   <Link
                     key={c}
                     to={categoryPath(c)}
-                    className="rounded-full bg-gold-500/15 px-3 py-1 text-xs font-semibold text-gold-600 hover:bg-gold-500/25"
+                    className="rounded-full bg-gold-500/15 px-3 py-0.5 text-xs font-semibold text-gold-600 hover:bg-gold-500/25"
                   >
                     {c}
                   </Link>
@@ -95,12 +95,12 @@ export default function BlogPost() {
                   <Clock size={14} /> {readingMinutes} min read
                 </span>
               </div>
-              <h1 className="mt-5 text-3xl leading-tight font-bold md:text-4xl">
+              <h1 className="mt-3 text-2xl leading-tight font-bold md:text-[1.6rem]">
                 {title}
               </h1>
             </header>
 
-            <div className="mt-8 border-t border-ink/8 pt-8">
+            <div className="mt-5">
               <Suspense fallback={<div className="min-h-96" />}>
                 <Prose html={loadPostHtml(slug)} />
               </Suspense>
@@ -110,7 +110,7 @@ export default function BlogPost() {
       </article>
 
       {related.length > 0 && (
-        <section className="bg-white/50 section-y">
+        <section className="section-y">
           <div className="container-page">
             <h2 className="text-3xl font-bold">Keep reading</h2>
             <Reveal

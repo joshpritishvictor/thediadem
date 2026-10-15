@@ -22,7 +22,7 @@ export default function SectionHeading({
 }: SectionHeadingProps) {
   return (
     <Reveal
-      className={`max-w-2xl ${align === 'center' ? 'mx-auto text-center' : ''} ${className}`}
+      className={`${align === 'center' ? 'mx-auto text-center' : ''} ${className}`}
     >
       {eyebrow && (
         <p

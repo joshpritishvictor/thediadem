@@ -60,7 +60,7 @@ export default function Footer() {
       </div>
 
       <div className="relative border-t border-cream/10">
-        <div className="container-page flex flex-wrap justify-between gap-4 py-4 text-xs text-cream/50">
+        <div className="container-page flex flex-wrap justify-between gap-4 py-4 text-xs text-cream/50 max-sm:pb-24">
           <p>
             &copy; {new Date().getFullYear()} {site.legalName}, operating as{' '}
             {site.name}

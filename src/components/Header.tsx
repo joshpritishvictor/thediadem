@@ -47,10 +47,10 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-out-expo ${
+      className={`fixed inset-x-0 top-0 z-50 border-b transition-[padding,background-color,border-color,box-shadow,backdrop-filter] duration-500 ease-out-expo ${
         scrolled || menuOpen
-          ? 'border-b border-ink/5 bg-cream/85 py-2 shadow-sm backdrop-blur-xl'
-          : 'bg-transparent py-4'
+          ? `border-ink/5 py-2 shadow-sm backdrop-blur-xl ${menuOpen ? 'bg-cream' : 'bg-cream/85'}`
+          : 'border-transparent bg-cream/0 py-4 shadow-none backdrop-blur-none'
       }`}
     >
       <div className="container-page flex items-center justify-between gap-6">
