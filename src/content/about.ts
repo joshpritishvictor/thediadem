@@ -75,7 +75,7 @@ export const about = {
     people: [
       {
         name: 'Wankel Garingalao',
-        credentials: 'CPA, CFP, HLLQP',
+        credentials: 'CPA, HLLQP',
         photo: wankelImg,
         initials: 'WG',
         role: 'Head of Accounting & Business Strategy',
