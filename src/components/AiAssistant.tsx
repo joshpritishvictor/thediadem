@@ -14,7 +14,7 @@ const endpoint = import.meta.env.VITE_ASSISTANT_ENDPOINT
 
 const welcome: Message = {
   from: 'bot',
-  text: 'Hi, I’m Dia, Diadem’s assistant. Ask me about our services or how we work, and I’ll point you in the right direction.',
+  text: 'Hi, I’m Crest, Diadem’s assistant. Ask me about our services or how we work, and I’ll point you in the right direction.',
 }
 
 const suggestions = [
@@ -92,8 +92,8 @@ export default function AiAssistant() {
         {open && (
           <m.section
             role="dialog"
-            aria-label="Dia, Diadem assistant"
-            className="absolute right-0 bottom-[4rem] flex h-[40rem] max-h-[calc(100svh-11.5rem)] w-[calc(100vw-2rem)] max-w-sm origin-bottom-right flex-col overflow-hidden rounded-3xl border border-gold-500/30 bg-card shadow-2xl shadow-teal-900/25 sm:max-w-md"
+            aria-label="Crest, Diadem assistant"
+            className="absolute right-0 bottom-0 flex h-[48rem] max-h-[calc(100svh-7rem)] w-[calc(100vw-2rem)] max-w-sm origin-bottom-right flex-col overflow-hidden rounded-3xl border border-gold-500/30 bg-card shadow-2xl shadow-teal-900/25 sm:max-w-md"
             initial={{ opacity: 0, scale: 0.85, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.85, y: 20 }}
@@ -104,11 +104,7 @@ export default function AiAssistant() {
                 <Sparkles size={20} />
               </span>
               <div className="min-w-0 flex-1">
-                <p className="font-semibold">Dia</p>
-                <p className="flex items-center gap-1.5 text-xs text-cream/70">
-                  <span className="size-1.5 rounded-full bg-gold-400" />
-                  Here to help
-                </p>
+                <p className="font-semibold text-gold-300">Crest</p>
               </div>
               <button
                 type="button"
@@ -195,7 +191,7 @@ export default function AiAssistant() {
               onSubmit={onSubmit}
               className="border-t border-gold-500/30 bg-card p-3"
             >
-              <div className="flex items-center gap-2 rounded-full border border-gold-500/40 bg-beige py-1 pr-1 pl-4 focus-within:border-gold-500 focus-within:ring-4 focus-within:ring-gold-500/15">
+              <div className="flex items-center gap-2 rounded-full border border-gold-500/40 bg-beige py-1 pr-1 pl-4">
                 <input
                   ref={input}
                   value={draft}
@@ -222,39 +218,25 @@ export default function AiAssistant() {
         )}
       </AnimatePresence>
 
-      <m.button
-        type="button"
-        onClick={() => setOpen((o) => !o)}
-        aria-label={open ? 'Close assistant' : 'Chat with Dia'}
-        aria-expanded={open}
-        className="group relative grid size-12 place-items-center rounded-full bg-teal-900 text-gold-400 shadow-xl shadow-teal-900/30 transition-colors hover:bg-teal-800"
-        whileHover={{ scale: 1.08 }}
-        whileTap={{ scale: 0.94 }}
-      >
-        {!open && (
+      {!open && (
+        <m.button
+          type="button"
+          onClick={() => setOpen(true)}
+          aria-label="Chat with Crest"
+          className="group relative grid size-12 place-items-center rounded-full bg-teal-900 text-gold-400 shadow-xl shadow-teal-900/30 transition-colors hover:bg-teal-800"
+          whileHover={{ scale: 1.08 }}
+          whileTap={{ scale: 0.94 }}
+        >
           <span
             aria-hidden="true"
             className="absolute inset-0 animate-ping rounded-full border border-gold-500/60 [animation-duration:2.8s]"
           />
-        )}
-        <AnimatePresence mode="wait" initial={false}>
-          <m.span
-            key={open ? 'close' : 'open'}
-            initial={{ opacity: 0, rotate: -60, scale: 0.6 }}
-            animate={{ opacity: 1, rotate: 0, scale: 1 }}
-            exit={{ opacity: 0, rotate: 60, scale: 0.6 }}
-            transition={{ duration: 0.2 }}
-            className="relative"
-          >
-            {open ? <X size={20} /> : <Sparkles size={21} />}
-          </m.span>
-        </AnimatePresence>
-        {!open && (
-          <span className="pointer-events-none absolute right-full mr-3 hidden rounded-full bg-teal-900 px-3 py-1.5 text-xs font-semibold whitespace-nowrap text-cream opacity-0 shadow-lg transition group-hover:opacity-100 lg:block">
-            Ask Dia
+          <Sparkles size={21} className="relative" />
+          <span className="pointer-events-none absolute right-full mr-3 hidden rounded-full bg-teal-900 px-3 py-1.5 text-xs font-semibold whitespace-nowrap text-gold-300 opacity-0 shadow-lg transition group-hover:opacity-100 lg:block">
+            Ask Crest
           </span>
-        )}
-      </m.button>
+        </m.button>
+      )}
     </div>
   )
 }

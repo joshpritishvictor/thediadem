@@ -20,7 +20,7 @@ export default function Faq() {
         {/* Same heading style as the other pages: gold, capitals, centred */}
         <Reveal className="mb-8 text-center">
           <h2 className="font-sans eyebrow text-base! font-bold md:text-xl!">
-            {faqPage.heading}
+            {faqPage.tagline}
           </h2>
         </Reveal>
 

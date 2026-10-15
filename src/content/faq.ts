@@ -3,6 +3,8 @@ import type { Faq } from './services'
 export const faqPage = {
   eyebrow: 'FAQs',
   heading: 'Frequently Asked Questions',
+  // The gold line above the questions
+  tagline: 'Straight Answers for Confident Decisions',
 }
 
 export const faqs: Faq[] = [
