@@ -28,7 +28,7 @@ With the Tax on Split Income (TOSI) rules, income splitting is heavily restricte
 
 For business owners planning an eventual sale, a family trust can be an effective vehicle for multiplying the Lifetime Capital Gains Exemption (LCGE).
 
-Each eligible Canadian individual has an LCGE limit for qualifying small business shares. By holding corporate shares within a discretionary trust, the capital gains realized on a business sale can potentially be allocated among multiple family beneficiaries—allowing each to utilize their personal exemption when structured correctly by independent legal and tax advisors.
+Each eligible Canadian individual has an LCGE limit for qualifying small business shares. By holding corporate shares within a discretionary trust, the capital gains realized on a business sale can potentially be allocated among multiple family beneficiaries, allowing each to utilize their personal exemption when structured correctly by independent legal and tax advisors.
 
 ## Navigating the 21-Year Rule
 

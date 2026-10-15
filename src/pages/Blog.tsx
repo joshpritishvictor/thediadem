@@ -32,7 +32,7 @@ export default function Blog() {
     <>
       <Seo
         title={category ? `${category.name} Articles` : insights.heading}
-        description={`${insights.heading} from ${site.name} — practical guidance for Alberta business owners, incorporated professionals and families.`}
+        description={`${insights.heading} from ${site.name}: practical guidance for Alberta business owners, incorporated professionals and families.`}
       />
       <PageHero
         title={title}
@@ -48,7 +48,7 @@ export default function Blog() {
 
           <nav
             aria-label="Categories"
-            className="mt-8 flex flex-wrap gap-2 border-b border-ink/8 pb-8"
+            className="mt-8 flex flex-col items-center gap-2 border-b border-ink/8 pb-8 sm:flex-row sm:flex-wrap sm:justify-center"
           >
             <FilterLink to="/blog/" active={!category}>
               All articles
@@ -75,7 +75,7 @@ export default function Blog() {
           <Reveal
             key={category?.slug ?? 'all'}
             staggerChildren={0.06}
-            className="mt-6 divide-y divide-ink/8 overflow-hidden rounded-3xl border border-ink/8 bg-white"
+            className="mt-6 divide-y divide-ink/8 overflow-hidden rounded-3xl border border-ink/8 bg-card"
           >
             {rest.map((post) => (
               <RevealItem key={post.slug}>
@@ -97,7 +97,7 @@ function Featured({ post }: { post: Post }) {
       className="group relative block overflow-hidden rounded-3xl bg-teal-900 px-6 py-6 text-cream transition duration-500 ease-out-expo hover:shadow-2xl hover:shadow-teal-900/20 md:px-8"
     >
       <div className="flex flex-wrap items-center gap-3 text-xs font-semibold tracking-[0.18em] uppercase">
-        <span className="rounded-full bg-gold-500 px-3 py-1 text-teal-950">
+        <span className="rounded-full bg-gold-500 px-3 py-0.5 text-teal-950">
           Latest
         </span>
         {post.categories[0] && (
@@ -132,7 +132,7 @@ function Row({ post }: { post: Post }) {
   return (
     <Link
       to={postPath(post.slug)}
-      className="group grid grid-cols-[1fr_auto] items-center gap-5 px-6 py-5 transition-colors hover:bg-beige/50 md:gap-8 md:px-8"
+      className="group grid grid-cols-[1fr_auto] items-center gap-5 px-6 py-5 transition-colors hover:bg-white/50 md:gap-8 md:px-8"
     >
       <div className="min-w-0">
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-ink/50">
@@ -174,10 +174,10 @@ function FilterLink({
     <Link
       to={to}
       aria-current={active ? 'page' : undefined}
-      className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+      className={`w-full max-w-xs rounded-full px-3.5 py-1.5 text-center text-sm font-medium transition-colors sm:w-auto sm:max-w-none sm:py-1 ${
         active
           ? 'bg-teal-900 text-cream'
-          : 'bg-white text-ink/70 ring-1 ring-ink/10 hover:text-ink hover:ring-ink/25'
+          : 'bg-card text-ink/70 ring-1 ring-gold-500/30 hover:text-ink hover:ring-gold-500'
       }`}
     >
       {children}

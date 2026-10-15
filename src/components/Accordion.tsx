@@ -6,7 +6,7 @@ import { easeOutExpo } from '../lib/motion'
 
 type AccordionProps = {
   items: Faq[]
-  /** Index open on first render; -1 for none */
+  /** Index open on first render; none by default */
   defaultOpen?: number
   light?: boolean
   /** Background of the box; beige sits on the page background used by the service pages */
@@ -15,7 +15,7 @@ type AccordionProps = {
 
 export default function Accordion({
   items,
-  defaultOpen = 0,
+  defaultOpen = -1,
   light = false,
   surface = 'white',
 }: AccordionProps) {
@@ -27,7 +27,7 @@ export default function Accordion({
       className={`divide-y rounded-3xl border ${
         light
           ? 'divide-cream/10 border-cream/10 bg-cream/5'
-          : `divide-ink/8 border-ink/8 ${surface === 'beige' ? 'bg-beige' : 'bg-white'}`
+          : `divide-ink/8 border-ink/8 ${surface === 'beige' ? 'bg-card' : 'bg-white'}`
       }`}
     >
       {items.map(({ question, answer }, i) => {

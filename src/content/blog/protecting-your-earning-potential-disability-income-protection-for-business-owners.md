@@ -8,7 +8,7 @@ image: disability-income-protection.webp
 
 Consider this, a 35-year-old has a significantly higher probability of experiencing an extended disability before age 65 than passing away during the same period. Yet, while life insurance often gets immediate attention, disability and income protection planning is frequently overlooked by business owners and incorporated professionals.
 
-For entrepreneurs, an unexpected injury or illness doesn’t just affect personal living expenses — it directly impacts corporate cash flow, payroll, and business continuity.
+For entrepreneurs, an unexpected injury or illness doesn’t just affect personal living expenses; it directly impacts corporate cash flow, payroll, and business continuity.
 
 ## Understanding the Income Replacement Gap
 
@@ -27,7 +27,7 @@ Business Overhead Expense (BOE) insurance is designed specifically to cover ongo
 
 “Own-Occupation” vs. “Any-Occupation” Definitions
 
-- Own-Occupation: Pays full benefits if you are unable to perform the substantial duties of your specific profession or specialty — even if you are physically capable of working in another occupation or role.
+- Own-Occupation: Pays full benefits if you are unable to perform the substantial duties of your specific profession or specialty, even if you are physically capable of working in another occupation or role.
 - Any-Occupation: Requires you to be unable to work in any occupation for which you are reasonably suited by education, training, or experience.
 
 Specialized professionals, corporate executives, and business owners should evaluate “Own-Occupation” riders carefully alongside a licensed insurance broker to protect their specific technical expertise and earning power.

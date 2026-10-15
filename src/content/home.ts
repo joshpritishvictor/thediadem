@@ -11,7 +11,7 @@ import {
 export const hero = {
   eyebrow: 'Alberta’s Integrated Professional Network',
   headline: ['One Team.', 'One Goal.'],
-  body: 'A team of Financial Planners, Tax Strategists, Insurance Advisors, and Lawyers — coordinated through Diadem, working as one for you.',
+  body: 'A team of Financial Planners, Tax Strategists, Insurance Advisors, and Lawyers, coordinated through Diadem, working as one for you.',
 }
 
 // The hero carousel (see HeroCarousel)
@@ -19,7 +19,7 @@ export const heroSlides = [
   {
     audience: 'Business Owners & Investors',
     headline: 'Are you aware of all your options?',
-    body: 'Did you know insurance and investments can work together? It builds cash value you and your family can use in your lifetime, while keeping your tax bill low.',
+    body: 'Did you know insurance and investments can work together?',
     quote: 'Why hasn’t anyone shown me this before?',
     attribution: 'The question we hear most',
     closer: 'Most people are never shown this.\nWe make sure you are.',
@@ -37,8 +37,8 @@ export const heroSlides = [
   },
   {
     audience: 'The Surprise Bill',
-    headline: '$30K bill. Credit card at 20–30% interest?',
-    body: 'With the right policy, you may be able to borrow against it at a much lower interest rate without putting growth on hold, or simply use the cash value directly.',
+    headline: '$50K bill? Credit card at 20–30% interest?',
+    body: 'Cards and loans are the usual fix, but a coordinated plan can be smarter.',
     quote: 'I just put it on the card. What else was I supposed to do?',
     attribution: 'The cost of advisors who never talk',
     closer:

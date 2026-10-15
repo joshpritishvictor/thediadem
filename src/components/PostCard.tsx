@@ -9,7 +9,7 @@ export default function PostCard({ post }: { post: Post }) {
   return (
     <Link
       to={postPath(slug)}
-      className="group flex h-full flex-col rounded-3xl border border-ink/8 bg-white p-7 shadow-sm transition duration-500 ease-out-expo hover:-translate-y-1 hover:shadow-xl hover:shadow-teal-900/10"
+      className="group flex h-full flex-col rounded-3xl border border-ink/8 bg-card p-7 shadow-sm transition duration-500 ease-out-expo hover:-translate-y-1 hover:shadow-xl hover:shadow-teal-900/10"
     >
       <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-ink/50">
         {categories[0] && (

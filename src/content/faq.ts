@@ -10,7 +10,7 @@ export const faqs: Faq[] = [
     question:
       'What makes your approach different from a standard financial advisor?',
     answer:
-      'Standard advisors typically focus on investment selection alone. We take a different approach — connecting you with a network of professionals across accounting, insurance, financial advisory, and legal, so your financial decisions aren’t made in isolation from each other.',
+      'Standard advisors typically focus on investment selection alone. We take a different approach, connecting you with a network of professionals across accounting, insurance, financial advisory, and legal, so your financial decisions aren’t made in isolation from each other.',
   },
   {
     question:
@@ -36,7 +36,7 @@ export const faqs: Faq[] = [
   {
     question: 'Do you sell proprietary investment products?',
     answer:
-      'No. Diadem & Co. is an independent access and coordination platform, not a product manufacturer. When investment or insurance needs arise, we match you with licensed, independent advisors and brokers who recommend products and solutions tailored to your unique situation.',
+      'No. Diadem is an independent access and coordination platform, not a product manufacturer. When investment or insurance needs arise, we match you with licensed, independent advisors and brokers who recommend products and solutions tailored to your unique situation.',
   },
   {
     question: 'How often will we meet once I become a client?',

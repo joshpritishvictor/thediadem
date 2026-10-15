@@ -2,19 +2,19 @@
 title: 'Privacy Policy'
 ---
 
-This Privacy Policy explains how Diadem Strategies Incorporated, operating as Diadem & Co (“we”, “us”, “our”), collects, uses, and protects your personal information in accordance with the Personal Information Protection and Electronic Documents Act (PIPEDA) and Alberta’s Personal Information Protection Act (PIPA). Diadem & Co operates as a client access, coordination, and referral platform connecting individuals and corporations with independent licensed professionals. This policy governs all information collected through our platform, website, and communications.
+This Privacy Policy explains how Diadem Strategies Incorporated, operating as Diadem (“we”, “us”, “our”), collects, uses, and protects your personal information in accordance with the Personal Information Protection and Electronic Documents Act (PIPEDA) and Alberta’s Personal Information Protection Act (PIPA). Diadem operates as a client access, coordination, and referral platform connecting individuals and corporations with independent licensed professionals. This policy governs all information collected through our platform, website, and communications.
 
 ## 1\. Who We Are
 
-Diadem Strategies Incorporated (operating as Diadem & Co) is a client access, coordination, and administrative platform incorporated in Alberta, Canada. Diadem & Co does not directly provide financial planning, accounting, insurance brokering, or legal services. Rather, we operate as an intake, coordination, and referral platform that connects individuals and corporations with independent, licensed professionals across those regulated disciplines.
+Diadem Strategies Incorporated (operating as Diadem) is a client access, coordination, and administrative platform incorporated in Alberta, Canada. Diadem does not directly provide financial planning, accounting, insurance brokering, or legal services. Rather, we operate as an intake, coordination, and referral platform that connects individuals and corporations with independent, licensed professionals across those regulated disciplines.
 
-All financial planning, tax strategy, accounting, corporate insurance, and legal services accessed through the Diadem & Co platform are delivered by independent, appropriately licensed third-party professionals. Diadem Strategies Incorporated is responsible solely for client intake, coordination, administration, and facilitation of those professional relationships.
+All financial planning, tax strategy, accounting, corporate insurance, and legal services accessed through the Diadem platform are delivered by independent, appropriately licensed third-party professionals. Diadem Strategies Incorporated is responsible solely for client intake, coordination, administration, and facilitation of those professional relationships.
 
 **Registered Name:** Diadem Strategies Incorporated  
-**Operating As:** Diadem & Co  
+**Operating As:** Diadem  
 **Location:** Calgary, Alberta, Canada  
 **Website:** www.diademand.co  
-**Email:** contactus@diademand.co  
+**Email:** contactus@diadem.co  
 **Phone:** +1 587-316-1691
 
 ## 2\. Information We Collect
@@ -60,25 +60,25 @@ We use your personal information to:
 
 We collect and process your personal information on the following grounds:
 
-- **Consent** — where you have given us explicit permission
-- **Contract** — where processing is necessary to provide our services
-- **Legal obligation** — where we are required by law
-- **Legitimate interests** — where we have a valid business reason that does not override your rights
+- **Consent**: where you have given us explicit permission
+- **Contract**: where processing is necessary to provide our services
+- **Legal obligation**: where we are required by law
+- **Legitimate interests**: where we have a valid business reason that does not override your rights
 
 ## 5\. How We Share Your Information
 
 We do not sell your personal information. We may share your information with:
 
-- **Independent licensed professionals** — where you have requested or consented to a referral, we may share your contact information and intake details with independent, licensed accountants, financial advisors, insurance agents, or lawyers for the sole purpose of evaluating service compatibility and coordinating the requested professional referral. This sharing occurs only to the extent necessary to facilitate your requested service connection and in accordance with your consent under PIPEDA and Alberta’s PIPA.
-- **Technology providers** — including CRM, email, and communication platforms (such as GoHighLevel, Google Workspace) under strict data processing agreements that prohibit secondary use of your data
-- **Regulatory bodies** — where required by law or professional obligation
-- **Legal authorities** — where required by court order or applicable law
+- **Independent licensed professionals**: where you have requested or consented to a referral, we may share your contact information and intake details with independent, licensed accountants, financial advisors, insurance agents, or lawyers for the sole purpose of evaluating service compatibility and coordinating the requested professional referral. This sharing occurs only to the extent necessary to facilitate your requested service connection and in accordance with your consent under PIPEDA and Alberta’s PIPA.
+- **Technology providers**: including CRM, email, and communication platforms (such as GoHighLevel, Google Workspace) under strict data processing agreements that prohibit secondary use of your data
+- **Regulatory bodies**: where required by law or professional obligation
+- **Legal authorities**: where required by court order or applicable law
 
 All third parties with whom we share data are contractually required to handle your information securely and in accordance with applicable Canadian privacy laws. We do not share your information with independent professionals for any purpose beyond evaluating and coordinating your requested service referral without your explicit consent.
 
 ## 6\. Call Recording Notice
 
-Calls to and from Diadem & Co may be recorded for quality assurance, training, and compliance purposes. You will be informed at the start of any recorded call. Call recordings are stored securely and accessed only by authorised personnel. Recordings are retained for a maximum of 12 months unless required longer for legal or regulatory purposes.
+Calls to and from Diadem may be recorded for quality assurance, training, and compliance purposes. You will be informed at the start of any recorded call. Call recordings are stored securely and accessed only by authorised personnel. Recordings are retained for a maximum of 12 months unless required longer for legal or regulatory purposes.
 
 ## 7\. AI-Assisted Communication
 
@@ -98,12 +98,12 @@ When your information is no longer needed, we securely delete or anonymise it.
 
 Under PIPEDA and PIPA, you have the right to:
 
-- **Access** — request a copy of the personal information we hold about you
-- **Correction** — request correction of inaccurate or incomplete information
-- **Withdrawal of consent** — withdraw consent to processing at any time
-- **Complaint** — file a complaint with the Office of the Privacy Commissioner of Canada
+- **Access**: request a copy of the personal information we hold about you
+- **Correction**: request correction of inaccurate or incomplete information
+- **Withdrawal of consent**: withdraw consent to processing at any time
+- **Complaint**: file a complaint with the Office of the Privacy Commissioner of Canada
 
-To exercise any of these rights, please contact us at contactus@diademand.co.
+To exercise any of these rights, please contact us at contactus@diadem.co.
 
 ## 10\. Marketing Communications
 
@@ -131,14 +131,14 @@ We may update this Privacy Policy from time to time. We will notify you of signi
 
 ## 16\. Contact Us
 
-### Privacy Officer — Diadem & Co
+### Privacy Officer, Diadem
 
 If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:
 
 **Diadem Strategies Incorporated**  
-Operating as Diadem & Co  
+Operating as Diadem  
 Calgary, Alberta, Canada
 
-📧 [contactus@diademand.co](mailto:contactus@diademand.co)  
+📧 [contactus@diadem.co](mailto:contactus@diadem.co)  
 📞 [+1 587-316-1691](tel:+15873161691)  
 🌐 [www.diademand.co](https://www.diademand.co)

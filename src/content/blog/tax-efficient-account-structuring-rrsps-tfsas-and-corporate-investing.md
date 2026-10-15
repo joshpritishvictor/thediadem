@@ -1,12 +1,12 @@
 ---
 title: 'Tax-Efficient Account Structuring: RRSPs, TFSAs, and Corporate Investing'
 date: 2026-06-23T18:10:03-06:00
-excerpt: 'Where you hold your investments can impact your long-term wealth accumulation almost as much as what you invest in. Utilizing the right account structures allows you to manage tax exposure each year—compounding your capital more effectively over a lifetime.'
+excerpt: 'Where you hold your investments can impact your long-term wealth accumulation almost as much as what you invest in. Utilizing the right account structures allows you to manage tax exposure each year, compounding your capital more effectively over a lifetime.'
 categories: ['Financial Advisory & Corporate Planning']
 image: tax-efficient-accounts.webp
 ---
 
-Where you hold your investments can impact your long-term wealth accumulation almost as much as what you invest in. Utilizing the right account structures allows you to manage tax exposure each year—compounding your capital more effectively over a lifetime.
+Where you hold your investments can impact your long-term wealth accumulation almost as much as what you invest in. Utilizing the right account structures allows you to manage tax exposure each year, compounding your capital more effectively over a lifetime.
 
 For business owners and high-income earners, deciding how to allocate funds between personal registered accounts and corporate holding structures requires ongoing coordination between your accountant and financial planner.
 
@@ -39,7 +39,7 @@ Navigating these passive income limits requires strategic distribution modeling 
 
 An effective tax strategy rarely relies on a single account type. Building a cohesive plan typically involves structuring contributions across TFSAs, RRSPs, and corporate investment accounts in a specific sequence that reflects your cash flow needs and long-term targets.
 
-These decisions benefit from coordination between your CPA, corporate advisor, and financial planner—each account plays a different role in the overall picture.
+These decisions benefit from coordination between your CPA, corporate advisor, and financial planner; each account plays a different role in the overall picture.
 
 ## Review Your Account Structure
 

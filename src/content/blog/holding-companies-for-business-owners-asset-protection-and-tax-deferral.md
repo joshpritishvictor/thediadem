@@ -12,7 +12,7 @@ Evaluating whether a holding company aligns with your financial goals requires a
 
 ## What Is a Holding Company?
 
-A holding company is a corporate entity created to own assets—such as shares in an operating company (opco), real estate, investments, or intellectual property—rather than engaging directly in day-to-day commercial operations.
+A holding company is a corporate entity created to own assets, such as shares in an operating company (opco), real estate, investments, or intellectual property, rather than engaging directly in day-to-day commercial operations.
 
 Instead of retaining surplus capital inside your active operating company, excess profits can be transferred up to the holdco through inter-corporate dividends.
 

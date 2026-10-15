@@ -107,7 +107,7 @@ export default function HeroCarousel({ slides }: { slides: readonly Slide[] }) {
               style={{
                 transform: `translateX(calc(${offset} * (100% + 2.5rem) + ${dragX ?? 0}px))`,
               }}
-              className={`col-start-1 row-start-1 self-center ${
+              className={`col-start-1 row-start-1 self-center text-center sm:text-left ${
                 dragging ? '' : 'transition duration-700 ease-out-expo'
               } ${active || incoming ? 'opacity-100' : 'pointer-events-none opacity-0'}`}
             >
@@ -116,16 +116,16 @@ export default function HeroCarousel({ slides }: { slides: readonly Slide[] }) {
                 {slide.headline}
               </h2>
               <p className="mt-3 text-pretty text-ink/75">{slide.body}</p>
-              <blockquote className="mt-5 flex gap-3 border-l-2 border-gold-500 pl-4 text-ink/90 italic">
+              <blockquote className="mt-5 flex flex-col items-center gap-2 text-ink/90 italic sm:flex-row sm:items-start sm:gap-3 sm:border-l-2 sm:border-gold-500 sm:pl-4">
                 <Quote
                   size={16}
-                  className="mt-1 shrink-0 rotate-180 text-gold-600"
+                  className="shrink-0 rotate-180 text-gold-600 sm:mt-1"
                   aria-hidden="true"
                 />
                 <span className="text-balance">
                   {slide.quote}
                   <cite className="mt-1 block text-xs font-semibold tracking-wide text-ink/60 not-italic">
-                    — {slide.attribution}
+                    {slide.attribution}
                   </cite>
                 </span>
               </blockquote>

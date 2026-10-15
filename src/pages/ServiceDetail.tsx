@@ -33,15 +33,13 @@ export default function ServiceDetail() {
         compact
       />
 
-      <section className="container-page pt-8 section-b">
+      <section className="container-page pt-6 section-b">
         {/* Same style as the home page headings: gold, capitals, 20px, one line, centred */}
         <Reveal className="text-center">
           <h2 className="font-sans eyebrow text-base! font-bold md:text-xl! md:whitespace-nowrap">
             {intro.heading}
           </h2>
-          <p className="mx-auto mt-5 max-w-3xl text-lg text-ink/65">
-            {intro.body}
-          </p>
+          <p className="mt-5 text-lg text-ink/65">{intro.body}</p>
         </Reveal>
 
         <div className="mt-12 grid items-start gap-8 lg:grid-cols-2">
@@ -71,7 +69,7 @@ export default function ServiceDetail() {
       </section>
 
       {faqs.length > 0 && (
-        <section className="bg-white/50 section-y">
+        <section className="section-y">
           <div className="container-page grid gap-12 lg:grid-cols-[1fr_1.5fr]">
             <SectionHeading
               eyebrow="FAQs"
@@ -79,13 +77,14 @@ export default function ServiceDetail() {
               className="lg:sticky lg:top-32 lg:self-start"
             />
             <Reveal>
-              <Accordion surface="beige" items={faqs} />
+              <Accordion surface="beige" items={faqs} defaultOpen={-1} />
             </Reveal>
           </div>
         </section>
       )}
 
       <CtaBanner
+        service={title}
         heading={closing.heading}
         body={closing.body}
         cta={closing.cta}

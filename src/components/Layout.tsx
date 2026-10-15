@@ -3,6 +3,7 @@ import { Suspense, useEffect } from 'react'
 import { useLocation, useOutlet } from 'react-router-dom'
 import { easeOutExpo } from '../lib/motion'
 import { preloadRoute } from '../routes'
+import AiAssistant from './AiAssistant'
 import Footer from './Footer'
 import Header from './Header'
 
@@ -98,6 +99,7 @@ export default function Layout() {
       </Suspense>
 
       <Footer />
+      <AiAssistant />
     </div>
   )
 }

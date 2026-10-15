@@ -198,7 +198,7 @@ function WhoWeAre() {
 
 function Comparison() {
   return (
-    <section className="section-screen bg-beige">
+    <section className="section-screen">
       <div className="container-page">
         <Reveal>
           <h2 className="text-center font-sans eyebrow text-base! font-bold md:text-xl!">

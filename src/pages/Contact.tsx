@@ -1,8 +1,6 @@
-import { CalendarDays } from 'lucide-react'
-import { useState } from 'react'
 import ContactForm from '../components/ContactForm'
 import PageHero from '../components/PageHero'
-import Reveal, { RevealItem } from '../components/Reveal'
+import Reveal from '../components/Reveal'
 import Seo from '../components/Seo'
 import { contactForm, contactPage } from '../content/contact'
 
@@ -10,86 +8,60 @@ export default function Contact() {
   return (
     <>
       <Seo title="Contact Us" description={contactPage.body} />
-      <PageHero
-        eyebrow={contactPage.eyebrow}
-        title={contactPage.heading}
-        description={contactPage.body}
-      />
+      <PageHero title="Contact Us" compact />
 
-      <section className="container-page section-b">
-        <div className="grid gap-10 lg:grid-cols-[1fr_1.6fr]">
-          <Reveal staggerChildren={0.08} className="space-y-4">
+      <section className="container-page pt-6 section-b">
+        {/* Same heading style as the other pages: gold, capitals, centred */}
+        <Reveal className="mb-8 text-center">
+          <h2 className="font-sans eyebrow text-base! font-bold md:text-xl!">
+            {contactPage.heading}
+          </h2>
+          <p className="mt-2 text-sm font-semibold text-ink/60">
+            {contactPage.body}
+          </p>
+        </Reveal>
+
+        {/* One slim strip of four contact facts, above the form */}
+        <Reveal>
+          <ul className="grid divide-y divide-ink/8 overflow-hidden rounded-3xl border border-ink/8 bg-card shadow-sm sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4 lg:divide-x">
             {contactPage.details.map(({ icon: Icon, title, body, href }) => (
-              <RevealItem key={title}>
-                <div className="flex gap-4 rounded-3xl border border-ink/8 bg-white p-6">
-                  <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-teal-900 text-gold-400">
-                    <Icon size={22} />
-                  </span>
-                  <div>
-                    <h2 className="font-semibold">{title}</h2>
-                    {href ? (
-                      <a href={href} className="text-teal-800 hover:underline">
-                        {body}
-                      </a>
-                    ) : (
-                      <p className="text-ink/65">{body}</p>
-                    )}
-                  </div>
+              <li key={title} className="flex items-center gap-3 px-5 py-4">
+                <span className="grid size-11 shrink-0 place-items-center rounded-full bg-teal-900 text-gold-300 ring-4 ring-gold-500/20">
+                  <Icon size={20} />
+                </span>
+                <div className="min-w-0">
+                  <h2 className="text-[0.65rem] font-bold tracking-[0.18em] text-gold-600 uppercase">
+                    {title}
+                  </h2>
+                  {href ? (
+                    <a
+                      href={href}
+                      className="block text-sm font-semibold text-teal-900 hover:underline"
+                    >
+                      {body}
+                    </a>
+                  ) : (
+                    <p className="text-sm font-semibold text-teal-900">
+                      {body}
+                    </p>
+                  )}
                 </div>
-              </RevealItem>
+              </li>
             ))}
-            <RevealItem>
-              <p className="px-2 text-xs text-ink/50">
-                {contactPage.privacyNote}
-              </p>
-            </RevealItem>
-          </Reveal>
+          </ul>
+        </Reveal>
 
-          <Reveal delay={0.1}>
-            <div className="rounded-[2rem] border border-ink/8 bg-white p-6 shadow-xl shadow-teal-900/5 sm:p-10">
-              <h2 className="text-3xl font-bold">{contactForm.heading}</h2>
-              <div className="mt-8">
-                <ContactForm />
-              </div>
+        <Reveal delay={0.1} className="mt-6">
+          <div className="rounded-3xl bg-teal-900 p-6 text-cream shadow-sm sm:p-8">
+            <h2 className="text-2xl font-bold text-[#f2eacf]">
+              {contactForm.heading}
+            </h2>
+            <div className="mt-6">
+              <ContactForm />
             </div>
-          </Reveal>
-        </div>
-
-        <BookingCalendar />
+          </div>
+        </Reveal>
       </section>
     </>
-  )
-}
-
-/** The third-party booking calendar loads only when asked for, keeping the page fast and cookie-free until then */
-function BookingCalendar() {
-  const [show, setShow] = useState(false)
-  const { booking } = contactPage
-
-  return (
-    <Reveal className="mt-12 overflow-hidden rounded-[2rem] border border-ink/8 bg-white">
-      <div className="flex flex-col items-start justify-between gap-6 p-8 sm:flex-row sm:items-center sm:p-10">
-        <div>
-          <h2 className="text-2xl font-semibold">{booking.heading}</h2>
-          <p className="mt-2 text-ink/65">{booking.body}</p>
-        </div>
-        {!show && (
-          <button
-            type="button"
-            onClick={() => setShow(true)}
-            className="btn-primary"
-          >
-            <CalendarDays size={16} /> Show calendar
-          </button>
-        )}
-      </div>
-      {show && (
-        <iframe
-          src={booking.url}
-          title="Book a discovery call"
-          className="h-[720px] w-full border-t border-ink/8"
-        />
-      )}
-    </Reveal>
   )
 }

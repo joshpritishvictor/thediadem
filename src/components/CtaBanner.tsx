@@ -8,6 +8,8 @@ type CtaBannerProps = {
   heading?: string
   body?: string
   cta?: string
+  /** Service the button is about; the contact form opens with it pre-selected */
+  service?: string
   /** Vertical spacing; the home page makes it fill a screen */
   className?: string
 }
@@ -16,6 +18,7 @@ export default function CtaBanner({
   heading = 'Not sure where to start?',
   body = 'Tell us what you’re looking for and we’ll help connect you with the appropriate professional.',
   cta = bookingCta,
+  service,
   className = 'section-y',
 }: CtaBannerProps) {
   return (
@@ -31,7 +34,14 @@ export default function CtaBanner({
             <h2 className="text-xl font-bold md:text-2xl">{heading}</h2>
             <p className="mt-2 text-sm text-cream/70 md:text-pretty">{body}</p>
             <div className="mt-4 flex flex-wrap justify-center gap-3">
-              <Link to={contactLink.to} className="group btn-primary">
+              <Link
+                to={
+                  service
+                    ? `${contactLink.to}?service=${encodeURIComponent(service)}`
+                    : contactLink.to
+                }
+                className="group btn-primary"
+              >
                 {cta}
                 <ArrowRight
                   size={16}

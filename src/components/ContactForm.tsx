@@ -7,6 +7,7 @@ import {
   type RefObject,
   type ReactElement,
 } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { contactForm } from '../content/contact'
 import { featuredServices } from '../content/services'
 
@@ -16,7 +17,12 @@ type Status = 'idle' | 'sending' | 'error'
 const endpoint = import.meta.env.VITE_CONTACT_ENDPOINT || '/api/contact'
 
 const fieldClass =
-  'w-full rounded-2xl border border-ink/12 bg-white px-4 py-3.5 text-ink transition placeholder:text-ink/40 focus:border-gold-500 focus:ring-4 focus:ring-gold-500/15 focus:outline-none'
+  'w-full rounded-2xl border border-gold-500/40 bg-card px-4 py-3.5 text-ink transition placeholder:text-ink/45 focus:border-gold-500 focus:bg-card focus:ring-4 focus:ring-gold-400/30 focus:outline-none autofill:shadow-[inset_0_0_0_100px_#f2eacf] autofill:[-webkit-text-fill-color:#28241f]'
+
+// Own arrow for dropdowns so it sits inside the field, not against its edge
+const chevron =
+  "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2328241f' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E\")"
+const selectClass = `${fieldClass} select-field appearance-none bg-no-repeat pr-12 bg-[position:right_1.25rem_center]`
 
 const serviceOptions = [
   ...featuredServices.map((s) => s.title),
@@ -24,6 +30,9 @@ const serviceOptions = [
 ]
 
 export default function ContactForm() {
+  // A service page's button sends ?service=<title>; the dropdown opens on it when it is one of the options
+  const requested = useSearchParams()[0].get('service') ?? ''
+  const preselected = serviceOptions.includes(requested) ? requested : ''
   const [status, setStatus] = useState<Status>('idle')
   const [error, setError] = useState(contactForm.error)
   const successDialog = useRef<HTMLDialogElement>(null)
@@ -64,7 +73,10 @@ export default function ContactForm() {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="grid gap-4 sm:grid-cols-2">
+      <form
+        onSubmit={handleSubmit}
+        className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+      >
         <Field label="First name" required>
           <input
             name="firstName"
@@ -105,7 +117,12 @@ export default function ContactForm() {
           />
         </Field>
         <Field label="Primary services needed">
-          <Select name="service" options={serviceOptions} />
+          <Select
+            key={preselected}
+            name="service"
+            options={serviceOptions}
+            defaultValue={preselected}
+          />
         </Field>
         <Field label="Business or employment type" wide>
           <Select name="entityType" options={contactForm.entityTypes} />
@@ -123,12 +140,12 @@ export default function ContactForm() {
           className="hidden"
         />
 
-        <label className="flex items-start gap-3 text-sm text-ink/65 sm:col-span-2">
+        <label className="flex items-start gap-3 text-sm text-cream/75 sm:col-span-2 lg:col-span-3">
           <input
             name="consent"
             type="checkbox"
             value="yes"
-            className="mt-1 size-4 shrink-0 accent-teal-900"
+            className="consent-box mt-0.5 size-5 shrink-0 cursor-pointer appearance-none rounded-md border border-gold-500 bg-card bg-center bg-no-repeat transition checked:bg-gold-500 focus-visible:ring-4 focus-visible:ring-gold-500/30 focus-visible:outline-none"
           />
           {contactForm.consent}
         </label>
@@ -136,7 +153,7 @@ export default function ContactForm() {
         {status === 'error' && (
           <p
             role="alert"
-            className="text-sm font-medium text-red-700 sm:col-span-2"
+            className="text-sm font-medium text-red-300 sm:col-span-2 lg:col-span-3"
           >
             {error}
           </p>
@@ -145,7 +162,7 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={status === 'sending'}
-          className="btn-primary disabled:opacity-60 sm:col-span-2 sm:justify-self-start"
+          className="btn-primary disabled:opacity-60 sm:col-span-2 sm:justify-self-start lg:col-span-3"
         >
           {status === 'sending' && (
             <Loader2 size={16} className="animate-spin" />
@@ -221,25 +238,40 @@ function Field({
 }) {
   return (
     <label
-      className={`grid gap-2 text-sm font-medium ${wide ? 'sm:col-span-2' : ''}`}
+      className={`grid gap-2 text-sm font-medium text-[#f2eacf] ${wide ? 'sm:col-span-2 lg:col-span-3' : ''}`}
     >
       <span>
         {label}
-        {required && <span className="text-gold-600"> *</span>}
+        {required && <span className="text-gold-400"> *</span>}
       </span>
       {children}
     </label>
   )
 }
 
-function Select({ name, options }: { name: string; options: string[] }) {
+function Select({
+  name,
+  options,
+  defaultValue = '',
+}: {
+  name: string
+  options: string[]
+  defaultValue?: string
+}) {
   return (
-    <select name={name} defaultValue="" className={fieldClass}>
-      <option value="" disabled>
+    <select
+      name={name}
+      defaultValue={defaultValue}
+      className={selectClass}
+      style={{ backgroundImage: chevron }}
+    >
+      <option value="" disabled className="text-ink">
         Select…
       </option>
       {options.map((option) => (
-        <option key={option}>{option}</option>
+        <option key={option} className="text-ink">
+          {option}
+        </option>
       ))}
     </select>
   )
