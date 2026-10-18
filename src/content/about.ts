@@ -12,6 +12,7 @@ import hemaImg from '../assets/images/team/hema.webp'
 import jeswinImg from '../assets/images/team/jeswin.webp'
 import joshImg from '../assets/images/team/josh.webp'
 import judithImg from '../assets/images/team/judith.webp'
+import sreeImg from '../assets/images/team/sree.webp'
 import wankelImg from '../assets/images/team/wankel.webp'
 
 export type Person = {
@@ -89,10 +90,11 @@ export const about = {
         body: 'Keeps Diadem’s workflows and team running smoothly, so client requests move from the first conversation to follow-through without delays.',
       },
       {
-        name: 'Loryn Green',
-        initials: 'LG',
-        role: 'Digital Marketing & Client Success Specialist',
-        body: 'Connects business owners with Diadem and supports every client, answering questions and making each step of the process feel straightforward and personal.',
+        name: 'Sree Mahes',
+        photo: sreeImg,
+        initials: 'SM',
+        role: 'Social Media Manager',
+        body: 'Echoes Diadem’s voice across social media, turning what our professionals know into clear, useful content that keeps clients informed and connected.',
       },
       {
         name: 'Shri Hema Priya Ganesan',
