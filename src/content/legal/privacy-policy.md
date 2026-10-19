@@ -2,16 +2,16 @@
 title: 'Privacy Policy'
 ---
 
-This Privacy Policy explains how Diadem Strategies Incorporated, operating as Diadem (“we”, “us”, “our”), collects, uses, and protects your personal information in accordance with the Personal Information Protection and Electronic Documents Act (PIPEDA) and Alberta’s Personal Information Protection Act (PIPA). Diadem operates as a client access, coordination, and referral platform connecting individuals and corporations with independent licensed professionals. This policy governs all information collected through our platform, website, and communications.
+This Privacy Policy explains how Dollar Mount Inc., operating as Dollar Mount (“we”, “us”, “our”), collects, uses, and protects your personal information in accordance with the Personal Information Protection and Electronic Documents Act (PIPEDA) and Alberta’s Personal Information Protection Act (PIPA). Dollar Mount operates as a client access, coordination, and referral platform connecting individuals and corporations with independent licensed professionals. This policy governs all information collected through our platform, website, and communications.
 
 ## 1\. Who We Are
 
-Diadem Strategies Incorporated (operating as Diadem) is a client access, coordination, and administrative platform incorporated in Alberta, Canada. Diadem does not directly provide financial planning, accounting, insurance brokering, or legal services. Rather, we operate as an intake, coordination, and referral platform that connects individuals and corporations with independent, licensed professionals across those regulated disciplines.
+Dollar Mount Inc. (operating as Dollar Mount) is a client access, coordination, and administrative platform incorporated in Alberta, Canada. Dollar Mount does not directly provide financial planning, accounting, insurance brokering, or legal services. Rather, we operate as an intake, coordination, and referral platform that connects individuals and corporations with independent, licensed professionals across those regulated disciplines.
 
-All financial planning, tax strategy, accounting, corporate insurance, and legal services accessed through the Diadem platform are delivered by independent, appropriately licensed third-party professionals. Diadem Strategies Incorporated is responsible solely for client intake, coordination, administration, and facilitation of those professional relationships.
+All financial planning, tax strategy, accounting, corporate insurance, and legal services accessed through the Dollar Mount platform are delivered by independent, appropriately licensed third-party professionals. Dollar Mount Inc. is responsible solely for client intake, coordination, administration, and facilitation of those professional relationships.
 
-**Registered Name:** Diadem Strategies Incorporated  
-**Operating As:** Diadem  
+**Registered Name:** Dollar Mount Inc.  
+**Operating As:** Dollar Mount  
 **Location:** Calgary, Alberta, Canada  
 **Website:** www.thediadem.ca  
 **Email:** contactus@diadem.co  
@@ -78,7 +78,7 @@ All third parties with whom we share data are contractually required to handle y
 
 ## 6\. Call Recording Notice
 
-Calls to and from Diadem may be recorded for quality assurance, training, and compliance purposes. You will be informed at the start of any recorded call. Call recordings are stored securely and accessed only by authorised personnel. Recordings are retained for a maximum of 12 months unless required longer for legal or regulatory purposes.
+Calls to and from Dollar Mount may be recorded for quality assurance, training, and compliance purposes. You will be informed at the start of any recorded call. Call recordings are stored securely and accessed only by authorised personnel. Recordings are retained for a maximum of 12 months unless required longer for legal or regulatory purposes.
 
 ## 7\. AI-Assisted Communication
 
@@ -131,12 +131,12 @@ We may update this Privacy Policy from time to time. We will notify you of signi
 
 ## 16\. Contact Us
 
-### Privacy Officer, Diadem
+### Privacy Officer, Dollar Mount
 
 If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:
 
-**Diadem Strategies Incorporated**  
-Operating as Diadem  
+**Dollar Mount Inc.**  
+Operating as Dollar Mount  
 Calgary, Alberta, Canada
 
 📧 [contactus@diadem.co](mailto:contactus@diadem.co)  

@@ -63,13 +63,7 @@ export default function HeroVisual() {
         <div className="relative grid size-[28cqw] animate-float place-items-center rounded-full bg-teal-900 shadow-2xl shadow-teal-900/40">
           <span className="absolute inset-0 animate-pulse-ring rounded-full border-2 border-gold-500" />
           <span className="absolute inset-0 animate-pulse-ring rounded-full border-2 border-gold-500 [animation-delay:1.5s]" />
-          <img
-            src={logo}
-            alt=""
-            width={44}
-            height={64}
-            className="h-[15cqw] w-auto"
-          />
+          <img src={logo} alt="" width={64} height={62} className="w-[18cqw]" />
         </div>
       </div>
     </nav>

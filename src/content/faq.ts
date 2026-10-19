@@ -38,7 +38,7 @@ export const faqs: Faq[] = [
   {
     question: 'Do you sell proprietary investment products?',
     answer:
-      'No. Diadem is an independent access and coordination platform, not a product manufacturer. When investment or insurance needs arise, we match you with licensed, independent advisors and brokers who recommend products and solutions tailored to your unique situation.',
+      'No. Dollar Mount is an independent access and coordination platform, not a product manufacturer. When investment or insurance needs arise, we match you with licensed, independent advisors and brokers who recommend products and solutions tailored to your unique situation.',
   },
   {
     question: 'How often will we meet once I become a client?',

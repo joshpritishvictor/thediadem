@@ -7,7 +7,7 @@ import { easeOutExpo } from '../lib/motion'
 type Side = 'traditional' | 'diadem'
 type Props = Pick<typeof comparison, 'columns' | 'rows'>
 
-// The Diadem thumbs-up pops in with a little wiggle, card by card, whenever
+// The Dollar Mount thumbs-up pops in with a little wiggle, card by card, whenever
 // it appears: when the section scrolls into view and on every switch back
 const thumbsUp: Variants = {
   hidden: { scale: 0, rotate: -35 },
@@ -19,7 +19,7 @@ const thumbsUp: Variants = {
 }
 
 /**
- * A before/after switch: the same five topic cards show the Diadem way (teal,
+ * A before/after switch: the same five topic cards show the Dollar Mount way (teal,
  * the default) or the traditional way (muted)
  */
 export default function CompareToggle({ columns, rows }: Props) {

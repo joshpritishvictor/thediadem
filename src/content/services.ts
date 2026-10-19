@@ -124,7 +124,7 @@ export const services: Service[] = [
     },
     faqs: [
       {
-        question: 'What does investment advisory at Diadem include?',
+        question: 'What does investment advisory at Dollar Mount include?',
         answer:
           'Our investment advisory service covers portfolio architecture and asset allocation, risk assessment and management, corporate and personal investment account structuring, tax-efficient investment selection, and ongoing portfolio coordination. Unlike a traditional advisor who focuses solely on returns, we view every investment decision through a financial, tax, and legal lens simultaneously, ensuring your portfolio works as part of a complete wealth strategy rather than a standalone plan.',
       },
@@ -152,7 +152,7 @@ export const services: Service[] = [
       {
         question: 'What qualifications do your financial advisors hold?',
         answer:
-          'Our advisors are licensed professionals with deep expertise across financial planning, investment management, and tax strategy. Every professional within the Diadem network holds the credentials required in their specific discipline, ensuring you receive advice that is not only strategic but fully compliant with Canadian regulatory standards. We believe your wealth deserves qualified, accountable professionals at every step.',
+          'Our advisors are licensed professionals with deep expertise across financial planning, investment management, and tax strategy. Every professional within the Dollar Mount network holds the credentials required in their specific discipline, ensuring you receive advice that is not only strategic but fully compliant with Canadian regulatory standards. We believe your wealth deserves qualified, accountable professionals at every step.',
       },
       {
         question:
@@ -208,7 +208,7 @@ export const services: Service[] = [
       {
         question: 'Why is insurance important as part of a wealth strategy?',
         answer:
-          'Insurance is the foundation that makes every other part of your wealth strategy viable. You can have the best investment portfolio, the most efficient corporate structure, and the most comprehensive tax plan, but a single uninsured event such as a critical illness, disability, or premature death can unravel everything instantly. At Diadem, we integrate insurance into your overall financial plan as a strategic tool, not an afterthought, ensuring that no matter what life brings, your wealth, your family, and your legacy remain fully protected.',
+          'Insurance is the foundation that makes every other part of your wealth strategy viable. You can have the best investment portfolio, the most efficient corporate structure, and the most comprehensive tax plan, but a single uninsured event such as a critical illness, disability, or premature death can unravel everything instantly. At Dollar Mount, we integrate insurance into your overall financial plan as a strategic tool, not an afterthought, ensuring that no matter what life brings, your wealth, your family, and your legacy remain fully protected.',
       },
       {
         question:
@@ -303,7 +303,7 @@ export const services: Service[] = [
     cta: 'Book a Free Consultation',
     intro: {
       heading: 'Pay Less Tax. Keep More of What You Earn.',
-      body: 'Tax strategy at Diadem goes far beyond filing a return. We build proactive, forward-looking tax plans that are fully integrated with your investment strategy, corporate structure, and personal financial goals. Whether you are an incorporated professional, a business owner, or a high-net-worth individual, we identify every legal opportunity to reduce your tax burden, ensuring you never pay more than you are required to and always keep more of what you work so hard to earn.',
+      body: 'Tax strategy at Dollar Mount goes far beyond filing a return. We build proactive, forward-looking tax plans that are fully integrated with your investment strategy, corporate structure, and personal financial goals. Whether you are an incorporated professional, a business owner, or a high-net-worth individual, we identify every legal opportunity to reduce your tax burden, ensuring you never pay more than you are required to and always keep more of what you work so hard to earn.',
     },
     offerings: [
       {
@@ -331,7 +331,7 @@ export const services: Service[] = [
       {
         question: 'What is the difference between tax filing and tax strategy?',
         answer:
-          'Tax filing is a backward-looking exercise; it reports what already happened. Tax strategy is forward-looking; it structures your decisions in advance to legally minimize what you owe before it becomes owing. At Diadem, we focus entirely on proactive tax strategy, not reactive filing. By planning ahead, we identify opportunities that are completely lost once the tax year has already closed, saving you money that a filing-only approach will never recover.',
+          'Tax filing is a backward-looking exercise; it reports what already happened. Tax strategy is forward-looking; it structures your decisions in advance to legally minimize what you owe before it becomes owing. At Dollar Mount, we focus entirely on proactive tax strategy, not reactive filing. By planning ahead, we identify opportunities that are completely lost once the tax year has already closed, saving you money that a filing-only approach will never recover.',
       },
       {
         question: 'How do you reduce tax for incorporated professionals?',
@@ -374,7 +374,7 @@ export const services: Service[] = [
     cta: 'Book a Free Consultation',
     intro: {
       heading: 'Your Legacy Deserves to Be Protected and Preserved.',
-      body: 'Estate and legacy planning at Diadem ensures that everything you have built during your lifetime is transferred to the people and causes you care about, efficiently, privately, and with the least possible tax burden. We go beyond simply drafting a will. We build a comprehensive legacy plan that integrates your corporate structure, investment portfolio, insurance coverage, and family goals into a single, cohesive strategy, ensuring your wealth survives and thrives long after you are gone.',
+      body: 'Estate and legacy planning at Dollar Mount ensures that everything you have built during your lifetime is transferred to the people and causes you care about, efficiently, privately, and with the least possible tax burden. We go beyond simply drafting a will. We build a comprehensive legacy plan that integrates your corporate structure, investment portfolio, insurance coverage, and family goals into a single, cohesive strategy, ensuring your wealth survives and thrives long after you are gone.',
     },
     offerings: [
       {

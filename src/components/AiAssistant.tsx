@@ -14,12 +14,12 @@ const endpoint = import.meta.env.VITE_ASSISTANT_ENDPOINT
 
 const welcome: Message = {
   from: 'bot',
-  text: 'Hi, I’m Crest, Diadem’s assistant. Ask me about our services or how we work, and I’ll point you in the right direction.',
+  text: 'Hi, I’m Crest, Dollar Mount’s assistant. Ask me about our services or how we work, and I’ll point you in the right direction.',
 }
 
 const suggestions = [
   'What services do you offer?',
-  'How is Diadem different?',
+  'How is Dollar Mount different?',
   'How do I book a consultation?',
 ]
 
@@ -92,7 +92,7 @@ export default function AiAssistant() {
         {open && (
           <m.section
             role="dialog"
-            aria-label="Crest, Diadem assistant"
+            aria-label="Crest, Dollar Mount assistant"
             className="absolute right-0 bottom-0 flex h-[48rem] max-h-[calc(100svh-7rem)] w-[calc(100vw-2rem)] max-w-sm origin-bottom-right flex-col overflow-hidden rounded-3xl border border-gold-500/30 bg-card shadow-2xl shadow-teal-900/25 sm:max-w-md"
             initial={{ opacity: 0, scale: 0.85, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}

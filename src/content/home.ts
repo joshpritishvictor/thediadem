@@ -11,7 +11,7 @@ import {
 export const hero = {
   eyebrow: 'Alberta’s Integrated Professional Network',
   headline: ['One Team.', 'One Goal.'],
-  body: 'A team of Financial Planners, Tax Strategists, Insurance Advisors, and Lawyers, coordinated through Diadem, working as one for you.',
+  body: 'A team of Financial Planners, Tax Strategists, Insurance Advisors, and Lawyers, coordinated through Dollar Mount, working as one for you.',
 }
 
 // The hero carousel (see HeroCarousel)
@@ -91,15 +91,15 @@ export const whoWeAre = {
   ],
 }
 
-// Each row is one topic: the frustration of the usual way, and how Diadem handles it (see CompareToggle)
+// Each row is one topic: the frustration of the usual way, and how Dollar Mount handles it (see CompareToggle)
 export const comparison = {
   heading: 'Expert Advice, Without the Runaround.',
-  columns: { traditional: 'The traditional way', diadem: 'The Diadem way' },
+  columns: { traditional: 'The traditional way', diadem: 'The Dollar Mount way' },
   rows: [
     {
       topic: 'Your contact',
       traditional: 'A different firm for every need',
-      diadem: 'One Diadem contact for all of it',
+      diadem: 'One Dollar Mount contact for all of it',
     },
     {
       topic: 'Your story',

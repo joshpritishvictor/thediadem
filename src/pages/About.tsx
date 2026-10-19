@@ -43,7 +43,7 @@ export default function About() {
               ))}
             </Reveal>
 
-            {/* Partners: three independent professions, with Diadem helping them work together */}
+            {/* Partners: three independent professions, with Dollar Mount helping them work together */}
             <div className="mt-10 border-t border-ink/10 pt-10 text-center">
               <h2 className={label}>{about.partners.eyebrow}</h2>
               <Reveal

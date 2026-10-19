@@ -54,7 +54,10 @@ export default function Header() {
       }`}
     >
       <div className="container-page flex items-center justify-between gap-6">
-        <Logo />
+        <div className="flex items-center gap-6">
+          <Logo />
+          <Logo variant="flat" />
+        </div>
 
         <nav aria-label="Main" className="hidden items-center gap-1 lg:flex">
           {navLinks.map(({ to, label }) => {

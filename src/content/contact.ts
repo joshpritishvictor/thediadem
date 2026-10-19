@@ -4,7 +4,7 @@ import { site } from './site'
 export const contactPage = {
   eyebrow: 'Contact Us',
   heading: 'Virtual advisory and intake',
-  body: 'Diadem operates digitally to serve incorporated professionals, business owners, and families across Alberta.',
+  body: 'Dollar Mount operates digitally to serve incorporated professionals, business owners, and families across Alberta.',
   details: [
     {
       icon: Video,
@@ -40,7 +40,7 @@ export const contactForm = {
   },
   error: `Something went wrong sending your request. Please try again, or email us at ${site.contact.email}.`,
   consent:
-    'I agree to receive electronic communications (educational articles, tax updates, service announcements) from Diadem. I can withdraw consent anytime via the unsubscribe link.',
+    'I agree to receive electronic communications (educational articles, tax updates, service announcements) from Dollar Mount. I can withdraw consent anytime via the unsubscribe link.',
   preferredContact: ['Email', 'Phone', 'Video Call'],
   // Service options come from the featured services, plus this catch-all
   serviceCatchAll: 'Combination of the above',

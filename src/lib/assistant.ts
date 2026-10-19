@@ -49,7 +49,7 @@ export function answer(question: string): Reply {
   )
     return booking
   if (/\b(hi|hello|hey)\b/.test(q))
-    return { text: 'Hello! What would you like to know about Diadem?' }
+    return { text: 'Hello! What would you like to know about Dollar Mount?' }
   if (/\b(services?|offer|help with)\b/.test(q))
     return {
       text: `We connect you with licensed professionals across ${featuredServices

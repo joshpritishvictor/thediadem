@@ -1,9 +1,9 @@
 export const site = {
-  name: 'Diadem',
-  legalName: 'Diadem Strategies Incorporated',
+  name: 'Dollar Mount',
+  legalName: 'Dollar Mount Inc.',
   tagline: 'Plan wisely, sow strategically, reap abundantly.',
   description:
-    'Alberta’s integrated professional network. Financial planners, tax strategists, accountants, insurance advisors and lawyers, coordinated through Diadem, working as one for you.',
+    'Alberta’s integrated professional network. Financial planners, tax strategists, accountants, insurance advisors and lawyers, coordinated through Dollar Mount, working as one for you.',
   url: 'https://www.thediadem.ca',
   location: 'Calgary, Alberta, Canada',
   contact: {

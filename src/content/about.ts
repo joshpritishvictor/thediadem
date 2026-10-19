@@ -27,10 +27,10 @@ export type Person = {
 }
 
 export const about = {
-  eyebrow: 'Meet the People Behind Diadem',
+  eyebrow: 'Meet the People Behind Dollar Mount',
   heading: 'Shared Expertise. One Vision.',
   intro:
-    'Behind every business is hard work and sacrifice. The people who help you plan for what you’ve built should understand that. Diadem brings together professionals to make complex financial conversations simpler and more collaborative.',
+    'Behind every business is hard work and sacrifice. The people who help you plan for what you’ve built should understand that. Dollar Mount brings together professionals to make complex financial conversations simpler and more collaborative.',
   // The intro paragraph, boiled down to three short points
   points: [
     {
@@ -59,14 +59,14 @@ export const about = {
         photo: joshImg,
         initials: 'JV',
         role: 'Chief Executive Officer & Founder',
-        body: 'Josh’s career spans healthcare and financial services. Working with business owners, he kept seeing capable people miss financial gaps they didn’t know to look for. He founded Diadem to close those gaps by bringing the right professionals together.',
+        body: 'Josh’s career spans healthcare and financial services. Working with business owners, he kept seeing capable people miss financial gaps they didn’t know to look for. He founded Dollar Mount to close those gaps by bringing the right professionals together.',
       },
       {
         name: 'Judith Victor',
         photo: judithImg,
         initials: 'JV',
         role: 'President & Co-Founder',
-        body: 'As a business owner and healthcare professional, Judith knows firsthand that a high income doesn’t make managing wealth simpler. She leads Diadem strategically and oversees the structure behind its operations, keeping our approach practical.',
+        body: 'As a business owner and healthcare professional, Judith knows firsthand that a high income doesn’t make managing wealth simpler. She leads Dollar Mount strategically and oversees the structure behind its operations, keeping our approach practical.',
       },
     ] satisfies Person[],
   },
@@ -87,21 +87,21 @@ export const about = {
         photo: jeswinImg,
         initials: 'JS',
         role: 'Director of Operations',
-        body: 'Keeps Diadem’s workflows and team running smoothly, so client requests move from the first conversation to follow-through without delays.',
+        body: 'Keeps Dollar Mount’s workflows and team running smoothly, so client requests move from the first conversation to follow-through without delays.',
       },
       {
         name: 'Sree Mahes',
         photo: sreeImg,
         initials: 'SM',
         role: 'Social Media Manager',
-        body: 'Echoes Diadem’s voice across social media, turning what our professionals know into clear, useful content that keeps clients informed and connected.',
+        body: 'Echoes Dollar Mount’s voice across social media, turning what our professionals know into clear, useful content that keeps clients informed and connected.',
       },
       {
         name: 'Shri Hema Priya Ganesan',
         photo: hemaImg,
         initials: 'SG',
         role: 'Software Architect',
-        body: 'Architects the technology behind Diadem’s website, CRM, and automation, ensuring information flows securely and reliably between clients, our team, and our partners.',
+        body: 'Architects the technology behind Dollar Mount’s website, CRM, and automation, ensuring information flows securely and reliably between clients, our team, and our partners.',
       },
     ] satisfies Person[],
   },
