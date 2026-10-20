@@ -2,19 +2,18 @@
 title: 'Privacy Policy'
 ---
 
-This Privacy Policy explains how Diadem Strategies Incorporated, operating as Diadem (“we”, “us”, “our”), collects, uses, and protects your personal information in accordance with the Personal Information Protection and Electronic Documents Act (PIPEDA) and Alberta’s Personal Information Protection Act (PIPA). Diadem operates as a client access, coordination, and referral platform connecting individuals and corporations with independent licensed professionals. This policy governs all information collected through our platform, website, and communications.
+This Privacy Policy explains how Diadem Strategies Inc. (“we”, “us”, “our”), collects, uses, and protects your personal information in accordance with the Personal Information Protection and Electronic Documents Act (PIPEDA) and Alberta’s Personal Information Protection Act (PIPA). Diadem operates as a client access, coordination, and referral platform connecting individuals and corporations with independent licensed professionals. This policy governs all information collected through our platform, website, and communications.
 
 ## 1\. Who We Are
 
-Diadem Strategies Incorporated (operating as Diadem) is a client access, coordination, and administrative platform incorporated in Alberta, Canada. Diadem does not directly provide financial planning, accounting, insurance brokering, or legal services. Rather, we operate as an intake, coordination, and referral platform that connects individuals and corporations with independent, licensed professionals across those regulated disciplines.
+Diadem Strategies Inc. is a client access, coordination, and administrative platform incorporated in Alberta, Canada. Diadem does not directly provide financial planning, accounting, insurance brokering, or legal services. Rather, we operate as an intake, coordination, and referral platform that connects individuals and corporations with independent, licensed professionals across those regulated disciplines.
 
-All financial planning, tax strategy, accounting, corporate insurance, and legal services accessed through the Diadem platform are delivered by independent, appropriately licensed third-party professionals. Diadem Strategies Incorporated is responsible solely for client intake, coordination, administration, and facilitation of those professional relationships.
+All financial planning, tax strategy, accounting, corporate insurance, and legal services accessed through the Diadem platform are delivered by independent, appropriately licensed third-party professionals. Diadem Strategies Inc. is responsible solely for client intake, coordination, administration, and facilitation of those professional relationships.
 
-**Registered Name:** Diadem Strategies Incorporated  
-**Operating As:** Diadem  
+**Registered Name:** Diadem Strategies Inc.  
 **Location:** Calgary, Alberta, Canada  
 **Website:** www.thediadem.ca  
-**Email:** contactus@diadem.co  
+**Email:** contact@thediadem.ca  
 **Phone:** +1 587-316-1691
 
 ## 2\. Information We Collect
@@ -103,7 +102,7 @@ Under PIPEDA and PIPA, you have the right to:
 - **Withdrawal of consent**: withdraw consent to processing at any time
 - **Complaint**: file a complaint with the Office of the Privacy Commissioner of Canada
 
-To exercise any of these rights, please contact us at contactus@diadem.co.
+To exercise any of these rights, please contact us at contact@thediadem.ca.
 
 ## 10\. Marketing Communications
 
@@ -135,10 +134,9 @@ We may update this Privacy Policy from time to time. We will notify you of signi
 
 If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:
 
-**Diadem Strategies Incorporated**  
-Operating as Diadem  
+**Diadem Strategies Inc.**  
 Calgary, Alberta, Canada
 
-📧 [contactus@diadem.co](mailto:contactus@diadem.co)  
+📧 [contact@thediadem.ca](mailto:contact@thediadem.ca)  
 📞 [+1 587-316-1691](tel:+15873161691)  
 🌐 [www.thediadem.ca](https://www.thediadem.ca)
