@@ -84,7 +84,7 @@ function Hero() {
             {hero.eyebrow}
           </m.p>
 
-          <h1 className="mt-3 text-5xl leading-[1.05] font-bold sm:text-6xl lg:text-6xl xl:text-7xl">
+          <h1 className="mt-3 text-5xl leading-[1.05] font-bold sm:text-6xl lg:text-6xl xl:text-7xl 2xl:text-[5.25rem]">
             {words.map(({ word, accent, br }, i) => (
               <span key={i}>
                 {br && <br />}
@@ -107,7 +107,7 @@ function Hero() {
           </h1>
 
           <m.p
-            className="mt-4 max-w-xl text-lg font-semibold text-balance text-ink [text-shadow:0_0_14px_rgb(246_238_219/0.9)]"
+            className="mt-4 max-w-xl text-lg font-semibold text-balance text-ink [text-shadow:0_0_14px_rgb(246_238_219/0.9)] 2xl:max-w-2xl 2xl:text-xl"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6, ease: easeOutExpo }}

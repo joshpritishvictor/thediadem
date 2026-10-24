@@ -12,7 +12,7 @@ import hemaImg from '../assets/images/team/hema.webp'
 import jeswinImg from '../assets/images/team/jeswin.webp'
 import joshImg from '../assets/images/team/josh.webp'
 import judithImg from '../assets/images/team/judith.webp'
-import sreeImg from '../assets/images/team/sree.webp'
+import sharonImg from '../assets/images/team/sharon.webp'
 import wankelImg from '../assets/images/team/wankel.webp'
 
 export type Person = {
@@ -90,9 +90,9 @@ export const about = {
         body: 'Keeps Diadem’s workflows and team running smoothly, so client requests move from the first conversation to follow-through without delays.',
       },
       {
-        name: 'Sree Mahes',
-        photo: sreeImg,
-        initials: 'SM',
+        name: 'Sharon Kennedy',
+        photo: sharonImg,
+        initials: 'SK',
         role: 'Social Media Manager',
         body: 'Echoes Diadem’s voice across social media, turning what our professionals know into clear, useful content that keeps clients informed and connected.',
       },

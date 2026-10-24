@@ -168,7 +168,7 @@
 }
 
 @utility container-page {
-  @apply mx-auto w-full max-w-[1216px] px-4 sm:px-6;
+  @apply mx-auto w-full max-w-[1216px] px-4 sm:px-6 2xl:max-w-[1440px];
 }
 
 @utility eyebrow {
