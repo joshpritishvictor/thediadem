@@ -100,6 +100,17 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
   }
+  /* Screens wider than 1920px (4K and 8K monitors or TVs at 100% scaling,
+     ultrawides): scale the whole page up in step with the viewport instead of
+     leaving a narrow column in acres of space. Sizes are in rem, so raising the
+     root font size zooms the layout. 1920x1080 stays 1:1; the factor follows
+     whichever of width or height is the tighter fit, so a short ultrawide
+     does not get text sized for its width alone. */
+  @media (min-width: 1921px) {
+    html {
+      font-size: max(100%, min(calc(100vw / 120), calc(100vh / 67.5)));
+    }
+  }
   body {
     @apply bg-cream font-sans text-ink;
   }
@@ -168,7 +179,7 @@
 }
 
 @utility container-page {
-  @apply mx-auto w-full max-w-[1216px] px-4 sm:px-6 2xl:max-w-[1440px];
+  @apply mx-auto w-full max-w-[76rem] px-4 sm:px-6 2xl:max-w-[max(90rem,75vw)];
 }
 
 @utility eyebrow {

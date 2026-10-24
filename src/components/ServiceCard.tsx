@@ -32,7 +32,7 @@ export default function ServiceCard({ service }: { service: Service }) {
       <p className="mt-4 leading-relaxed text-ink/65">{summary}</p>
 
       {features.length > 0 && (
-        <ul className="mt-4 flex flex-wrap gap-x-3.5 gap-y-2 text-[12.5px]">
+        <ul className="mt-4 flex flex-wrap gap-x-3.5 gap-y-2 text-[0.78125rem]">
           {features.map((feature) => (
             <li
               key={feature}
