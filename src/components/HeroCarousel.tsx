@@ -129,7 +129,7 @@ export default function HeroCarousel({ slides }: { slides: readonly Slide[] }) {
                   </cite>
                 </span>
               </blockquote>
-              <p className="mt-5 text-[15px] text-gold-600">
+              <p className="mt-5 text-[0.9375rem] text-gold-600">
                 {slide.closer.split('\n').map((sentence) => (
                   <span key={sentence} className="block">
                     <Emphasis text={sentence} phrase={slide.emphasis} />

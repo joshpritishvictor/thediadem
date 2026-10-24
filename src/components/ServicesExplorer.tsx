@@ -17,20 +17,47 @@ export default function ServicesExplorer({
   const [active, setActive] = useState(services[0]?.slug)
 
   useEffect(() => {
-    // The panel crossing the middle band of the viewport is the active one
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) setActive(entry.target.id.slice(8))
-        }
-      },
-      { rootMargin: '-40% 0px -50% 0px' },
-    )
-    for (const { slug } of services) {
-      const panel = document.getElementById(`service-${slug}`)
-      if (panel) observer.observe(panel)
+    // The active service is the last one whose panel has scrolled up past a
+    // line 40% down the viewport; before any panel reaches that line (page
+    // top on a tall screen) it is the first. Tying it to a line rather than a
+    // band keeps the first panel highlighted at the top on tall screens, where
+    // a band through the middle would already be sitting on the second panel.
+    const panels = services
+      .map(({ slug }) => document.getElementById(`service-${slug}`))
+      .filter((panel): panel is HTMLElement => panel !== null)
+    // Layout position, unaffected by the reveal animation's transform
+    const pageTop = (el: HTMLElement) => {
+      let y = 0
+      for (
+        let node: HTMLElement | null = el;
+        node;
+        node = node.offsetParent as HTMLElement | null
+      ) {
+        y += node.offsetTop
+      }
+      return y
     }
-    return () => observer.disconnect()
+    let frame = 0
+    const update = () => {
+      frame = 0
+      const line = window.scrollY + window.innerHeight * 0.4
+      let current = panels[0]
+      for (const panel of panels) {
+        if (pageTop(panel) <= line) current = panel
+      }
+      if (current) setActive(current.id.slice(8))
+    }
+    const schedule = () => {
+      if (!frame) frame = window.requestAnimationFrame(update)
+    }
+    update()
+    window.addEventListener('scroll', schedule, { passive: true })
+    window.addEventListener('resize', schedule)
+    return () => {
+      window.cancelAnimationFrame(frame)
+      window.removeEventListener('scroll', schedule)
+      window.removeEventListener('resize', schedule)
+    }
   }, [services])
 
   return (
@@ -69,7 +96,7 @@ export default function ServicesExplorer({
                       {shortLabel}
                     </span>
                   )}
-                  <span className="mt-0.5 block text-[18px] font-medium text-teal-900">
+                  <span className="mt-0.5 block text-[1.125rem] font-medium text-teal-900">
                     {title}
                   </span>
                   {/* Underline that draws in under the active service */}
