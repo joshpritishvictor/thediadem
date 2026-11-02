@@ -1,5 +1,7 @@
 ---
 title: 'Beyond the Will: Building a Comprehensive Estate & Legacy Plan'
+metaTitle: 'Estate Planning Beyond the Will: Your Legacy Plan | Diadem'
+metaDescription: 'Estate planning goes beyond a will: powers of attorney, trusts, insurance and corporate structure. See what a complete legacy plan includes.'
 date: 2026-06-23T18:11:09-06:00
 excerpt: 'Most Canadians know they need a will, but far fewer have thought through the full spectrum of estate planning. While a will provides critical instructions, a truly comprehensive estate plan coordinates legal documents, corporate structures, insurance policies, and tax strategies to protect your family and preserve your wealth across generations.'
 categories: ['Estate & Legacy Planning']
@@ -43,6 +45,6 @@ Integrating discretionary trusts or corporate reorganizations (such as estate fr
 
 An effective estate plan isn’t built from isolated documents; it requires seamless coordination between estate lawyers, CPAs, and financial advisors.
 
-**Disclaimer:** This article is for general informational and educational purposes only and does not constitute formal tax, legal, financial, or insurance advice. Estate laws, probate guidelines, tax regulations, and trust legislation vary by jurisdiction and are subject to change. Always consult with a licensed Alberta estate lawyer, CPA, or licensed financial advisor regarding your specific circumstances before implementing any strategy.
+A [corporate lawyer in Calgary](/service/corporate-legal-services/) can work with your CPA and advisor to keep your will, trusts and corporate documents aligned.
 
-Those two adjustments tighten up the compliance boundaries even further. Removing “ensure” and “optimize” eliminates outcome-guarantee exposure and keeps the focus strictly on cross-discipline coordination.
+**Disclaimer:** This article is for general informational and educational purposes only and does not constitute formal tax, legal, financial, or insurance advice. Estate laws, probate guidelines, tax regulations, and trust legislation vary by jurisdiction and are subject to change. Always consult with a licensed Alberta estate lawyer, CPA, or licensed financial advisor regarding your specific circumstances before implementing any strategy.

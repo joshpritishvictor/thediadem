@@ -1,5 +1,7 @@
 ---
 title: 'Protecting Your Earning Potential: Disability & Income Protection for Business Owners'
+metaTitle: 'Disability Insurance for Business Owners | Diadem'
+metaDescription: 'Disability insurance protects a business owner’s income, overhead and continuity. See how to close the income replacement gap before you need it.'
 date: 2026-06-23T18:05:21-06:00
 excerpt: 'Consider this, a 35-year-old has a significantly higher probability of experiencing an extended disability before age 65 than passing away during the same period. Yet, while life insurance often gets immediate attention, disability and income protection planning is frequently overlooked by business owners and incorporated professionals.'
 categories: ['Insurance & Risk Management']
@@ -41,5 +43,7 @@ Navigating these options requires working with licensed insurance brokers who ca
 ## Review Your Income Protection Strategy
 
 Protecting your business and lifestyle requires a coordinated approach across risk management, accounting, and financial planning.
+
+See how [business insurance in Calgary](/service/insurance-risk-management/), including disability and critical illness coverage, fits into a coordinated plan.
 
 **Disclaimer:** This article is for general informational and educational purposes only and does not constitute formal tax, legal, financial, or insurance advice. Policy terms, underwriting guidelines, tax deductibility rules, and insurance legislation are subject to change. Always consult with a licensed Alberta insurance broker, CPA, or corporate advisor regarding your specific circumstances before purchasing or modifying any policy.

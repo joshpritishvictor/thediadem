@@ -1,6 +1,11 @@
 import type { Faq } from './services'
 
 export const faqPage = {
+  seo: {
+    title: 'FAQs | Diadem Calgary & Alberta',
+    description:
+      'Answers on fees, free consultations, working with your current accountant and how Diadem’s Alberta network coordinates your advisors.',
+  },
   eyebrow: 'FAQs',
   heading: 'Frequently Asked Questions',
   // The gold line above the questions

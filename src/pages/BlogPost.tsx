@@ -20,7 +20,17 @@ export default function BlogPost() {
   const post = getPost(useParams().slug)
   if (!post) return <NotFound />
 
-  const { slug, title, date, excerpt, categories, image, readingMinutes } = post
+  const {
+    slug,
+    title,
+    metaTitle,
+    metaDescription,
+    date,
+    excerpt,
+    categories,
+    image,
+    readingMinutes,
+  } = post
   // Prefer posts that share a category, then fall back to the newest
   const related = posts
     .filter((p) => p.slug !== slug)
@@ -35,14 +45,15 @@ export default function BlogPost() {
     <>
       <Seo
         title={title}
-        description={excerpt}
+        fullTitle={metaTitle}
+        description={metaDescription ?? excerpt}
         image={image}
         type="article"
         jsonLd={{
           '@context': 'https://schema.org',
           '@type': 'BlogPosting',
           headline: title,
-          description: excerpt,
+          description: metaDescription ?? excerpt,
           datePublished: date,
           image: image && new URL(image, site.url).href,
           author: { '@type': 'Organization', name: site.name },
