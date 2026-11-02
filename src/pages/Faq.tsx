@@ -10,8 +10,8 @@ export default function Faq() {
   return (
     <>
       <Seo
-        title={faqPage.heading}
-        description={faqs[0].answer}
+        fullTitle={faqPage.seo.title}
+        description={faqPage.seo.description}
         jsonLd={faqJsonLd(faqs)}
       />
       <PageHero title={faqPage.heading} compact />

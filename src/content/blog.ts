@@ -1,9 +1,14 @@
 // Every Markdown file in ./blog/ becomes a post at /<file-name>/ (matching the WordPress URLs).
 // Frontmatter: title, date (ISO, e.g. 2026-06-23 or 2026-06-23T18:13:28-06:00),
-// excerpt, categories, image (a file name in assets/images/blog/).
+// excerpt, categories, image (a file name in assets/images/blog/), and for search results
+// metaTitle (≤ 60 characters, main topic first) and metaDescription (~150 characters).
 
 type Frontmatter = {
   title: string
+  /** Title in search results; the on-page headline can stay long */
+  metaTitle?: string
+  /** Snippet in search results; falls back to the excerpt */
+  metaDescription?: string
   date: string
   excerpt: string
   categories?: string[]

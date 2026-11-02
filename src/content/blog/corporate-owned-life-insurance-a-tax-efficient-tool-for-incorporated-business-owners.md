@@ -1,5 +1,7 @@
 ---
 title: 'Corporate-Owned Life Insurance: A Tax-Efficient Tool for Incorporated Business Owners'
+metaTitle: 'Corporate Owned Life Insurance: Tax-Efficient Tool | Diadem'
+metaDescription: 'Corporate owned life insurance lets your corporation use retained earnings to fund coverage, with much of the payout passing tax-free through the CDA.'
 date: 2026-09-03T17:22:23-06:00
 excerpt: 'Incorporated professionals often think of life insurance as a personal matter, something purchased individually, separate from the business. But for corporations with retained earnings beyond immediate operating needs, ownership structure changes the equation entirely.'
 categories: ['Corporate Legal & Estate Planning']
@@ -45,5 +47,7 @@ A policy purchased without this coordination can create CDA filing issues, unint
 ## Coordinate Your Insurance Strategy
 
 Corporate-owned life insurance isn’t a single transaction; it’s a decision that touches tax filings, legal agreements, and long-term estate plans, and it works best when those pieces are aligned from the outset.
+
+Learn how coordinated [business insurance in Calgary](/service/insurance-risk-management/) brings your insurance advisor, CPA and lawyer to the same table.
 
 **Disclaimer:** This article is for general informational and educational purposes only and does not constitute formal tax, legal, financial, or insurance advice. Tax rules and regulations governing corporate structures, life insurance, and the Capital Dividend Account are subject to change. Always consult with a licensed Alberta CPA, corporate lawyer, or licensed financial advisor regarding your specific circumstances before implementing any strategy.
