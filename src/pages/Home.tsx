@@ -15,22 +15,36 @@ import {
   hero,
   heroSlides,
   process,
-  servicesIntro,
   stats,
   whoWeAre,
 } from '../content/home'
 import { bookingCta, contactLink, site } from '../content/site'
 import { easeOutExpo } from '../lib/motion'
-import { organizationJsonLd } from '../lib/schema'
 
 export default function Home() {
   return (
     <>
-      <Seo jsonLd={organizationJsonLd()} />
+      <Seo
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'ProfessionalService',
+          name: site.name,
+          legalName: site.legalName,
+          url: site.url,
+          email: site.contact.email,
+          telephone: site.contact.phone,
+          areaServed: 'Alberta, Canada',
+          address: {
+            '@type': 'PostalAddress',
+            addressLocality: 'Calgary',
+            addressRegion: 'AB',
+            addressCountry: 'CA',
+          },
+        }}
+      />
       <Hero />
       <WhoWeAre />
       <Comparison />
-      <ServicesIntro />
       <StatsAndApproach />
       {/* Short enough that the banner and the footer share the last screen; no snap stop of its own, so the page settles on the footer */}
       <CtaBanner className="section-y lg:snap-align-none lg:pt-10 lg:pb-6" />
@@ -70,7 +84,7 @@ function Hero() {
             {hero.eyebrow}
           </m.p>
 
-          <h1 className="mt-3 text-4xl leading-[1.1] font-bold sm:text-5xl lg:text-[2.75rem] xl:text-5xl 2xl:text-6xl">
+          <h1 className="mt-3 text-5xl leading-[1.05] font-bold sm:text-6xl lg:text-6xl xl:text-7xl 2xl:text-[5.25rem]">
             {words.map(({ word, accent, br }, i) => (
               <span key={i}>
                 {br && <br />}
@@ -81,7 +95,7 @@ function Hero() {
                     animate={{ y: 0 }}
                     transition={{
                       duration: 0.9,
-                      delay: 0.15 + i * 0.05,
+                      delay: 0.15 + i * 0.1,
                       ease: easeOutExpo,
                     }}
                   >
@@ -169,38 +183,6 @@ function WhoWeAre() {
           </p>
         </Reveal>
         <StoryTimeline chapters={whoWeAre.chapters} />
-      </div>
-    </section>
-  )
-}
-
-/** Each service with a link to its page; the link text is the phrase that page targets */
-function ServicesIntro() {
-  return (
-    <section className="section-y">
-      <div className="container-page max-w-4xl">
-        <Reveal className="text-center">
-          <h2 className="font-sans eyebrow text-base! font-bold text-balance md:text-xl!">
-            {servicesIntro.heading}
-          </h2>
-          <p className="mt-4 text-lg text-ink/70">{servicesIntro.body}</p>
-        </Reveal>
-        <Reveal staggerChildren={0.08} className="mt-8 grid gap-3">
-          {servicesIntro.items.map(({ before, link, to, after }) => (
-            <RevealItem key={to}>
-              <p className="rounded-2xl border border-ink/8 bg-card px-5 py-4 leading-relaxed text-ink/75">
-                {before}
-                <Link
-                  to={to}
-                  className="font-semibold text-teal-900 underline decoration-gold-500/60 underline-offset-4 hover:decoration-gold-500"
-                >
-                  {link}
-                </Link>
-                {after}
-              </p>
-            </RevealItem>
-          ))}
-        </Reveal>
       </div>
     </section>
   )

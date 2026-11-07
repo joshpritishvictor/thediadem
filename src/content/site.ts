@@ -2,15 +2,10 @@ export const site = {
   name: 'Diadem',
   legalName: 'Diadem Strategies Inc.',
   tagline: 'Plan wisely, sow strategically, reap abundantly.',
-  /** Home page title in search results; other pages set their own */
-  homeTitle: 'Diadem | Accountants, Advisors & Lawyers Working as One',
-  /** Default search snippet, used by the home page */
   description:
-    'Diadem coordinates accountants, financial advisors, insurance advisors and lawyers for business owners in Calgary and across Alberta.',
+    'Alberta’s integrated professional network. Financial planners, tax strategists, accountants, insurance advisors and lawyers, coordinated through Diadem, working as one for you.',
   url: 'https://www.thediadem.ca',
   location: 'Calgary, Alberta, Canada',
-  /** Where clients are served; shown next to the location (meetings are virtual) */
-  serviceArea: 'Serving Calgary and all of Alberta',
   contact: {
     phone: '1-587-316-1691',
     phoneHref: 'tel:+15873161691',

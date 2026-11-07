@@ -4,34 +4,6 @@ import type { Service } from '../content/services'
 import Reveal from './Reveal'
 import ServiceCard from './ServiceCard'
 
-/** A panel counts as active once its top passes this far down the viewport */
-const ACTIVE_LINE = 0.4
-
-/** Layout position, unaffected by the reveal animation's transform */
-function pageTop(el: HTMLElement) {
-  let y = 0
-  for (
-    let node: HTMLElement | null = el;
-    node;
-    node = node.offsetParent as HTMLElement | null
-  ) {
-    y += node.offsetTop
-  }
-  return y
-}
-
-/**
- * Scroll a panel into view so it becomes the active one: centred when it is
- * tall enough for its top to clear the active line, otherwise with its top
- * just above the line. Plain centring left short panels below the line on
- * tall screens, so the service above stayed highlighted.
- */
-function scrollToPanel(panel: HTMLElement) {
-  const vh = window.innerHeight
-  const offset = Math.min((vh - panel.offsetHeight) / 2, vh * ACTIVE_LINE - 16)
-  window.scrollTo({ top: pageTop(panel) - offset, behavior: 'smooth' })
-}
-
 /**
  * Services as a list with a detail panel: a sticky list on the left, one panel
  * per service on the right. The list follows the scroll, fading everything but
@@ -53,10 +25,22 @@ export default function ServicesExplorer({
     const panels = services
       .map(({ slug }) => document.getElementById(`service-${slug}`))
       .filter((panel): panel is HTMLElement => panel !== null)
+    // Layout position, unaffected by the reveal animation's transform
+    const pageTop = (el: HTMLElement) => {
+      let y = 0
+      for (
+        let node: HTMLElement | null = el;
+        node;
+        node = node.offsetParent as HTMLElement | null
+      ) {
+        y += node.offsetTop
+      }
+      return y
+    }
     let frame = 0
     const update = () => {
       frame = 0
-      const line = window.scrollY + window.innerHeight * ACTIVE_LINE
+      const line = window.scrollY + window.innerHeight * 0.4
       let current = panels[0]
       for (const panel of panels) {
         if (pageTop(panel) <= line) current = panel
@@ -92,8 +76,9 @@ export default function ServicesExplorer({
                   href={`#service-${slug}`}
                   onClick={(e) => {
                     e.preventDefault()
-                    const panel = document.getElementById(`service-${slug}`)
-                    if (panel) scrollToPanel(panel)
+                    document
+                      .getElementById(`service-${slug}`)
+                      ?.scrollIntoView({ behavior: 'smooth', block: 'center' })
                   }}
                   aria-current={current ? 'true' : undefined}
                   className={`group relative block py-3 transition-all duration-500 ease-out-expo ${

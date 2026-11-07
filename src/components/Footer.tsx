@@ -53,12 +53,8 @@ export default function Footer() {
               <Mail size={16} /> {site.contact.email}
             </a>
           </li>
-          <li className="flex items-start gap-2 text-cream/70">
-            <MapPin size={16} className="mt-0.5 shrink-0" />
-            <span>
-              {site.location}
-              <span className="block text-cream/60">{site.serviceArea}</span>
-            </span>
+          <li className="inline-flex items-center gap-2 text-cream/70">
+            <MapPin size={16} /> {site.location}
           </li>
         </FooterColumn>
       </div>

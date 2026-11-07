@@ -1,7 +1,5 @@
 ---
 title: 'Retirement Planning for Incorporated Professionals: Beyond Retained Earnings'
-metaTitle: 'Retirement Planning for Incorporated Professionals | Diadem'
-metaDescription: 'Retirement planning for incorporated professionals: salary vs dividends, RRSPs, IPPs and corporate investments. Build a plan beyond retained earnings.'
 date: 2026-06-23T18:13:28-06:00
 excerpt: 'Incorporated professionals often assume their retained earnings will automatically fund retirement. While corporate savings are valuable, a comprehensive retirement strategy requires careful coordination between personal accounts, corporate investments, and eventual corporate wind-down strategies.'
 categories: ['Financial Advisory & Corporate Planning']
@@ -45,7 +43,5 @@ Planning years in advance allows your advisory team to implement structured divi
 ## Coordinate Your Retirement Strategy
 
 Retirement planning for business owners isn’t a single decision; it’s an ongoing process across tax, legal, and financial planning.
-
-A [financial advisor in Calgary](/service/corporate-financial-advisory/) can build your retirement plan together with your CPA and lawyer.
 
 **Disclaimer:** This article is for general informational and educational purposes only and does not constitute formal tax, legal, financial, or insurance advice. Tax rules, contribution limits, and regulations governing corporate structures and pension plans are subject to change. Always consult with a licensed Alberta CPA, corporate lawyer, or licensed financial advisor regarding your specific circumstances before implementing any strategy.

@@ -12,7 +12,7 @@ const label = 'text-center font-sans eyebrow text-base! font-bold md:text-xl!'
 export default function About() {
   return (
     <>
-      <Seo fullTitle={about.seo.title} description={about.seo.description} />
+      <Seo title="About Us" description={about.intro} />
       <PageHero title="About Us" compact />
 
       {/* Meet the people: why we exist, and who we work with, at a glance */}
@@ -46,9 +46,6 @@ export default function About() {
             {/* Partners: three independent professions, with Diadem helping them work together */}
             <div className="mt-10 border-t border-ink/10 pt-10 text-center">
               <h2 className={label}>{about.partners.eyebrow}</h2>
-              <p className="mt-2 text-sm font-semibold text-ink/60">
-                {about.partners.serving}
-              </p>
               <Reveal
                 staggerChildren={0.12}
                 className="mt-5 flex flex-wrap justify-center gap-3"

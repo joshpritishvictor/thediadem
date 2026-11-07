@@ -2,11 +2,6 @@ import { Clock, Mail, Phone, Video } from 'lucide-react'
 import { site } from './site'
 
 export const contactPage = {
-  seo: {
-    title: 'Contact Diadem | Book a Free Consultation in Alberta',
-    description:
-      'Book a free 30-minute consultation with Diadem. Virtual meetings for business owners in Calgary and across Alberta.',
-  },
   eyebrow: 'Contact Us',
   heading: 'Virtual advisory and intake',
   body: 'Diadem operates digitally to serve incorporated professionals, business owners, and families across Alberta.',
@@ -15,7 +10,6 @@ export const contactPage = {
       icon: Video,
       title: 'Virtual consultations',
       body: 'Video or phone',
-      note: site.serviceArea,
     },
     {
       icon: Clock,

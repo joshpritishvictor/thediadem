@@ -1,7 +1,5 @@
 ---
 title: 'Understanding Family Trusts for Business Owners: Structure, Protection, and Planning'
-metaTitle: 'Family Trusts for Business Owners: How They Work | Diadem'
-metaDescription: 'Family trusts give business owners flexible asset protection, succession planning and estate coordination. Learn how a family trust is structured.'
 date: 2026-06-23T18:12:39-06:00
 excerpt: 'The words “family trust” often conjure images of old money and complex legal arrangements. In practice, however, family trusts are a practical planning tool for incorporated business owners, high-income professionals, and families managing significant corporate assets.'
 categories: ['Corporate Legal & Estate Planning']
@@ -41,7 +39,5 @@ Proactive long-term planning well before the 21-year mark allows your corporate 
 ## Coordinate Your Trust & Estate Strategy
 
 Family trusts require careful ongoing coordination across corporate legal drafting, tax compliance, and financial management.
-
-A [corporate lawyer in Calgary](/service/corporate-legal-services/) can draft and maintain a family trust in step with your corporate structure and tax plan.
 
 **Disclaimer:** This article is for general informational and educational purposes only and does not constitute formal tax, legal, financial, or insurance advice. Tax rules, Lifetime Capital Gains Exemption thresholds, TOSI regulations, and trust legislation are subject to change. Always consult with a licensed Alberta CPA, corporate lawyer, or licensed financial advisor regarding your specific circumstances before implementing any strategy.

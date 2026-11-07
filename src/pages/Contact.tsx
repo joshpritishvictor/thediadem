@@ -7,10 +7,7 @@ import { contactForm, contactPage } from '../content/contact'
 export default function Contact() {
   return (
     <>
-      <Seo
-        fullTitle={contactPage.seo.title}
-        description={contactPage.seo.description}
-      />
+      <Seo title="Contact Us" description={contactPage.body} />
       <PageHero title="Contact Us" compact />
 
       <section className="container-page pt-6 section-b">
@@ -27,33 +24,30 @@ export default function Contact() {
         {/* One slim strip of four contact facts, above the form */}
         <Reveal>
           <ul className="grid divide-y divide-ink/8 overflow-hidden rounded-3xl border border-ink/8 bg-card shadow-sm sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4 lg:divide-x">
-            {contactPage.details.map(
-              ({ icon: Icon, title, body, href, note }) => (
-                <li key={title} className="flex items-center gap-3 px-5 py-4">
-                  <span className="grid size-11 shrink-0 place-items-center rounded-full bg-teal-900 text-gold-300 ring-4 ring-gold-500/20">
-                    <Icon size={20} />
-                  </span>
-                  <div className="min-w-0">
-                    <h2 className="text-[0.65rem] font-bold tracking-[0.18em] text-gold-600 uppercase">
-                      {title}
-                    </h2>
-                    {href ? (
-                      <a
-                        href={href}
-                        className="block text-sm font-semibold text-teal-900 hover:underline"
-                      >
-                        {body}
-                      </a>
-                    ) : (
-                      <p className="text-sm font-semibold text-teal-900">
-                        {body}
-                      </p>
-                    )}
-                    {note && <p className="text-xs text-ink/60">{note}</p>}
-                  </div>
-                </li>
-              ),
-            )}
+            {contactPage.details.map(({ icon: Icon, title, body, href }) => (
+              <li key={title} className="flex items-center gap-3 px-5 py-4">
+                <span className="grid size-11 shrink-0 place-items-center rounded-full bg-teal-900 text-gold-300 ring-4 ring-gold-500/20">
+                  <Icon size={20} />
+                </span>
+                <div className="min-w-0">
+                  <h2 className="text-[0.65rem] font-bold tracking-[0.18em] text-gold-600 uppercase">
+                    {title}
+                  </h2>
+                  {href ? (
+                    <a
+                      href={href}
+                      className="block text-sm font-semibold text-teal-900 hover:underline"
+                    >
+                      {body}
+                    </a>
+                  ) : (
+                    <p className="text-sm font-semibold text-teal-900">
+                      {body}
+                    </p>
+                  )}
+                </div>
+              </li>
+            ))}
           </ul>
         </Reveal>
 

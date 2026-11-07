@@ -30,17 +30,10 @@ export default function Blog() {
 
   return (
     <>
-      {category ? (
-        <Seo
-          title={`${category.name} Articles`}
-          description={`${category.name} articles from ${site.name}: practical guidance for business owners in Calgary and across Alberta.`}
-        />
-      ) : (
-        <Seo
-          fullTitle={insights.seo.title}
-          description={insights.seo.description}
-        />
-      )}
+      <Seo
+        title={category ? `${category.name} Articles` : insights.heading}
+        description={`${insights.heading} from ${site.name}: practical guidance for Alberta business owners, incorporated professionals and families.`}
+      />
       <PageHero
         title={title}
         crumbs={category ? [{ to: '/blog/', label: 'Blog' }] : []}

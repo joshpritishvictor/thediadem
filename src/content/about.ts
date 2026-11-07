@@ -27,11 +27,6 @@ export type Person = {
 }
 
 export const about = {
-  seo: {
-    title: 'About Diadem | Alberta Financial & Legal Professionals',
-    description:
-      'Meet Diadem, a Calgary-based network of CPAs, financial advisors, insurance advisors and lawyers serving business owners across Alberta.',
-  },
   eyebrow: 'Meet the People Behind Diadem',
   heading: 'Shared Expertise. One Vision.',
   intro:
@@ -119,8 +114,6 @@ export const about = {
       { icon: ShieldCheck, title: 'Insurance Agents' },
       { icon: Scale, title: 'Lawyers' },
     ] satisfies { icon: LucideIcon; title: string }[],
-    serving:
-      'Our partners serve business owners and families in Calgary and across Alberta.',
     expertise: 'Each practises in their own area of expertise',
     together: 'We help them work together around your goals',
   },

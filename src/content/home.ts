@@ -10,13 +10,8 @@ import {
 
 export const hero = {
   eyebrow: 'Alberta’s Integrated Professional Network',
-  // The H1: says what Diadem is. The second line gets the gold accent
-  headline: [
-    'Diadem: Alberta’s Coordinated Team of',
-    'Accountants, Financial Advisors, Insurance Advisors and Lawyers',
-  ],
-  // The brand line, moved out of the H1
-  body: 'One team. One goal. Your plan, built and run together.',
+  headline: ['One Team.', 'One Goal.'],
+  body: 'A team of Financial Planners, Tax Strategists, Insurance Advisors, and Lawyers, coordinated through Diadem, working as one for you.',
 }
 
 // The hero carousel (see HeroCarousel)
@@ -98,7 +93,7 @@ export const whoWeAre = {
 
 // Each row is one topic: the frustration of the usual way, and how Diadem handles it (see CompareToggle)
 export const comparison = {
-  heading: 'Coordinated Advice for Calgary and Alberta Business Owners',
+  heading: 'Expert Advice, Without the Runaround.',
   columns: { traditional: 'The traditional way', diadem: 'The Diadem way' },
   rows: [
     {
@@ -188,56 +183,7 @@ export const process = {
   ],
 }
 
-// Introduces each service with a link to its page. The link text is the search
-// phrase each page targets, which tells Google what the linked page is about
-export const servicesIntro = {
-  heading: 'Every Professional Your Business Needs, Working as One',
-  body: 'Diadem connects business owners and families in Calgary and across Alberta with licensed, independent professionals who plan together instead of in isolation.',
-  items: [
-    {
-      before: 'Work with an ',
-      link: 'accountant in Calgary',
-      to: '/service/accounting-tax-solutions/',
-      after:
-        ' on corporate tax planning, bookkeeping, payroll and restructuring, planned before year-end rather than after it.',
-    },
-    {
-      before: 'A ',
-      link: 'tax accountant',
-      to: '/service/personal-tax-accountant/',
-      after:
-        ' prepares your personal and family returns and finds the deductions, credits and income splitting you qualify for.',
-    },
-    {
-      before: 'A ',
-      link: 'financial advisor',
-      to: '/service/corporate-financial-advisory/',
-      after:
-        ' helps you invest retained earnings, plan cash flow and prepare for succession.',
-    },
-    {
-      before: 'The right ',
-      link: 'business insurance',
-      to: '/service/insurance-risk-management/',
-      after:
-        ', from key person and buy-sell coverage to corporate owned life insurance, protects what you’ve built.',
-    },
-    {
-      before: 'A ',
-      link: 'corporate lawyer',
-      to: '/service/corporate-legal-services/',
-      after:
-        ' handles incorporation, shareholder agreements, reorganizations and contracts, in step with your tax plan.',
-    },
-  ],
-}
-
 export const insights = {
-  seo: {
-    title: 'Tax & Wealth Planning Blog for Alberta Owners | Diadem',
-    description:
-      'Tax, wealth and legal planning insights for business owners and incorporated professionals in Calgary and across Alberta.',
-  },
   eyebrow: 'Our Blog',
   heading: 'Finance Insights, Updates and Trends',
 }

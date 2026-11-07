@@ -19,8 +19,6 @@ type PageHeroProps = {
   children?: ReactNode
   /** Only the breadcrumb trail, so the page content starts straight away */
   compact?: boolean
-  /** The page shows its own visible <h1>, so the compact hero adds none */
-  ownHeading?: boolean
 }
 
 /** Top section for inner pages: breadcrumbs, heading, optional image */
@@ -33,14 +31,13 @@ export default function PageHero({
   visual,
   children,
   compact = false,
-  ownHeading = false,
 }: PageHeroProps) {
   const trail = [{ to: '/', label: 'Home' }, ...crumbs]
 
   if (compact) {
     return (
       <section className="container-page pt-24 pb-2 md:pt-28">
-        {!ownHeading && <h1 className="sr-only">{title}</h1>}
+        <h1 className="sr-only">{title}</h1>
         <nav
           aria-label="Breadcrumb"
           className="flex flex-wrap items-center gap-1.5 text-sm text-ink/50"

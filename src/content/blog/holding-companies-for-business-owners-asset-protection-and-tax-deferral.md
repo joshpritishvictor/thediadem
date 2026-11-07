@@ -1,7 +1,5 @@
 ---
 title: 'Holding Companies for Business Owners: Asset Protection and Tax Deferral'
-metaTitle: 'Holding Companies: Asset Protection & Tax Deferral | Diadem'
-metaDescription: 'Holding companies help business owners protect retained earnings, defer tax and plan succession. Learn how a holdco works and when it makes sense.'
 date: 2026-06-23T18:11:52-06:00
 excerpt: 'For incorporated business owners, a holding company (“holdco”) can be a fundamental structural tool for protecting wealth, managing tax exposure, and planning for business succession. Yet, many owners aren’t fully clear on how a holdco operates or when it makes sense to implement one.'
 categories: ['Corporate Legal & Estate Planning']
@@ -35,7 +33,5 @@ However, incorporating and maintaining a holdco adds legal setup costs, separate
 ## Review Your Corporate Structure
 
 Determining if a holding company fits your business vision requires a coordinated look across your legal, accounting, and financial landscape. Connect with independent professionals to review your corporate setup.
-
-A [corporate lawyer in Calgary](/service/corporate-legal-services/) can set up or review a holding company alongside your accountant.
 
 **Disclaimer:** This article is for general informational and educational purposes only and does not constitute formal tax, legal, financial, or insurance advice. Tax rules governing inter-corporate dividends, corporate structures, and liability protections vary by jurisdiction and are subject to change. Always consult with a licensed Alberta CPA, corporate lawyer, or licensed financial advisor regarding your specific circumstances before implementing any strategy.

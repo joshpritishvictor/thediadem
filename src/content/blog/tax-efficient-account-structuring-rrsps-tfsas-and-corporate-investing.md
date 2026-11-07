@@ -1,7 +1,5 @@
 ---
 title: 'Tax-Efficient Account Structuring: RRSPs, TFSAs, and Corporate Investing'
-metaTitle: 'RRSP vs TFSA vs Corporate Investing: What to Use | Diadem'
-metaDescription: 'RRSP, TFSA or corporate investing? Where you hold investments shapes how much you keep. Learn which accounts suit business owners, and when.'
 date: 2026-06-23T18:10:03-06:00
 excerpt: 'Where you hold your investments can impact your long-term wealth accumulation almost as much as what you invest in. Utilizing the right account structures allows you to manage tax exposure each year, compounding your capital more effectively over a lifetime.'
 categories: ['Financial Advisory & Corporate Planning']
@@ -46,7 +44,5 @@ These decisions benefit from coordination between your CPA, corporate advisor, a
 ## Review Your Account Structure
 
 Aligning personal accounts with corporate holdings is an ongoing process. Connect with independent tax and financial professionals to review your strategy.
-
-A [tax accountant in Calgary](/service/personal-tax-accountant/) can review how your RRSP, TFSA and corporate accounts work together each year.
 
 **Disclaimer:** This article is for general informational and educational purposes only and does not constitute formal tax, legal, financial, or insurance advice. Tax rates, contribution limits, RDTOH mechanics, and Small Business Deduction thresholds are subject to change. Always consult with a licensed Alberta CPA, corporate lawyer, or licensed financial advisor regarding your specific circumstances before implementing any strategy.
