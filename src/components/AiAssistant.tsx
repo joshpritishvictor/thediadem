@@ -7,10 +7,10 @@ import { answer, type Reply } from '../lib/assistant'
 
 type Message = { from: 'bot' | 'user'; text: string; link?: Reply['link'] }
 
-// Optional: a backend that turns the conversation into an answer. It receives
-// { messages: [{ role: 'user' | 'assistant', content }] } and returns { reply }.
-// Without it, the assistant answers from the site's own FAQs and services.
-const endpoint = import.meta.env.VITE_ASSISTANT_ENDPOINT
+// Answers come from Claude via functions/api/assistant.ts. It receives
+// { messages: [{ role: 'user' | 'assistant', content }] } and returns { reply, link?, label? }.
+// If it's unreachable or fails, the assistant answers from the site's own FAQs and services.
+const endpoint = import.meta.env.VITE_ASSISTANT_ENDPOINT || '/api/assistant'
 
 const welcome: Message = {
   from: 'bot',
@@ -25,7 +25,6 @@ const suggestions = [
 
 async function ask(history: Message[]): Promise<Reply> {
   const question = history[history.length - 1].text
-  if (!endpoint) return answer(question)
 
   try {
     const response = await fetch(endpoint, {
@@ -38,8 +37,19 @@ async function ask(history: Message[]): Promise<Reply> {
         })),
       }),
     })
-    const data = (await response.json()) as { reply?: string }
-    return data.reply ? { text: data.reply } : answer(question)
+    if (!response.ok) return answer(question)
+    const data = (await response.json()) as {
+      reply?: string
+      link?: string
+      label?: string
+    }
+    if (!data.reply) return answer(question)
+    return {
+      text: data.reply,
+      ...(data.link && {
+        link: { to: data.link, label: data.label ?? 'Learn more' },
+      }),
+    }
   } catch {
     return answer(question)
   }

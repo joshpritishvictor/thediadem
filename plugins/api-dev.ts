@@ -1,12 +1,27 @@
 import { existsSync } from 'node:fs'
+import { readFile, writeFile } from 'node:fs/promises'
 import type { IncomingMessage } from 'node:http'
 import path from 'node:path'
-import { loadEnv, type Plugin } from 'vite'
+import { loadEnv, type Plugin, type ViteDevServer } from 'vite'
 
 async function readBody(req: IncomingMessage) {
   const chunks: Buffer[] = []
   for await (const chunk of req) chunks.push(chunk as Buffer)
   return Buffer.concat(chunks)
+}
+
+/**
+ * Regenerates the assistant's knowledge from src/content so edits show up in dev
+ * (production builds do the same in scripts/prerender.ts). Only writes on change.
+ */
+async function writeKnowledge(server: ViteDevServer, root: string) {
+  const { buildAssistantKnowledge } = await server.ssrLoadModule(
+    path.join(root, 'src', 'lib', 'assistantKnowledge.ts'),
+  )
+  const file = path.join(root, 'functions', '_lib', 'assistant-knowledge.json')
+  const next = JSON.stringify(buildAssistantKnowledge(), null, 2) + '\n'
+  const current = existsSync(file) ? await readFile(file, 'utf8') : ''
+  if (next !== current) await writeFile(file, next)
 }
 
 /** Method name → export Cloudflare Pages looks for, e.g. POST → onRequestPost */
@@ -33,6 +48,7 @@ export default function apiDev(): Plugin {
         if (!file || !existsSync(file)) return next()
 
         try {
+          if (name === 'assistant') await writeKnowledge(server, root)
           const mod = await server.ssrLoadModule(file)
           const method = req.method ?? 'GET'
           const handler = mod[handlerName(method)] ?? mod.onRequest
