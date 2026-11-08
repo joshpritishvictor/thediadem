@@ -7,6 +7,7 @@ import { pathToFileURL } from 'node:url'
 type ManifestChunk = { file: string; imports?: string[]; css?: string[] }
 type ServerEntry = {
   render: (url: string) => Promise<string>
+  buildAssistantKnowledge: () => object
   routeModules: (url: string) => string[]
   urls: string[]
   siteUrl: string
@@ -17,9 +18,18 @@ const dist = path.join(root, 'dist')
 const serverDir = path.join(root, 'dist-server')
 const manifestFile = path.join(dist, '.vite', 'manifest.json')
 
-const { render, routeModules, urls, siteUrl } = (await import(
-  pathToFileURL(path.join(serverDir, 'entry-server.js')).href
-)) as ServerEntry
+const { render, routeModules, urls, siteUrl, buildAssistantKnowledge } =
+  (await import(
+    pathToFileURL(path.join(serverDir, 'entry-server.js')).href
+  )) as ServerEntry
+
+// The Claude assistant (functions/api/assistant.ts) answers from the site's content.
+// Regenerated on every build so it always matches what's deployed; Cloudflare bundles
+// the functions after this build step.
+await writeFile(
+  path.join(root, 'functions', '_lib', 'assistant-knowledge.json'),
+  JSON.stringify(buildAssistantKnowledge(), null, 2) + '\n',
+)
 
 const template = await readFile(path.join(dist, 'index.html'), 'utf8')
 const manifest = JSON.parse(await readFile(manifestFile, 'utf8')) as Record<

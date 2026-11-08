@@ -8,6 +8,7 @@ import { servicePath, services } from './content/services'
 import { site } from './content/site'
 
 export { routeModules } from './routes'
+export { buildAssistantKnowledge } from './lib/assistantKnowledge'
 export const siteUrl = site.url
 
 /** Every URL to pre-render at build time, derived from the content */
