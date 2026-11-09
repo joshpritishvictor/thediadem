@@ -1,5 +1,6 @@
 import { CheckCircle2, Loader2, X } from 'lucide-react'
 import {
+  useEffect,
   useRef,
   useState,
   type FormEvent,
@@ -24,6 +25,12 @@ const chevron =
   "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2328241f' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E\")"
 const selectClass = `${fieldClass} select-field appearance-none bg-no-repeat pr-12 bg-[position:right_1.25rem_center]`
 
+/** YYYY-MM-DD in the visitor's own time zone (the format <input type="date"> uses) */
+function toDateValue(date: Date) {
+  const pad = (n: number) => String(n).padStart(2, '0')
+  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`
+}
+
 const serviceOptions = [
   ...featuredServices.map((s) => s.title),
   contactForm.serviceCatchAll,
@@ -36,6 +43,15 @@ export default function ContactForm() {
   const [status, setStatus] = useState<Status>('idle')
   const [error, setError] = useState(contactForm.error)
   const successDialog = useRef<HTMLDialogElement>(null)
+  // Call dates run from today to one year ahead. Set after hydration: the page is
+  // prerendered, so "today" at build time would be stale
+  const [dateRange, setDateRange] = useState<{ min: string; max: string }>()
+  useEffect(() => {
+    const today = new Date()
+    const nextYear = new Date(today)
+    nextYear.setFullYear(today.getFullYear() + 1)
+    setDateRange({ min: toDateValue(today), max: toDateValue(nextYear) })
+  }, [])
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -102,11 +118,12 @@ export default function ContactForm() {
             className={fieldClass}
           />
         </Field>
-        <Field label="Phone number">
+        <Field label="Phone number" required>
           <input
             name="phone"
             type="tel"
             autoComplete="tel"
+            required
             className={fieldClass}
           />
         </Field>
@@ -124,10 +141,19 @@ export default function ContactForm() {
             defaultValue={preselected}
           />
         </Field>
-        <Field label="Business or employment type" wide>
+        <Field label="Preferred call date">
+          <input
+            name="preferredDate"
+            type="date"
+            min={dateRange?.min}
+            max={dateRange?.max}
+            className={fieldClass}
+          />
+        </Field>
+        <Field label="Business or employment type" className="lg:col-span-2">
           <Select name="entityType" options={contactForm.entityTypes} />
         </Field>
-        <Field label="How can we help? (optional)" wide>
+        <Field label="How can we help?" wide>
           <textarea name="message" rows={4} className={fieldClass} />
         </Field>
 
@@ -140,14 +166,14 @@ export default function ContactForm() {
           className="hidden"
         />
 
-        <label className="flex items-start gap-3 text-sm text-cream/75 sm:col-span-2 lg:col-span-3">
+        <label className="flex cursor-pointer items-start gap-3 text-sm leading-6 text-cream/75 sm:col-span-2 lg:col-span-3">
           <input
             name="consent"
             type="checkbox"
             value="yes"
             className="consent-box mt-0.5 size-5 shrink-0 cursor-pointer appearance-none rounded-md border border-gold-500 bg-card bg-center bg-no-repeat transition checked:bg-gold-500 focus-visible:ring-4 focus-visible:ring-gold-500/30 focus-visible:outline-none"
           />
-          {contactForm.consent}
+          <span>{contactForm.consent}</span>
         </label>
 
         {status === 'error' && (
@@ -229,16 +255,18 @@ function Field({
   label,
   required,
   wide,
+  className = '',
   children,
 }: {
   label: string
   required?: boolean
   wide?: boolean
+  className?: string
   children: ReactElement
 }) {
   return (
     <label
-      className={`grid gap-2 text-sm font-medium text-[#f2eacf] ${wide ? 'sm:col-span-2 lg:col-span-3' : ''}`}
+      className={`grid gap-2 text-sm font-medium text-[#f2eacf] ${wide ? 'sm:col-span-2 lg:col-span-3' : ''} ${className}`}
     >
       <span>
         {label}

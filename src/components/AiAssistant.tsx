@@ -14,13 +14,13 @@ const endpoint = import.meta.env.VITE_ASSISTANT_ENDPOINT || '/api/assistant'
 
 const welcome: Message = {
   from: 'bot',
-  text: 'Hi, I’m Crest, Diadem’s assistant. Ask me about our services or how we work, and I’ll point you in the right direction.',
+  text: 'Hi, I’m Crest, Diadem’s assistant. Ask me about our services or how we work, or I can book your free consultation right here.',
 }
 
 const suggestions = [
   'What services do you offer?',
   'How is Diadem different?',
-  'How do I book a consultation?',
+  'Book a free consultation',
 ]
 
 async function ask(history: Message[]): Promise<Reply> {
