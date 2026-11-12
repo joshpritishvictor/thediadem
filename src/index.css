@@ -281,8 +281,13 @@
     font-weight: 600;
   }
   /* The "Select…" prompt is not a choice */
-  .select-field option:disabled {
+  .select-field option[value='']:disabled {
     display: none;
+  }
+  /* Booked call times: shown, but greyed out and not selectable */
+  .select-field option:disabled:not([value='']) {
+    opacity: 0.45;
+    cursor: not-allowed;
   }
   .select-field option::checkmark {
     display: none;

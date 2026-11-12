@@ -1,5 +1,7 @@
 // GoHighLevel (HighLevel API v2) helpers shared by the contact form and the assistant.
 
+import { daySlots, SLOT_LENGTH_MS, slotStart } from '../../src/lib/callHours.ts'
+
 const GHL_API = 'https://services.leadconnectorhq.com'
 const TIMEOUT_MS = 10_000
 
@@ -44,17 +46,8 @@ export function isValidCallDate(value: string) {
   return date >= start && date < end
 }
 
-/** An ISO date-time (with offset) in the future and within a year */
-export function isValidCallTime(value: string) {
-  if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}/.test(value)) return false
-  const time = Date.parse(value)
-  return (
-    Number.isFinite(time) && time > Date.now() && time < bookingWindow().end
-  )
-}
-
 type RequestOptions = {
-  method?: 'GET' | 'POST'
+  method?: 'GET' | 'POST' | 'PUT'
   body?: object
   query?: Record<string, string | number>
   version?: string
@@ -155,4 +148,94 @@ export async function saveLead(
     }
   }
   return contact?.id
+}
+
+/** An event time from GHL: an ISO string with offset, or epoch milliseconds */
+const eventTime = (value: unknown) =>
+  typeof value === 'string' || typeof value === 'number'
+    ? new Date(value).getTime()
+    : NaN
+
+/**
+ * Slot labels (e.g. "1:00 PM") on a YYYY-MM-DD day that overlap an appointment or a
+ * blocked time on the calendar, even partly (a 1:30–2:00 booking takes the 1:00 slot)
+ */
+export async function bookedTimes(
+  token: string,
+  locationId: string,
+  calendarId: string,
+  date: string,
+) {
+  const slots = daySlots(date)
+  const booked = new Set<string>()
+  if (!slots.length) return booked
+
+  const dayStart = slotStart(date, slots[0])!.getTime()
+  const dayEnd = slotStart(date, slots.at(-1)!)!.getTime() + SLOT_LENGTH_MS
+  const query = { locationId, calendarId, startTime: dayStart, endTime: dayEnd }
+  const options = { method: 'GET', version: CALENDARS_VERSION, query } as const
+
+  const [appointments, blocked] = await Promise.all([
+    ghl('/calendars/events', token, options),
+    // Blocked times also take a slot; a failure here shouldn't hide real bookings
+    ghl('/calendars/blocked-slots', token, options).catch((error) => {
+      console.error('GHL: blocked slots not read', error)
+      return {}
+    }),
+  ])
+
+  const busy: [number, number][] = []
+  for (const result of [appointments, blocked]) {
+    const events = (result as { events?: unknown }).events
+    if (!Array.isArray(events)) continue
+    for (const event of events as Record<string, unknown>[]) {
+      if (event.deleted) continue
+      if (['cancelled', 'invalid'].includes(String(event.appointmentStatus)))
+        continue
+      const start = eventTime(event.startTime)
+      const end = eventTime(event.endTime)
+      if (Number.isFinite(start) && Number.isFinite(end))
+        busy.push([start, end])
+    }
+  }
+
+  for (const label of slots) {
+    const start = slotStart(date, label)!.getTime()
+    const end = start + SLOT_LENGTH_MS
+    if (busy.some(([from, to]) => from < end && to > start)) booked.add(label)
+  }
+  return booked
+}
+
+/** Books a slot on a GHL calendar for a contact */
+export function createAppointment(
+  token: string,
+  appointment: {
+    calendarId: string
+    locationId: string
+    contactId: string
+    start: Date
+    end: Date
+    title: string
+    description?: string
+  },
+) {
+  return ghl('/calendars/events/appointments', token, {
+    version: CALENDARS_VERSION,
+    body: {
+      calendarId: appointment.calendarId,
+      locationId: appointment.locationId,
+      contactId: appointment.contactId,
+      startTime: appointment.start.toISOString(),
+      endTime: appointment.end.toISOString(),
+      title: appointment.title,
+      ...(appointment.description && { description: appointment.description }),
+      appointmentStatus: 'confirmed',
+      // Our own hours and booked-slot check decide what's open, not the calendar's
+      // availability settings in GHL
+      ignoreFreeSlotValidation: true,
+      // GHL sends its usual confirmation (if set up on the calendar)
+      toNotify: true,
+    },
+  })
 }
