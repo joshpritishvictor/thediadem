@@ -12,6 +12,7 @@ import hemaImg from '../assets/images/team/hema.webp'
 import jeswinImg from '../assets/images/team/jeswin.webp'
 import joshImg from '../assets/images/team/josh.webp'
 import judithImg from '../assets/images/team/judith.webp'
+import rondaImg from '../assets/images/team/ronda.webp'
 import sharonImg from '../assets/images/team/sharon.webp'
 import wankelImg from '../assets/images/team/wankel.webp'
 
@@ -88,6 +89,13 @@ export const about = {
         initials: 'JS',
         role: 'Director of Operations',
         body: 'Keeps Diadem’s workflows and team running smoothly, so client requests move from the first conversation to follow-through without delays.',
+      },
+      {
+        name: 'Ronda',
+        photo: rondaImg,
+        initials: 'R',
+        role: 'Client Relations Coordinator',
+        body: 'Is often the first person clients speak with at Diadem, keeping them informed, answering questions, and making sure every request reaches the right professional.',
       },
       {
         name: 'Sharon Kennedy',
