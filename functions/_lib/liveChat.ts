@@ -1,23 +1,18 @@
-// The website chat (src/components/AiAssistant.tsx) runs on GoHighLevel: every visitor
-// message goes into a GHL conversation, and GHL's AI agent (Kiara, Conversation AI on the
-// Live Chat channel) answers there. The chat polls /api/live and shows her replies, and
-// the team's, in the same window.
+// Handover from the website chat (src/components/AiAssistant.tsx) to the team in
+// GoHighLevel. Claude answers and books until the visitor asks for a real person; then
+// requestPerson() saves their name, phone and email on their contact (an existing client
+// keeps their own contact), adds the "human handover" tag and a note with the chat so far,
+// and posts the request into their GHL conversation. From then on the visitor's messages
+// go into that conversation (/api/live), and the chat polls it for the team's replies.
 //
-// - The first message creates an anonymous "Website visitor" contact (tag "website-chat")
-//   and its conversation. Kiara collects their details and books as configured in GHL.
-// - When Kiara hands over (her Human Handover action), the team replies from GHL
-//   Conversations or the mobile app on "Website chat": a custom conversation provider
-//   from the "Diadem Website Chat" Marketplace app (GHL_CONVERSATION_PROVIDER_ID). Visitor
-//   messages go in on that channel (posted with the app's own token, ghlApp.ts), and
-//   replies on it appear only in the chat. If the app isn't connected, messages go in as
-//   Live Chat and the team can only reply by email or SMS (GHL only offers Live Chat
-//   replies inside its own widget); those replies show in the chat too, but also reach
-//   the visitor's inbox or phone.
-// - Workflow, campaign and other automated sends are ignored, so the visitor only sees
-//   Kiara and real people.
-//
-// startHandover is the older entry point for functions/api/assistant.ts (Claude), which
-// hands a visitor to the team the same way.
+// - Messages go in on "Website chat": a custom conversation provider from the "Diadem
+//   Website Chat" Marketplace app (GHL_CONVERSATION_PROVIDER_ID), posted with the app's own
+//   token (ghlApp.ts). The team replies on "Website chat", and replies appear only in the
+//   chat. If the app isn't connected, messages go in as Live Chat and the team can only
+//   reply by email or SMS (GHL only offers Live Chat replies inside its own widget); those
+//   replies show in the chat too, but also reach the visitor's inbox or phone.
+// - Only replies a person sends are shown: workflow, campaign and other automated sends,
+//   and GHL's AI agent, are ignored.
 //
 // The browser holds a signed session ("<conversationId>.<signature>"), so it can only
 // read and write the conversation it was handed. Signed with the GHL token (server only).
@@ -25,11 +20,9 @@
 // Token scopes needed, on top of the contact ones: "View/Edit Conversations" and
 // "View/Edit Conversation Messages".
 
-import { CONTACTS_VERSION, ghl, saveLead } from './ghl.ts'
+import { ghl, saveLead } from './ghl.ts'
 
 const CONVERSATIONS_VERSION = '2021-04-15'
-/** Kiara's replies (and anything else sent on Live Chat) */
-const AGENT_REPLY_TYPE = 'TYPE_LIVE_CHAT'
 /** Message types that a person on the team sends from GHL */
 const TEAM_REPLY_TYPES = new Set(['TYPE_EMAIL', 'TYPE_SMS'])
 /** Automated sends (e.g. the "we've received your request" workflow email), not a person */
@@ -156,30 +149,6 @@ export async function markDelivered(appToken: string, messageId: string) {
   })
 }
 
-/** Starts a chat for a new visitor: an anonymous contact, its conversation and their first message. Returns the conversation ID. */
-export async function startVisitorChat(
-  token: string,
-  locationId: string,
-  message: string,
-  channel?: Channel,
-) {
-  const { contact } = (await ghl('/contacts/', token, {
-    version: CONTACTS_VERSION,
-    body: {
-      locationId,
-      firstName: 'Website',
-      lastName: 'visitor',
-      source: 'Website chat',
-      tags: ['website-chat'],
-    },
-  })) as { contact?: { id?: string } }
-  if (!contact?.id) throw new Error('GHL: contact not created')
-
-  const conversationId = await conversationFor(token, locationId, contact.id)
-  await postVisitorMessage(token, conversationId, message, channel)
-  return conversationId
-}
-
 /**
  * The visitor asked for a real person and gave their details: saves them on their
  * contact, then posts the request so Kiara's Human Handover runs. Returns the
@@ -191,6 +160,8 @@ export async function requestPerson(
   conversationId: string | undefined,
   visitor: Visitor & { phone: string },
   channel?: Channel,
+  /** The chat so far, or a summary of what they need, for the team */
+  context = '',
 ) {
   const note = [
     'Website chat: asked to talk to a real person',
@@ -199,6 +170,7 @@ export async function requestPerson(
     `Phone: ${visitor.phone}`,
     `Email: ${visitor.email}`,
     `Requested: ${new Date().toISOString()}`,
+    ...(context ? ['', 'Chat so far:', context] : []),
   ].join('\n')
 
   let target = conversationId
@@ -255,52 +227,11 @@ export async function requestPerson(
       `Name: ${`${visitor.firstName} ${visitor.lastName}`.trim()}`,
       `Phone: ${visitor.phone}`,
       `Email: ${visitor.email}`,
+      ...(context ? ['', 'Chat so far:', context] : []),
     ].join('\n'),
     channel,
   )
   return target!
-}
-
-/**
- * Saves the visitor, tags them for the team ("human handover" triggers the alert
- * workflow) and opens the conversation with their request. Returns its ID.
- */
-export async function startHandover(
-  token: string,
-  locationId: string,
-  visitor: Visitor,
-  summary: string,
-  tags: string[],
-  channel?: Channel,
-) {
-  const contactId = await saveLead(token, locationId, {
-    ...visitor,
-    source: 'Website AI assistant',
-    tags: [...tags, 'ai-assistant', 'human handover'],
-    note: [
-      'Website AI assistant (Crest): asked to talk to a person',
-      '',
-      `What they need: ${summary || '—'}`,
-      `Requested: ${new Date().toISOString()}`,
-    ].join('\n'),
-  })
-  if (!contactId) throw new Error('GHL: upsert returned no contact ID')
-
-  const conversationId = await conversationFor(token, locationId, contactId)
-  await postVisitorMessage(
-    token,
-    conversationId,
-    [
-      'Website chat (Crest): this visitor asked to talk to a person.',
-      `What they need: ${summary || '—'}`,
-      '',
-      channel
-        ? 'Reply on "Website chat" here. Your reply shows up in their chat window on the website.'
-        : 'Reply by email here. Your reply shows up in their chat window on the website, and they get it by email too.',
-    ].join('\n'),
-    channel,
-  )
-  return conversationId
 }
 
 // --- Team replies -------------------------------------------------------------------
@@ -395,8 +326,6 @@ export type ChatReply = {
   id: string
   text: string
   at: number
-  /** "agent": Kiara on Live Chat; "team": a person replying by email, SMS or Website chat */
-  from: 'agent' | 'team'
 }
 
 /** Replies in the conversation newer than `since` (epoch ms), oldest first */
@@ -429,7 +358,7 @@ export async function chatReplies(
     (m) =>
       m.id &&
       m.direction === 'outbound' &&
-      (m.messageType === AGENT_REPLY_TYPE || isTeam(m)) &&
+      isTeam(m) &&
       !isAutomated(m) &&
       Date.parse(m.dateAdded ?? '') > since,
   )
@@ -442,7 +371,6 @@ export async function chatReplies(
         id: m.id!,
         text,
         at: Date.parse(m.dateAdded!),
-        from: isTeam(m) ? 'team' : 'agent',
       })
   }
   return replies
