@@ -9,6 +9,7 @@
     /* Cloudflare Pages bundles functions/ with esbuild, so check them in bundler mode */
     "module": "esnext",
     "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "verbatimModuleSyntax": true,
     "moduleDetection": "force",

@@ -4,4 +4,9 @@
   "name": "thediadem",
   "compatibility_date": "2026-10-01",
   "pages_build_output_dir": "dist",
+  // Sign-in tokens of the "Diadem Website Chat" GoHighLevel Marketplace app, saved when
+  // the app is installed (functions/api/chat-connect.ts, functions/_lib/ghlApp.ts)
+  "kv_namespaces": [
+    { "binding": "GHL_TOKENS", "id": "6013ff5738d44305a001b64d9eed99a1" },
+  ],
 }
