@@ -416,15 +416,21 @@ export async function chatReplies(
     },
   )) as { messages?: { messages?: GhlMessage[] } }
 
+  const onWebsiteChat = (m: GhlMessage) =>
+    providerId !== undefined && m.conversationProviderId === providerId
   const isTeam = (m: GhlMessage) =>
-    TEAM_REPLY_TYPES.has(m.messageType ?? '') ||
-    (providerId !== undefined && m.conversationProviderId === providerId)
+    TEAM_REPLY_TYPES.has(m.messageType ?? '') || onWebsiteChat(m)
+  // GHL labels every reply on a custom channel "api", even one typed in Conversations,
+  // so on "Website chat" only workflow, campaign and bulk sends count as automated
+  const isAutomated = (m: GhlMessage) =>
+    AUTOMATED_SOURCES.has(m.source ?? '') &&
+    !(onWebsiteChat(m) && m.source === 'api')
   const fresh = (result.messages?.messages ?? []).filter(
     (m) =>
       m.id &&
       m.direction === 'outbound' &&
       (m.messageType === AGENT_REPLY_TYPE || isTeam(m)) &&
-      !AUTOMATED_SOURCES.has(m.source ?? '') &&
+      !isAutomated(m) &&
       Date.parse(m.dateAdded ?? '') > since,
   )
 

@@ -118,7 +118,7 @@ export default function AiAssistant() {
             ...prev,
             ...fresh.map((r) => ({
               from: 'bot' as const,
-              text: r.from === 'team' ? `${TEAM}: ${r.text}` : r.text,
+              text: r.text,
             })),
           ])
           setOpen(true)
