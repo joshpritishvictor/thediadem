@@ -1,12 +1,11 @@
 // Cloudflare Pages Function: POST /api/live
-// The website chat's line to GoHighLevel, where Kiara (GHL's AI agent) and the team
-// answer (see functions/_lib/liveChat.ts).
+// The website chat's line to the team in GoHighLevel, once a visitor asks for a real
+// person (see functions/_lib/liveChat.ts). Before that, Claude answers (/api/assistant).
 //
-//   { action: 'start', text }          → { session }: new visitor, first message
-//   { action: 'send', session, text }  → posts the visitor's next message
-//   { action: 'person', session?, name, phone, email } → saves their details on the contact
-//                                        and asks for a real person → { session }
-//   { action: 'poll', session, since } → { replies: [{ id, text, at, from }] } newer than since
+//   { action: 'person', name, phone, email, transcript? } → saves their details on their
+//        contact and asks for a real person, with the chat so far → { session }
+//   { action: 'send', session, text }  → posts the visitor's next message to the team
+//   { action: 'poll', session, since } → { replies: [{ id, text, at }] } newer than since
 //
 // Uses GHL_API_TOKEN (with the conversation scopes) and GHL_LOCATION_ID. With
 // GHL_CONVERSATION_PROVIDER_ID and the Marketplace app connected (GHL_CLIENT_ID,
@@ -22,7 +21,6 @@ import {
   readSession,
   requestPerson,
   type Channel,
-  startVisitorChat,
 } from '../_lib/liveChat.ts'
 
 type Env = AppEnv & {
@@ -32,6 +30,7 @@ type Env = AppEnv & {
 }
 
 const MAX_MESSAGE_CHARS = 2000
+const MAX_TRANSCRIPT_CHARS = 4000
 
 const json = (body: object, status = 200) => Response.json(body, { status })
 
@@ -65,18 +64,6 @@ export async function POST(request: Request, env: Env) {
   }
 
   try {
-    if (body?.action === 'start') {
-      const text = messageText(body.text)
-      if (!text) return json({ error: 'Empty message.' }, 400)
-      const conversationId = await startVisitorChat(
-        token,
-        locationId,
-        text,
-        await channel(),
-      )
-      return json({ session: await createSession(token, conversationId) })
-    }
-
     if (body?.action === 'person') {
       const field = (value: unknown, max: number) =>
         typeof value === 'string' ? value.trim().slice(0, max) : ''
@@ -86,18 +73,14 @@ export async function POST(request: Request, env: Env) {
       if (!firstName) return json({ error: 'Name is needed.' }, 400)
       if (!PHONE.test(phone)) return json({ error: 'Invalid phone.' }, 400)
       if (!EMAIL.test(email)) return json({ error: 'Invalid email.' }, 400)
-      // Without a chat yet, a new one is started on their contact
-      const current = body.session
-        ? await readSession(token, body.session)
-        : undefined
-      if (body.session && !current)
-        return json({ error: 'Invalid session.' }, 403)
+      // Their conversation is found (or started) on their contact
       const conversationId = await requestPerson(
         token,
         locationId,
-        current,
+        undefined,
         { firstName, lastName: rest.join(' '), email, phone },
         await channel(),
+        field(body.transcript, MAX_TRANSCRIPT_CHARS),
       )
       return json({ session: await createSession(token, conversationId) })
     }

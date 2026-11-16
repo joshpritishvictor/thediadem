@@ -1,5 +1,5 @@
 // Cloudflare Pages Function: POST /api/assistant
-// Answers questions in the floating "Crest" chat using Claude (Anthropic API), and
+// Answers questions in the floating "Kiara" chat using Claude (Anthropic API), and
 // books free consultations straight into GoHighLevel.
 //
 // Required environment variable (Cloudflare → Workers & Pages → project → Settings →
@@ -12,8 +12,8 @@
 //                       "View Calendars" + "Edit Calendar Events"
 //   GHL_LOCATION_ID     Sub-account (location) ID
 // Optional:
-//   GHL_CALENDAR_ID     Calendar to book into. With it, Crest offers real open times and
-//                       creates the appointment; without it, Crest saves the request with
+//   GHL_CALENDAR_ID     Calendar to book into. With it, Kiara offers real open times and
+//                       creates the appointment; without it, Kiara saves the request with
 //                       the visitor's preferred date and the team confirms the time.
 //   GHL_TAGS            Extra comma-separated tags for every lead (default: "website-lead")
 //   ANTHROPIC_MODEL     Override the model (default: claude-opus-5-5)
@@ -41,15 +41,17 @@ import {
   PHONE,
   saveLead,
 } from '../_lib/ghl.ts'
-import { createSession, startHandover } from '../_lib/liveChat.ts'
+import { appToken, type AppEnv } from '../_lib/ghlApp.ts'
+import { createSession, requestPerson, type Channel } from '../_lib/liveChat.ts'
 
-export type Env = {
+export type Env = AppEnv & {
   ANTHROPIC_API_KEY?: string
   ANTHROPIC_MODEL?: string
   GHL_API_TOKEN?: string
   GHL_LOCATION_ID?: string
   GHL_CALENDAR_ID?: string
   GHL_TAGS?: string
+  GHL_CONVERSATION_PROVIDER_ID?: string
 }
 
 const DEFAULT_MODEL = 'claude-opus-5-5'
@@ -61,11 +63,12 @@ const TIME_ZONE = 'America/Edmonton'
 
 const links = knowledge.links as Record<string, string>
 
-const SYSTEM = `You are Crest, the friendly website assistant for Diadem, an Alberta-based integrated professional network that connects clients with licensed accountants, tax specialists, financial advisors, insurance advisors and corporate lawyers.
+const SYSTEM = `You are Kiara, the friendly website assistant for Diadem, an Alberta-based integrated professional network that connects clients with licensed accountants, tax specialists, financial advisors, insurance advisors and corporate lawyers.
 
 Your job is to answer visitors' questions about Diadem, its services and how it works, and to book a free consultation for them right here in the chat when they want one.
 
 Rules:
+- The chat window has already greeted the visitor in your name ("Hi, I'm Kiara, Diadem's assistant. Ask me about our services or how we work, or I can book your free consultation right here."). Never introduce yourself again. If they just say hello, reply in a few friendly words and ask what they'd like help with.
 - Answer only from the reference below. If something isn't covered (exact fees, specific professionals), say so plainly and offer to book a free consultation.
 - You provide general information only. Never give personalised financial, tax, legal or insurance advice, recommendations or calculations; explain that a licensed professional in Diadem's network can help with their specific situation.
 - Keep replies short and warm: usually 1–3 sentences, at most about 80 words. Plain text only, no Markdown, lists or headings.
@@ -316,7 +319,7 @@ async function bookConsultation(
     timeStyle: 'short',
   })} (Alberta time)`
   const note = [
-    'Website AI assistant (Crest): free consultation',
+    'Website AI assistant (Kiara): free consultation',
     '',
     booking.calendarId
       ? `Booked for: ${when}`
@@ -360,7 +363,12 @@ async function bookConsultation(
 }
 
 /** Validates the visitor's details, then hands them over to the team. Returns a /api/live session. */
-async function connectToTeam(booking: Booking, input: Record<string, unknown>) {
+async function connectToTeam(
+  booking: Booking,
+  input: Record<string, unknown>,
+  channel: Channel | undefined,
+  chatSoFar: string,
+) {
   const firstName = text(input.firstName, 80)
   const lastName = text(input.lastName, 80)
   const email = text(input.email, 254)
@@ -371,12 +379,13 @@ async function connectToTeam(booking: Booking, input: Record<string, unknown>) {
   if (!EMAIL.test(email)) return { error: 'The email address looks invalid.' }
   if (!PHONE.test(phone)) return { error: 'A valid phone number is needed.' }
 
-  const conversationId = await startHandover(
+  const conversationId = await requestPerson(
     booking.token,
     booking.locationId,
+    undefined,
     { firstName, lastName, email, phone },
-    summary,
-    booking.tags,
+    channel,
+    [`What they need: ${summary || '—'}`, '', chatSoFar].join('\n').trim(),
   )
   return { session: await createSession(booking.token, conversationId) }
 }
@@ -401,6 +410,20 @@ export async function POST(request: Request, env: Env) {
   }
   const messages = parseMessages(body)
   if (!messages) return json({ error: 'Invalid request.' }, 400)
+
+  // The chat so far, for the team if the visitor is handed over
+  const chatSoFar = messages
+    .filter((m) => typeof m.content === 'string')
+    .slice(-12)
+    .map((m) => `${m.role === 'user' ? 'Visitor' : 'Kiara'}: ${m.content}`)
+    .join('\n')
+  /** "Website chat" with the Marketplace app's token, when both are available */
+  const channel = async (): Promise<Channel | undefined> => {
+    const providerId = env.GHL_CONVERSATION_PROVIDER_ID
+    if (!providerId || !env.GHL_LOCATION_ID) return undefined
+    const token = await appToken(env, env.GHL_LOCATION_ID)
+    return token ? { providerId, token } : undefined
+  }
 
   const booking: Booking | undefined =
     env.GHL_API_TOKEN && env.GHL_LOCATION_ID
@@ -483,7 +506,12 @@ export async function POST(request: Request, env: Env) {
             } else if (block.name === 'connect_to_team') {
               const handover = live
                 ? { error: 'Already connected with the team.' }
-                : await connectToTeam(booking, input)
+                : await connectToTeam(
+                    booking,
+                    input,
+                    await channel(),
+                    chatSoFar,
+                  )
               if ('session' in handover) live = handover.session
               result = 'session' in handover ? { connected: true } : handover
             } else {
