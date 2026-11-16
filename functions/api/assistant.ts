@@ -25,7 +25,7 @@
 // falls back to answering from the site's FAQs.
 
 import Anthropic from '@anthropic-ai/sdk'
-import knowledge from '../_lib/assistant-knowledge.json' with { type: 'json' }
+import knowledge from '../_lib/assistant-knowledge.json'
 import {
   albertaNow,
   isClosed,

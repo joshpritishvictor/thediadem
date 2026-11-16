@@ -108,7 +108,11 @@ export default function About() {
           className="mx-auto mt-8 grid max-w-5xl gap-5 lg:grid-cols-2"
         >
           {about.team.people.map((person) => (
-            <RevealItem key={person.name} className="h-full">
+            // An odd card out on the last row is centred, at the same width as the others
+            <RevealItem
+              key={person.name}
+              className="h-full lg:last:odd:col-span-2 lg:last:odd:mx-auto lg:last:odd:w-[calc(50%-0.625rem)]"
+            >
               <TeamCard person={person} />
             </RevealItem>
           ))}
