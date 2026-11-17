@@ -82,7 +82,10 @@ export default function Layout() {
         <AnimatePresence
           mode="wait"
           initial={false}
-          onExitComplete={() => window.scrollTo(0, 0)}
+          // Instant, not the page's smooth scrolling: the new page should open at the top
+          onExitComplete={() =>
+            window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+          }
         >
           <m.main
             id="main"
