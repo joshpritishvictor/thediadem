@@ -131,9 +131,11 @@
     /* Snap sections just below the fixed header instead of under it */
     scroll-padding-top: 4.5rem; /* the scrolled header's height */
   }
+  /* Desktop with a mouse or trackpad only. On phones and tablets snapping
+     fights the finger: after a flick the page is pulled to the nearest
+     section, and on iOS it jumps as the address bar shows and hides. */
   html.snap {
-    scroll-snap-type: y proximity;
-    @media (width >= 64rem) {
+    @media (width >= 64rem) and (pointer: fine) {
       scroll-snap-type: y mandatory;
     }
   }
