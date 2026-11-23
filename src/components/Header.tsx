@@ -5,7 +5,7 @@ import {
   useMotionValueEvent,
   useScroll,
 } from 'motion/react'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { getPost } from '../content/blog'
 import { bookingCta, contactLink, navLinks } from '../content/site'
@@ -45,8 +45,31 @@ export default function Header() {
 
   useMotionValueEvent(scrollY, 'change', (y) => setScrolled(y > 12))
 
+  // While the mobile menu is open: keep the page behind it still, and close it
+  // on Escape or a tap anywhere outside the header
+  const header = useRef<HTMLElement>(null)
+  useEffect(() => {
+    if (!menuOpen) return
+    const html = document.documentElement
+    const before = html.style.overflow
+    html.style.overflow = 'hidden'
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setMenuOpen(false)
+    const onPointer = (e: PointerEvent) => {
+      if (!(e.target instanceof Node && header.current?.contains(e.target)))
+        setMenuOpen(false)
+    }
+    window.addEventListener('keydown', onKey)
+    document.addEventListener('pointerdown', onPointer)
+    return () => {
+      html.style.overflow = before
+      window.removeEventListener('keydown', onKey)
+      document.removeEventListener('pointerdown', onPointer)
+    }
+  }, [menuOpen])
+
   return (
     <header
+      ref={header}
       className={`fixed inset-x-0 top-0 z-50 border-b transition-[padding,background-color,border-color,box-shadow,backdrop-filter] duration-500 ease-out-expo ${
         scrolled || menuOpen
           ? `border-ink/5 py-2 shadow-sm backdrop-blur-xl ${menuOpen ? 'bg-cream' : 'bg-cream/85'}`
@@ -112,7 +135,8 @@ export default function Header() {
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.4, ease: easeOutExpo }}
           >
-            <div className="flex flex-col gap-1 py-4">
+            {/* Scrolls on its own when the screen is short (a phone on its side) */}
+            <div className="flex max-h-[calc(100dvh-4.5rem)] flex-col gap-1 overflow-y-auto overscroll-contain py-4">
               {[...navLinks, contactLink].map(({ to, label }, i) => (
                 <m.div
                   key={to}
